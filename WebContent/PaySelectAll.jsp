@@ -6,46 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장바구니</title>
-    <!-- 이 요청이 컨트롤러로 가네요... <link rel="stylesheet" href="css/PaySelectAll.css" /> -->
-	<style>
-		#title{
-		    text-align: center;
-		}
-		#payTable{
-		    text-align: center;
-		    width: 100%;
-		    border-collapse:collapse;
-		}
-		#payTable td{
-		    border-top: 1px solid black;
-		    border-bottom: 1px solid black;
-		    height: 50px;
-		}
-		#allPrice{
-		    text-align: center;
-		    margin: 50px;
-		}
-		#btns{
-		    text-align: center;
-		}
-		.btn{
-		    margin: 30px;
-		    width: 150px;
-		    height: 40px;
-		    border: 1px solid skyblue;
-		    background-color: skyblue;
-		    color: white;
-		}
-		#orderInfoTable{
-		    width: 100%;
-		    border-collapse:collapse;
-		}
-		#orderInfoTable td{
-		    height: 50px;
-		    border-top: 1px solid gray;
-		    border-bottom: 1px solid gray;
-		}
-	</style>
+    <link rel="stylesheet" href="css/PaySelectAll.css" />
+	
 </head>
 <body>
     <h1 id="title">쇼핑 307 주문하기</h1>

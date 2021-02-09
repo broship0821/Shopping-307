@@ -13,7 +13,7 @@ import com.team1.shopping307.service.TelService;
 import com.team1.shopping307.service.TelServiceImpl;
 
 //@WebServlet("/TelController")
-@WebServlet(urlPatterns = { "*.do", "/" })
+@WebServlet(urlPatterns = { "*.do" })
 public class Controller extends HttpServlet {
    private static final long serialVersionUID = 1L;
 

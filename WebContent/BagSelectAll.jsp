@@ -6,38 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장바구니</title>
-    <!-- <link rel="stylesheet" href="css/BagSelectAll.css" /> -->
-   	<style>
-		#title{
-		    text-align: center;
-		}
-		#bagTable{
-		    text-align: center;
-		    width: 100%;
-		    border-collapse:collapse;
-		}
-		#bagTable td{
-		    border-top: 1px solid black;
-		    border-bottom: 1px solid black;
-		    height: 50px;
-		}
-		#allPrice{
-		    text-align: center;
-		    height: 50px;
-		}
-		#btns{
-		    text-align: center;
-		    
-		}
-		.btn{
-		    margin: 30px;
-		    width: 150px;
-		    height: 40px;
-		    border: 1px solid skyblue;
-		    background-color: skyblue;
-		    color: white;
-		}
-	</style>
+    <link rel="stylesheet" href="css/BagSelectAll.css" />
 </head>
 <body>
     <h1 id="title">쇼핑 307 장바구니</h1>

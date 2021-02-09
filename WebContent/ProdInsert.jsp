@@ -1,3 +1,4 @@
+<%@page import="com.team1.shopping307.controller.Common"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -55,9 +56,11 @@ pageEncoding="UTF-8"%>
 
 		<table border="0">
 			<tr>
-				<td><a href="">등록</a></td>
-				<td><a href="">수정</a></td>
-				<td><a href="">삭제</a></td>
+				<td>
+                    <input type="submit" value="등록" />
+                    <input type="button" value="수정" onClick="#" />
+                    <input type="button" value="삭제" onClick="#" />
+                </td>                    
 			</tr>
 		</table>
 		

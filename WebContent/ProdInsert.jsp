@@ -17,7 +17,7 @@ pageEncoding="UTF-8"%>
 	</h1>
 	상품등록
 	<br>
-	<form name="ProdInsert" action="<%=Common.strProdInsertDo%>">
+		 <form name="ProdInsert" action="<%=Common.strProdInsertDo%>">
 	<table border="0">
 		<tr>
 			<td>상품명 :</td>
@@ -51,7 +51,7 @@ pageEncoding="UTF-8"%>
 		</tr>
 	 
 	</table>
-	</form>	
+
 
 		<table border="0">
 			<tr>
@@ -61,6 +61,6 @@ pageEncoding="UTF-8"%>
 			</tr>
 		</table>
 		
-
+</form>
 </body>
 </html>

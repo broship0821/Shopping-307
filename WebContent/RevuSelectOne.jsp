@@ -91,10 +91,8 @@ display:inline-block;
 text-align:left;
 float:left;
 }
-hr#ddd {
-width:200px;
 
-}
+
 </style>
 </head>
 <body>

@@ -5,9 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>장바구니</title>
+    <title>주문하기</title>
     <link rel="stylesheet" href="css/PaySelectAll.css" />
-	
 </head>
 <body>
     <h1 id="title">쇼핑 307 주문하기</h1>
@@ -15,21 +14,21 @@
     <!-- 나중에 jstl forEach로 구현하기 -->
     <table id="payTable">
         <tr>
-            <td><input type="checkbox" name="" id=""></td>
-            <td>전체선택</td>
+            <td><input type="checkbox" name="" id="selectAllBox"></td>
+            <td>이미지</td>
             <td>상품명</td>
             <td>수량</td>
             <td>상품금액</td>
         </tr>
         <tr>
-            <td><input type="checkbox" name="" id=""></td>
+            <td><input type="checkbox" name="" class="box"></td>
             <td><img src="" alt="상품사진들어갈곳"></td>
             <td>라이크 울 셔츠 (멜란지 오프화이트)[옵션: M(100~105)]</td>
             <td>1</td>
             <td>75,000원</td>
         </tr>
         <tr>
-            <td><input type="checkbox" name="" id=""></td>
+            <td><input type="checkbox" name="" class="box"></td>
             <td><img src="" alt="상품사진들어갈곳"></td>
             <td>라이크 울 셔츠 (멜란지 오프화이트)[옵션: M(100~105)]</td>
             <td>1</td>
@@ -79,4 +78,5 @@
         <input type="button" value="전체상품주문" class="btn">
     </div>
 </body>
+<script src="js/selectAllBox.js"></script>
 </html>

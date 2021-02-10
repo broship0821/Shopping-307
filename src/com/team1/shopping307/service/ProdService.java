@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team1.shopping307.VO.ProdVO;
+import com.team1.shopping307.VO.UsersVO;
 
 public interface ProdService {
    public ArrayList<ProdVO> selectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   

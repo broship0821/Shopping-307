@@ -1,13 +1,27 @@
 package com.team1.shopping307.controller;
 
 public class Common {
+   //----------
+   // 사용자 구분
+   //----------
+   public static final String strAdmin = "A";              // Admin(Super user)
+   public static final String strManager = "M";            // Manager(쇼핑몰 관리자)
+   public static final String strUser = "U";               // User: 일반 사용자(client)
+   public static final String strAnynimous = "Y";          // 익명(anonymous) 사용자(로긴하지 않은 사용자)
+
+   //----------
    // .do
+   //----------
    public static final String strDo = ".do";
    
+   //----------
    // .jsp
+   //----------
    public static final String strJsp = ".jsp";
    
+   //----------
    // 사용자 정보
+   //----------
    public static final String strUsersSelectAll   = "UsersSelectAll";
    public static final String strUsersSelectAllDo = strUsersSelectAll + strDo;
 
@@ -158,5 +172,4 @@ public class Common {
 
    public static final String strExchDelete      = "ExchDelete";
    public static final String strExchDeleteDo    = strExchDelete + strDo;
-   
 }

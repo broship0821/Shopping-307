@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.team1.shopping307.DAO.Member1DAO;
 import com.team1.shopping307.VO.Member1VO;
@@ -48,4 +47,4 @@ public class TelServiceImpl implements TelService {
       int result = Member1DAO.update(id, date);
       request.setAttribute("result", result >= 1 ? "수정 성공" : "수정 실패");
    }
-  
+}

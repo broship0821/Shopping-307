@@ -29,7 +29,7 @@ public class ProdServiceImpl implements ProdService {
    public int insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println("ProdServiceImpl.insert()");
       int result = 0; 
-      String name = request.getParameter("ProdName");
+      
       // ...
       // result = ProdDAO.insert(name, ...); 호출
       result = 1; // 강제로 Ok 설정함

@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.team1.shopping307.service.ProdService;
 import com.team1.shopping307.service.ProdServiceImpl;
+import com.team1.shopping307.service.UsersService;
+import com.team1.shopping307.service.UsersServiceImpl;
 
 //@WebServlet("/TelController")
 @WebServlet(urlPatterns = { "*.do", "/" })
@@ -22,6 +25,8 @@ public class Controller extends HttpServlet {
    }
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      HttpSession session = request.getSession();
+
       // response.getWriter().append("Served at: ").append(request.getContextPath());
       request.setCharacterEncoding("UTF-8");
       response.setCharacterEncoding("UTF-8");
@@ -30,20 +35,54 @@ public class Controller extends HttpServlet {
       String strUri = request.getRequestURI(); // project명/*.do
       String strPath = request.getContextPath(); // project명
       String strMap = strUri.substring(strPath.length() + 1);
+      String strSessionId = session.getId();
       String jspName = null;
       
       System.out.println("Controller()");
       System.out.println(strUri);
       System.out.println(strPath);
       System.out.println("요청주소: " + strMap);
+      System.out.println("session ID.: " + strSessionId);
 
       try {
+         String strRole = LoginManager.getUserRole(strSessionId);
+         System.out.println("Role: " + strRole);
+         
          switch (strMap) {
-         case Common.strUsersSelectAllDo:
-            //svc.selectALL(request, response);
-            //jspName =  Common.strUsersSelectAll;
+         //--------------------------   
+         // 사용자 정보
+         //--------------------------
+         case Common.strUsersSelectAllDo: {
+            UsersService svc = new UsersServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strUsersSelectAll;
             break;
-
+         }
+         case Common.strUsersSelectOneDo: {
+            UsersService svc = new UsersServiceImpl();
+            svc.selectOne(request, response);
+            jspName = Common.strUsersSelectOne;
+            break;
+         }
+         case Common.strUsersInsertDo: {
+            UsersService svc = new UsersServiceImpl();
+            svc.insert(request, response);
+            jspName = Common.strUsersInsert;
+            break;
+         }
+         case Common.strUsersUpdateDo: {
+            UsersService svc = new UsersServiceImpl();
+            svc.update(request, response);
+            jspName = Common.strUsersUpdate;
+            break;
+         }
+         case Common.strUsersDeleteDo: {
+            UsersService svc = new UsersServiceImpl();
+            svc.delete(request, response);
+            jspName = Common.strUsersDelete;
+            break;
+         }
+            
          //--------------------------   
          // 상품 정보
          //--------------------------   
@@ -120,6 +159,7 @@ public class Controller extends HttpServlet {
       }
       else {
          // login
+         System.out.println("처리 후 호출 jsp: null입니다.");
       }
    }
 

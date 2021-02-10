@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.service.ProdService;
 import com.team1.shopping307.service.ProdServiceImpl;
+import com.team1.shopping307.service.TelService;
+import com.team1.shopping307.service.TelServiceImpl;
 import com.team1.shopping307.service.UsersService;
 import com.team1.shopping307.service.UsersServiceImpl;
 
@@ -31,7 +34,6 @@ public class Controller extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       response.setCharacterEncoding("UTF-8");
       
-      //TelService svc = new TelServiceImpl();
       String strUri = request.getRequestURI(); // project명/*.do
       String strPath = request.getContextPath(); // project명
       String strMap = strUri.substring(strPath.length() + 1);
@@ -117,31 +119,39 @@ public class Controller extends HttpServlet {
             break;
          }
 
-            
-//         case "/TelAllInfo.do":
-//            svc.getAllInfo(request, response);
-//            jspName = "telAllView.jsp";
-//            break;
-//   
-//         case "/TelDelInfo.do":
-//            svc.delInfo(request, response);
-//            jspName = "telResultView.jsp";
-//            break;
-//   
-//         case "/TelInsertInfo.do":
-//            svc.insertInfo(request, response);
-//            jspName = "telResultView.jsp";
-//            break;
-//   
-//         case "/TelOneInfo.do":
-//            svc.getOneInfo(request, response);
-//            jspName = "telOneView.jsp";
-//            break;
-//   
-//         case "/TelUpdateInfo.do":
-//            svc.updateInfo(request, response);
-//            jspName = "telResultView.jsp";
-//            break;
+         //--------------------------   
+         // TelInfo(Example)
+         //--------------------------   
+         case "TelAllInfo.do": {
+            TelService svc = new TelServiceImpl();
+            svc.getAllInfo(request, response);
+            jspName = "telAllView.jsp";
+            break;
+         }   
+         case "TelOneInfo.do": {
+            TelService svc = new TelServiceImpl();
+            svc.getOneInfo(request, response);
+            jspName = "telOneView.jsp";
+            break;
+         }   
+         case "TelInsertInfo.do": {
+            TelService svc = new TelServiceImpl();
+            svc.insertInfo(request, response);
+            jspName = "telResultView.jsp";
+            break;
+         }   
+         case "TelUpdateInfo.do": {
+            TelService svc = new TelServiceImpl();
+            svc.updateInfo(request, response);
+            jspName = "telResultView.jsp";
+            break;
+         }
+         case "TelDelInfo.do": {
+            TelService svc = new TelServiceImpl();
+            svc.delInfo(request, response);
+            jspName = "telResultView.jsp";
+            break;
+         }   
          }
       }
       catch(Exception e) {
@@ -149,7 +159,10 @@ public class Controller extends HttpServlet {
       }
 
       if (jspName != null) {
-         jspName += Common.strJsp;
+         // jspName이 ".jsp"로 끝나게 만들고 jspName를 호출 
+         if(!Libs.getFileExt(jspName).toLowerCase().equals(".jsp")) {
+            jspName += Common.strJsp;
+         }
          System.out.println("처리 후 호출 jsp: " + jspName);
          
          // request.getRequestDispatcher(jspName)

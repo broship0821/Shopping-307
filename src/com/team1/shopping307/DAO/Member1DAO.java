@@ -1,7 +1,6 @@
 package com.team1.shopping307.DAO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -11,76 +10,10 @@ import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.VO.Member1VO;
 
 public class Member1DAO {
-   private static Connection connect() {
-      System.out.println("connect()");
-      Connection conn = null;
-      String driverName = "oracle.jdbc.driver.OracleDriver";
-      String url = "jdbc:oracle:thin:@localhost:1521:xe"; // localhost대신 ip주소가 들어갈수도
-      String id = "hr";
-      String pw = "hr";
-      
-      try {
-         Class.forName(driverName);
-         conn = DriverManager.getConnection(url, id, pw);
-         System.out.println("connect OK!!!");
-      }
-      catch(Exception ex) {
-         ex.printStackTrace();
-         close(conn);
-      }
-      
-      return conn;
-   }
-   
-   private static void closeDb(Connection conn, PreparedStatement ps, ResultSet rs) {
-      close(rs);
-      close(ps);
-      close(conn);
-   }
-   
-   private static void closeDb(Connection conn, PreparedStatement ps) {
-      close(ps);
-      close(conn);
-   }
-   
-   private static void close(Connection conn) {
-      if(conn != null) {
-        try {
-            conn.close();
-            conn = null;
-         }
-         catch(Exception ex) {
-            ex.printStackTrace();
-         }
-      }   
-   }
-   
-   private static void close(ResultSet rs) {
-      if(rs != null) {
-         try {
-            rs.close();
-         }
-         catch(Exception ex) {
-            ex.printStackTrace();
-         }
-      }
-   }
-   
-   private static void close(PreparedStatement ps) {
-      if(ps != null) {
-         try {
-            ps.close();
-         }
-         catch(Exception ex) {
-            ex.printStackTrace();
-         }
-      }
-   }
-   
    public static ArrayList<Member1VO> selectAll() {
       System.out.println("selectAll()");
       ArrayList<Member1VO> lstResult = new ArrayList<>();
-      Connection conn = connect();
+      Connection conn = Libs.connect();
       
       if(conn != null) {
          PreparedStatement ps = null;
@@ -104,7 +37,7 @@ public class Member1DAO {
             ex.printStackTrace();
          }
          
-         closeDb(conn, ps, rs);
+         Libs.closeDb(conn, ps, rs);
       }
       
       return lstResult;
@@ -123,7 +56,7 @@ public class Member1DAO {
    public static Member1VO selectOne(int id) {
       System.out.println("selectOne(" + id + ")");
       Member1VO result = new Member1VO();
-      Connection conn = connect();
+      Connection conn = Libs.connect();
       
       if(conn != null) {
          PreparedStatement ps = null;
@@ -149,7 +82,7 @@ public class Member1DAO {
             ex.printStackTrace();
          }
          
-         closeDb(conn, ps, rs);
+         Libs.closeDb(conn, ps, rs);
       }
       
       return result;
@@ -173,7 +106,7 @@ public class Member1DAO {
    public static int insert(int id, String name, String tel, Date date) {
       System.out.println("insert()");
       int result = 0;
-      Connection conn = connect();
+      Connection conn = Libs.connect();
       
       if(conn != null) {
          PreparedStatement ps = null;
@@ -198,7 +131,7 @@ public class Member1DAO {
             ex.printStackTrace();
          }
          
-         closeDb(conn, ps);
+         Libs.closeDb(conn, ps);
       }
       
       return result;
@@ -221,7 +154,7 @@ public class Member1DAO {
    public static int delete(int id) {
       System.out.println("delete()");
       int result = 0;
-      Connection conn = connect();
+      Connection conn = Libs.connect();
       
       if(conn != null) {
          PreparedStatement ps = null;
@@ -236,7 +169,7 @@ public class Member1DAO {
             ex.printStackTrace();
          }
          
-         closeDb(conn, ps);
+         Libs.closeDb(conn, ps);
       }
       
       return result;
@@ -261,7 +194,7 @@ public class Member1DAO {
    public static int update(int id, Date date) {
       System.out.println("update()");
       int result = 0;
-      Connection conn = connect();
+      Connection conn = Libs.connect();
       
       if(conn != null) {
          PreparedStatement ps = null;
@@ -285,7 +218,7 @@ public class Member1DAO {
             ex.printStackTrace();
          }
          
-         closeDb(conn, ps);
+         Libs.closeDb(conn, ps);
       }
 
       return result;

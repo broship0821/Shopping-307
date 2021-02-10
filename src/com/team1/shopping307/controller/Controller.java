@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.service.ProdService;
 import com.team1.shopping307.service.ProdServiceImpl;
+import com.team1.shopping307.service.RevuService;
+import com.team1.shopping307.service.RevuServiceImpl;
 import com.team1.shopping307.service.TelService;
 import com.team1.shopping307.service.TelServiceImpl;
 import com.team1.shopping307.service.UsersService;
@@ -142,7 +144,40 @@ public class Controller extends HttpServlet {
          //---------------------------------------
          // 8. 후기 정보(review)
          //---------------------------------------
+         case Common.strRevuSelectAllDo: {
+            RevuService svc = new RevuServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strRevuInsertDo;
+            break;
+         }
+         case Common.strRevuSelectOneDo: {
+            RevuService svc = new RevuServiceImpl();
+            svc.selectOne(request, response);
+            jspName = Common.strRevuSelectOne;
+            break;
+         }
+         case Common.strRevuInsertDo: {
+            RevuService svc = new RevuServiceImpl();
+            svc.insert(request, response);
+            jspName = Common.strRevuInsert;
+            break;
+         }
+         case Common.strRevuUpdateDo: {
+            RevuService svc = new RevuServiceImpl();
+            svc.update(request, response);
+            jspName = Common.strRevuUpdate;
+            break;
+         }
+         case Common.strRevuDeleteDo: {
+            RevuService svc = new RevuServiceImpl();
+            svc.delete(request, response);
+            jspName = Common.strRevuDelete;
+            break;
+         }
 
+         
+         
+         
          //---------------------------------------
          // 9. 교환/환불 정보(exchange)
          //---------------------------------------

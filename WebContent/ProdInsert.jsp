@@ -16,13 +16,17 @@ pageEncoding="UTF-8"%>
 	<h1>
 		<p align="center">쇼핑 307</p>
 	</h1>
-	상품등록
+	<h1>상품등록</h1>
 	<br>
-		 <form name="ProdInsert" action="<%=Common.strProdInsertDo%>">
-	<table border="0">
+		 <form name="prodInsert" action="<%=Common.strProdInsertDo%>">
+	<table border="1">
+		<tr>
+			<td>판매시작일</td>
+			<td><input type="date" name="startDate"></td>
+		</tr>
 		<tr>
 			<td>상품명 :</td>
-			<td><input type="text" name="ProdName" required></td>
+			<td><input type="text" name="product_name" required></td>
 		</tr>
 		<tr>
 			<td>카테고리 :</td>
@@ -32,11 +36,11 @@ pageEncoding="UTF-8"%>
 		</tr>
 		<tr>
 			<td>가격 :</td>
-			<td><input type="number" name="ProdPrice" required></td>
+			<td><input type="number" name="price" required></td>
 		</tr>
 		<tr>
 			<td>입고수량 :</td>
-			<td><input type="number" name="Warehousing"></td>
+			<td><input type="number" name="warehousing"></td>
 		</tr>
 		<tr>
 			<td>재고수량 :</td>
@@ -44,12 +48,21 @@ pageEncoding="UTF-8"%>
 		</tr>
 		<tr>
 			<td>상품설명</td>
-			<td><textarea rows="5" cols="60" name="ProdDesc"></textarea></td>
+			<td><textarea rows="5" cols="60" name="info"></textarea></td>
 		</tr>
 		<tr>
 			<td>대표 이미지 등록 :</td>
-			<td><input type="file" name="ProdPhoto"></td>
+			<td><input type="file" name="iamge1"></td>
 		</tr>
+		<tr>
+			<td>상세이미지1 :</td>
+			<td><input type="file" name="iamge2"></td>
+		</tr>
+		<tr>
+			<td>상세이미지2 :</td>
+			<td><input type="file" name="iamge3"></td>
+		</tr>
+		
 	 
 	</table>
 

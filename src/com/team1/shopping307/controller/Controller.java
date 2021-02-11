@@ -99,7 +99,7 @@ public class Controller extends HttpServlet {
          case Common.strLogHistSelectAllDo: {
             LogHistService svc = new LogHistServiceImpl();
             svc.selectAll(request, response);
-            jspName = Common.strLogHistInsertDo;
+            jspName = Common.strLogHistSelectAll;
             break;
          }
          case Common.strLogHistSelectOneDo: {
@@ -133,7 +133,7 @@ public class Controller extends HttpServlet {
          case Common.strCateSelectAllDo: {
             CateService svc = new CateServiceImpl();
             svc.selectAll(request, response);
-            jspName = Common.strCateInsertDo;
+            jspName = Common.strCateSelectAll;
             break;
          }
          case Common.strCateSelectOneDo: {
@@ -167,7 +167,7 @@ public class Controller extends HttpServlet {
          case Common.strProdSelectAllDo: {
             ProdService svc = new ProdServiceImpl();
             svc.selectAll(request, response);
-            jspName = Common.strProdInsertDo;
+            jspName = Common.strProdSelectAll;
             break;
          }
          case Common.strProdSelectOneDo: {
@@ -201,7 +201,7 @@ public class Controller extends HttpServlet {
          case Common.strReleHistSelectAllDo: {
             ReleHistService svc = new ReleHistServiceImpl();
             svc.selectAll(request, response);
-            jspName = Common.strReleHistInsertDo;
+            jspName = Common.strReleHistSelectAll;
             break;
          }
          case Common.strReleHistSelectOneDo: {
@@ -243,7 +243,7 @@ public class Controller extends HttpServlet {
          case Common.strRevuSelectAllDo: {
             RevuService svc = new RevuServiceImpl();
             svc.selectAll(request, response);
-            jspName = Common.strRevuInsertDo;
+            jspName = Common.strRevuSelectAll;
             break;
          }
          case Common.strRevuSelectOneDo: {

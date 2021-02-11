@@ -7,8 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.team1.shopping307.VO.CateVO;
-import com.team1.shopping307.VO.ProdVO;
+import com.team1.shopping307.VO.ReleHistVO;
 
 public class ReleHistServiceImpl implements ReleHistService {
 

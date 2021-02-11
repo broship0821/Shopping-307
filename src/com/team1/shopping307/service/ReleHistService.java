@@ -11,7 +11,7 @@ import com.team1.shopping307.VO.ReleHistVO;
 
 public interface ReleHistService {
    public ArrayList<ReleHistVO> selectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   
-   public ReleHistVOO selectOne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+   public ReleHistVO selectOne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
    public int insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;  
    public int update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException; 
    public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   

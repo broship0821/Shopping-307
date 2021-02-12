@@ -25,14 +25,37 @@ pageEncoding="UTF-8"%>
 			<td><input type="date" name="startDate"></td>
 		</tr>
 		<tr>
-			<td>상품명 :</td>
-			<td><input type="text" name="product_name" required></td>
+			<td>상품ID :</td>
+			<td><input type="number" name="productId" required></td>
 		</tr>
 		<tr>
-			<td>카테고리 :</td>
-			<td><input type="checkbox" name="clothes" value="outer">아우터
-				<input type="checkbox" name="clothes" value="top">상의 
-				<input type="checkbox" name="clothes" value="bottom">하의</td>
+			<td>신상/이월</td>
+			<td><form>
+					<select name="isNew">
+						<option value="none">=== 선택 ===</option>
+						<option value="Y" name="Y">신상</option>
+						<option value="N" name="N">이월</option>
+					</select>
+				</form></td>
+		</tr>
+		<tr>
+			<td>상품명 :</td>
+			<td><input type="text" name="productName" required></td>
+		</tr>
+		<tr>
+			<td>카테고리</td>
+			<td><form>
+					<select name="category">
+						<option value="none">=== 선택 ===</option>
+						<option value="outer" name="outer">아우터</option>
+						<option value="top" name="top">상의</option>
+						<option value="bottom" name="bottom">상의</option>
+					</select>
+				</form></td>
+		</tr>
+		<tr>
+			<td>규격 :</td>
+			<td><input type="number" name="standard" required></td>
 		</tr>
 		<tr>
 			<td>가격 :</td>
@@ -48,7 +71,7 @@ pageEncoding="UTF-8"%>
 		</tr>
 		<tr>
 			<td>상품설명</td>
-			<td><textarea rows="5" cols="60" name="info"></textarea></td>
+			<td><textarea rows="5" cols="60" name="bigo"></textarea></td>
 		</tr>
 		<tr>
 			<td>대표 이미지 등록 :</td>

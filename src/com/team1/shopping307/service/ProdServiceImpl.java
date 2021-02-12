@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.team1.shopping307.DAO.CateDAO;
 import com.team1.shopping307.VO.ProdVO;
 
 public class ProdServiceImpl implements ProdService {
@@ -27,8 +28,7 @@ public class ProdServiceImpl implements ProdService {
 
    @Override
    public int insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      System.out.println("ProdServiceImpl.insert()");
-      int result = 0; 
+      int result = 0;
       
       // ...
       // result = ProdDAO.insert(name, ...); 호출

@@ -138,6 +138,12 @@ public class Controller extends HttpServlet {
             jspName = Common.strCateSelectAll;
             break;
          }
+         case Common.strCateGetComboAllDo: { // 선택 구성을 위한 Category 모든 정보 읽기 
+            CateService svc = new CateServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strCateGetComboAll;
+            break;
+         }
          case Common.strCateSelectOneDo: {
             CateService svc = new CateServiceImpl();
             svc.selectOne(request, response);

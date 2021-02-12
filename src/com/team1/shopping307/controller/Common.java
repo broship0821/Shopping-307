@@ -55,20 +55,25 @@ public class Common {
    
    
    // 카테고리 정보
-   public static final String strCateSelectAll   = "CateSelectAll";
-   public static final String strCateSelectAllDo = strCateSelectAll + strDo;
+   public static final String strCateComboName     = "CateComboName"; // Component명
 
-   public static final String strCateSelectOne   = "CateSelectOne";
-   public static final String strCateSelectOneDo = strCateSelectOne + strDo;
+   public static final String strCateSelectAll     = "CateSelectAll";
+   public static final String strCateSelectAllDo   = strCateSelectAll + strDo;
+
+   public static final String strCateGetComboAll   = "CateGetComboAll";
+   public static final String strCateGetComboAllDo = strCateGetComboAll + strDo;
+
+   public static final String strCateSelectOne     = "CateSelectOne";
+   public static final String strCateSelectOneDo   = strCateSelectOne + strDo;
    
-   public static final String strCateInsert      = "CateInsert";
-   public static final String strCateInsertDo    = strCateInsert + strDo;
+   public static final String strCateInsert        = "CateInsert";
+   public static final String strCateInsertDo      = strCateInsert + strDo;
    
-   public static final String strCateUpdate      = "CateUpdate";
-   public static final String strCateUpdateDo    = strCateUpdate + strDo;
+   public static final String strCateUpdate        = "CateUpdate";
+   public static final String strCateUpdateDo      = strCateUpdate + strDo;
    
-   public static final String strCateDelete      = "CateDelete";
-   public static final String strCateDeleteDo    = strCateDelete + strDo;
+   public static final String strCateDelete        = "CateDelete";
+   public static final String strCateDeleteDo      = strCateDelete + strDo;
    
    
    // 상품 정보
@@ -120,6 +125,9 @@ public class Common {
    
    public static final String strBagDelete      = "BagDelete";
    public static final String strBagDeleteDo    = strBagDelete + strDo;
+   
+   public static final String strBagDeleteAll   = "BagDeleteAll";
+   public static final String strBagDeleteAllDo = strBagDeleteAll + strDo;
    
    
    // 결제 정보

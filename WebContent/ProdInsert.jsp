@@ -26,7 +26,7 @@ pageEncoding="UTF-8"%>
 		</tr>
 		<tr>
 			<td>상품ID :</td>
-			<td><input type="number" name="productId" required></td>
+			<td><input type="String" name="productId" required></td>
 		</tr>
 		<tr>
 			<td>신상/이월</td>

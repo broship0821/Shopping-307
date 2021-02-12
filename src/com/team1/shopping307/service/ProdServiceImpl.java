@@ -1,6 +1,7 @@
 package com.team1.shopping307.service;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -25,9 +26,27 @@ public class ProdServiceImpl implements ProdService {
       ProdVO result = null;
       return result;
    }
-
+   /*public int insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	      String name = (String) request.getParameter("name");
+	      String bigo = (String) request.getParameter("bigo");
+	      int result = CateDAO.insert(name, bigo);
+	      request.setAttribute("result", result >= 1 ? "등록 성공" : "등록 실패");
+	      return result;
+	   }*/
    @Override
    public int insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  Date startDate = java.sql.Date.valueOf(request.getParameter("startDate")); 
+	  String productId = (String) request.getParameter("productId");
+	  String isNew = (String) request.getParameter("isNew");
+	  String productName = (String) request.getParameter("productName");
+	  String category = (String) request.getParameter("category");
+	  String standard = (String) request.getParameter("standard");
+	  long price = Integer.parseInt(request.getParameter("price"));
+	  long stock = Integer.parseInt(request.getParameter("stock"));
+	  String image1 = (String) request.getParameter("image1");
+	  String image2 = (String) request.getParameter("image2");
+	  String image3 = (String) request.getParameter("image3");
+	  
       int result = 0;
       
       // ...

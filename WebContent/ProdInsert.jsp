@@ -18,88 +18,79 @@ pageEncoding="UTF-8"%>
 	</h1>
 	<h1>상품등록</h1>
 	<br>
-		 <form name="prodInsert" action="<%=Common.strProdInsertDo%>">
-	<table border="1">
-		<tr>
-			<td>판매시작일</td>
-			<td><input type="date" name="startDate"></td>
-		</tr>
-		<tr>
-			<td>상품ID :</td>
-			<td><input type="String" name="productId" required></td>
-		</tr>
-		<tr>
-			<td>신상/이월</td>
-			<td><form>
+	<form name="prodInsert" action="<%=Common.strProdInsertDo%>">
+		<table border="1">
+            <tr>
+                <td align="center">상품ID</td>
+                <td><input type="text" name="productId" readonly></td>
+            </tr>
+            <tr>
+                <td align="center">상품명</td>
+                <td><input type="text" name="productName" required></td>
+            </tr>
+            <tr>
+                <td align="center">카테고리</td>
+                <td>
+                    <select name="category">
+                        <option value="outer" name="outer">아우터</option>
+                        <option value="top" name="top">상의</option>
+                        <option value="bottom" name="bottom">상의</option>
+                    </select>
+                </td>
+            </tr>
+			<tr>
+				<td align="center">신상/이월</td>
+				<td>
 					<select name="isNew">
-						<option value="none">=== 선택 ===</option>
-						<option value="Y" name="Y">신상</option>
+						<option value="Y" name="Y" selected>신상</option>
 						<option value="N" name="N">이월</option>
 					</select>
-				</form></td>
-		</tr>
-		<tr>
-			<td>상품명 :</td>
-			<td><input type="text" name="productName" required></td>
-		</tr>
-		<tr>
-			<td>카테고리</td>
-			<td><form>
-					<select name="category">
-						<option value="none">=== 선택 ===</option>
-						<option value="outer" name="outer">아우터</option>
-						<option value="top" name="top">상의</option>
-						<option value="bottom" name="bottom">상의</option>
-					</select>
-				</form></td>
-		</tr>
-		<tr>
-			<td>규격 :</td>
-			<td><input type="number" name="standard" required></td>
-		</tr>
-		<tr>
-			<td>가격 :</td>
-			<td><input type="number" name="price" required></td>
-		</tr>
-		<tr>
-			<td>입고수량 :</td>
-			<td><input type="number" name="warehousing"></td>
-		</tr>
-		<tr>
-			<td>재고수량 :</td>
-			<td><input type="number" name="stock"></td>
-		</tr>
-		<tr>
-			<td>상품설명</td>
-			<td><textarea rows="5" cols="60" name="bigo"></textarea></td>
-		</tr>
-		<tr>
-			<td>대표 이미지 등록 :</td>
-			<td><input type="file" name="iamge1"></td>
-		</tr>
-		<tr>
-			<td>상세이미지1 :</td>
-			<td><input type="file" name="iamge2"></td>
-		</tr>
-		<tr>
-			<td>상세이미지2 :</td>
-			<td><input type="file" name="iamge3"></td>
-		</tr>
-		
-	 
-	</table>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">규격</td>
+				<td><input type="text" name="standard" required></td>
+			</tr>
+			<tr>
+				<td align="center">가격</td>
+				<td><input type="number" name="price" required></td>
+			</tr>
+			<tr>
+				<td align="center">수량</td>
+				<td><input type="number" name="stock"></td>
+			</tr>
+			<tr>
+				<td align="center">상품설명</td>
+				<td><textarea rows="5" cols="60" name="bigo"></textarea></td>
+			</tr>
+            <tr>
+                <td align="center">판매시작일</td>
+                <td><input type="date" name="startDate"></td>
+            </tr>
+			<tr>
+				<td align="center">대표 이미지</td>
+				<td><input type="file" name="iamge1"></td>
+			</tr>
+			<tr>
+				<td align="center">상세이미지1</td>
+				<td><input type="file" name="iamge2"></td>
+			</tr>
+			<tr>
+				<td align="center">상세이미지2</td>
+				<td><input type="file" name="iamge3"></td>
+			</tr>
+
+		</table>
 
 
 		<table border="0">
 			<tr>
-				<td>
-                    <input type="submit" value="등록" />
-                    <input type="button" value="수정" onClick="#" />
-                    <input type="button" value="삭제" onClick="#" />
-                </td>                    
+				<td><input type="submit" value="등록" /> <input type="button"
+					value="수정" onClick="#" /> <input type="button" value="삭제"
+					onClick="#" /></td>
 			</tr>
 		</table>
-		
-</form>
+
+	</form>
 </body>
 </html>

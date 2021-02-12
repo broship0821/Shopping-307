@@ -70,7 +70,8 @@ public class Libs {
    static SimpleDateFormat fmAll = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
    
    public static Date strToDate(String date) throws ParseException {
-      return date != null ? (Date)Libs.fmYyyyMmDd.parse(date) : null; 
+      return date != null && date.trim().length() != 0
+            ? (Date)Libs.fmYyyyMmDd.parse(date) : null; 
    }
    
    public static String dateToStr(Date date){
@@ -89,6 +90,19 @@ public class Libs {
       return date != null ? new Date(date.getTime()) : null;
    }
 
+   
+   //------------------------------------------------
+   // 변환 관련 
+   //------------------------------------------------
+   public static int strToInt(String str, int defValue) {
+      if(str == null || str.trim().length() == 0) {
+         return defValue;
+      }
+      else {
+         return Integer.valueOf(str.trim());
+      }
+   }
+   
    
    //------------------------------------------------
    // DB 관련 

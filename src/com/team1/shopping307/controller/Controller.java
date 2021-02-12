@@ -29,7 +29,7 @@ import com.team1.shopping307.service.UsersService;
 import com.team1.shopping307.service.UsersServiceImpl;
 
 //@WebServlet("/TelController")
-@WebServlet(urlPatterns = { "*.do", "/" })
+@WebServlet(urlPatterns = { "*.do" })
 public class Controller extends HttpServlet {
    private static final long serialVersionUID = 1L;
       

@@ -47,11 +47,11 @@ padding:5px;
             <th style=" text-align:center;">작성날짜</th>
          </tr>
          <tr>
-            <td><input type="text" name="" value=""></td>
-            <td><input type="text" name="" value=""></td>
-            <td><input type="text" name="" value=""></td>
-            <td><input type="text" name="" value=""></td>
-            <td><input type="text" value="" name=""></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
          </tr>
 
          
@@ -59,10 +59,5 @@ padding:5px;
    </div>
    </form>
 </div>
-
-
-
-
-
 </body>
 </html>

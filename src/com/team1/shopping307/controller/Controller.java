@@ -11,8 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team1.shopping307.Libs.Libs;
+import com.team1.shopping307.service.BagService;
+import com.team1.shopping307.service.BagServiceImpl;
+import com.team1.shopping307.service.CateService;
+import com.team1.shopping307.service.CateServiceImpl;
+import com.team1.shopping307.service.LogHistService;
+import com.team1.shopping307.service.LogHistServiceImpl;
 import com.team1.shopping307.service.ProdService;
 import com.team1.shopping307.service.ProdServiceImpl;
+import com.team1.shopping307.service.ReleHistService;
+import com.team1.shopping307.service.ReleHistServiceImpl;
 import com.team1.shopping307.service.RevuService;
 import com.team1.shopping307.service.RevuServiceImpl;
 import com.team1.shopping307.service.TelService;
@@ -90,18 +98,84 @@ public class Controller extends HttpServlet {
          //---------------------------------------
          // 2. login 히스토리 정보 (login_history)
          //---------------------------------------
+         case Common.strLogHistSelectAllDo: {
+            LogHistService svc = new LogHistServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strLogHistSelectAll;
+            break;
+         }
+         case Common.strLogHistSelectOneDo: {
+            LogHistService svc = new LogHistServiceImpl();
+            svc.selectOne(request, response);
+            jspName = Common.strLogHistSelectOne;
+            break;
+         }
+         case Common.strLogHistInsertDo: {
+            LogHistService svc = new LogHistServiceImpl();
+            svc.insert(request, response);
+            jspName = Common.strLogHistInsert;
+            break;
+         }
+         case Common.strLogHistUpdateDo: {
+            LogHistService svc = new LogHistServiceImpl();
+            svc.update(request, response);
+            jspName = Common.strLogHistUpdate;
+            break;
+         }
+         case Common.strLogHistDeleteDo: {
+            LogHistService svc = new LogHistServiceImpl();
+            svc.delete(request, response);
+            jspName = Common.strLogHistDelete;
+            break;
+         }
          
          //---------------------------------------
          // 3. 카테고리 정보(category)
          //---------------------------------------
-         
+         case Common.strCateSelectAllDo: {
+            CateService svc = new CateServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strCateSelectAll;
+            break;
+         }
+         case Common.strCateGetComboAllDo: { // 선택 구성을 위한 Category 모든 정보 읽기 
+            CateService svc = new CateServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strCateGetComboAll;
+            break;
+         }
+         case Common.strCateSelectOneDo: {
+            CateService svc = new CateServiceImpl();
+            svc.selectOne(request, response);
+            jspName = Common.strCateSelectOne;
+            break;
+         }
+         case Common.strCateInsertDo: {
+            CateService svc = new CateServiceImpl();
+            svc.insert(request, response);
+            jspName = Common.strCateInsert;
+            break;
+         }
+         case Common.strCateUpdateDo: {
+            CateService svc = new CateServiceImpl();
+            svc.update(request, response);
+            jspName = Common.strCateUpdate;
+            break;
+         }
+         case Common.strCateDeleteDo: {
+            CateService svc = new CateServiceImpl();
+            svc.delete(request, response);
+            jspName = Common.strCateDelete;
+            break;
+         }
+
          //---------------------------------------
          // 4. 상품 정보(product)
          //---------------------------------------
          case Common.strProdSelectAllDo: {
             ProdService svc = new ProdServiceImpl();
             svc.selectAll(request, response);
-            jspName = Common.strProdInsertDo;
+            jspName = Common.strProdSelectAll;
             break;
          }
          case Common.strProdSelectOneDo: {
@@ -132,10 +206,78 @@ public class Controller extends HttpServlet {
          //---------------------------------------
          // 5. 상품 출고 히스토리(release_history)
          //---------------------------------------
+         case Common.strReleHistSelectAllDo: {
+            ReleHistService svc = new ReleHistServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strReleHistSelectAll;
+            break;
+         }
+         case Common.strReleHistSelectOneDo: {
+            ReleHistService svc = new ReleHistServiceImpl();
+            svc.selectOne(request, response);
+            jspName = Common.strReleHistSelectOne;
+            break;
+         }
+         case Common.strReleHistInsertDo: {
+            ReleHistService svc = new ReleHistServiceImpl();
+            svc.insert(request, response);
+            jspName = Common.strReleHistInsert;
+            break;
+         }
+         case Common.strReleHistUpdateDo: {
+            ReleHistService svc = new ReleHistServiceImpl();
+            svc.update(request, response);
+            jspName = Common.strReleHistUpdate;
+            break;
+         }
+         case Common.strReleHistDeleteDo: {
+            ReleHistService svc = new ReleHistServiceImpl();
+            svc.delete(request, response);
+            jspName = Common.strReleHistDelete;
+            break;
+         }
 
          //---------------------------------------
          // 6 장바구니(bag - table만 불필요)
          //---------------------------------------
+         case Common.strBagSelectAllDo: {
+            BagService svc = new BagServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strBagSelectAll;
+            break;
+         }
+         case Common.strBagSelectOneDo: {
+            BagService svc = new BagServiceImpl();
+            //svc.selectOne(request, response);
+            System.out.println(Common.strBagSelectOneDo + "은 구현 안됨!");
+            jspName = Common.strBagSelectOne;
+            break;
+         }
+         case Common.strBagInsertDo: {
+            BagService svc = new BagServiceImpl();
+            svc.insert(request, response);
+            jspName = Common.strBagInsert;
+            break;
+         }
+         case Common.strBagUpdateDo: {
+            BagService svc = new BagServiceImpl();
+            //svc.update(request, response);
+            System.out.println(Common.strBagUpdateDo + "은 구현 안됨!");
+            jspName = Common.strBagUpdate;
+            break;
+         }
+         case Common.strBagDeleteDo: {
+            BagService svc = new BagServiceImpl();
+            svc.delete(request, response);
+            jspName = Common.strBagDelete;
+            break;
+         }
+         case Common.strBagDeleteAllDo: {
+            BagService svc = new BagServiceImpl();
+            svc.deleteAll(request, response);
+            jspName = Common.strBagDeleteAll;
+            break;
+         }
 
          //---------------------------------------
          // 7. 결제 정보(pay_info)
@@ -147,7 +289,7 @@ public class Controller extends HttpServlet {
          case Common.strRevuSelectAllDo: {
             RevuService svc = new RevuServiceImpl();
             svc.selectAll(request, response);
-            jspName = Common.strRevuInsertDo;
+            jspName = Common.strRevuSelectAll;
             break;
          }
          case Common.strRevuSelectOneDo: {
@@ -174,9 +316,6 @@ public class Controller extends HttpServlet {
             jspName = Common.strRevuDelete;
             break;
          }
-
-         
-         
          
          //---------------------------------------
          // 9. 교환/환불 정보(exchange)

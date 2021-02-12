@@ -77,6 +77,10 @@ public class Libs {
       return date != null ? Libs.fmYyyyMmDd.format(date) : "";
    }
    
+   public static String dateTimeToStr(Date date){
+      return date != null ? Libs.fmAll.format(date) : "";
+   }
+   
    public static java.sql.Date dateToSqlDate(Date date) {
       return date != null ? new java.sql.Date(date.getTime()) : null;
    }

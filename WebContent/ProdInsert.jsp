@@ -7,6 +7,18 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- <script src="jquery-3.1.1.js" /> <!-- import JQuery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+
+<script src="js/shopping307.js?ver=1"></script>
+<script>
+    $(function() {
+	  sp307.getCategory("<%=Common.strCateGetComboAllDo%>", "<%=Common.strCateComboName%>");
+    });
+</script>
+
 </head>
 
 <body>
@@ -30,13 +42,13 @@ pageEncoding="UTF-8"%>
             </tr>
             <tr>
                 <td align="center">카테고리</td>
-                <td>
+                <td><div id="<%=Common.strCateComboName%>">
                     <select name="category">
                         <option value="outer" name="outer">아우터</option>
                         <option value="top" name="top">상의</option>
                         <option value="bottom" name="bottom">상의</option>
                     </select>
-                </td>
+                </div></td>
             </tr>
 			<tr>
 				<td align="center">신상/이월</td>

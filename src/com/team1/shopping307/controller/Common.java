@@ -55,7 +55,7 @@ public class Common {
    
    
    // 카테고리 정보
-   public static final String strCateComboName     = "CateComboName"; // Component명
+   public static final String strCateComboName     = "category"; // Component명
 
    public static final String strCateSelectAll     = "CateSelectAll";
    public static final String strCateSelectAllDo   = strCateSelectAll + strDo;

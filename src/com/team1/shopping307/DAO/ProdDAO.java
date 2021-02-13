@@ -63,6 +63,7 @@ public class ProdDAO {
          
          result = new ProdVO(productId, productName, category, isNew, standard,
                price, stock, bigo, startDate, image1, image2, image3);
+         System.out.println(result);
       } catch (SQLException e) {
          e.printStackTrace();
       }

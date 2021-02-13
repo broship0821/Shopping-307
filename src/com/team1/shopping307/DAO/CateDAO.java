@@ -11,7 +11,7 @@ import com.team1.shopping307.VO.CateVO;
 import com.team1.shopping307.VO.Member1VO;
 
 public class CateDAO {
-   private static String className = "CateDao";
+   private static String className = "CateDAO";
    private static String tableName = "Category";
 
    public static ArrayList<CateVO> selectAll() {
@@ -133,20 +133,6 @@ public class CateDAO {
       return result;
    }
 
-//   public static int delete(String id) {
-//      int result = 0;
-//      
-//      try {
-//         int id2 = Integer.valueOf(id);
-//         result = delete(id2);
-//      }
-//      catch(Exception ex) {
-//         ex.printStackTrace();
-//      }
-//      
-//      return result;      
-//   }
-   
 //   public static int update(String id, String bigo) {
 //      int result = 0;
 //      

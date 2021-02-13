@@ -17,15 +17,20 @@ public class ProdServiceImpl implements ProdService {
    @Override
    public ArrayList<ProdVO> selectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".selectAll()");
-      ArrayList<ProdVO> result = new ArrayList<>();
-      return result;
+      ArrayList<ProdVO> lstResult = ProdDAO.selectAll();
+      request.setAttribute("lstAll", lstResult);
+      
+      return lstResult;
    }
 
    @Override
    public ProdVO selectOne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".selectOne()");
-      ProdVO result = null;
-      return result;
+      
+      String productId = (String) request.getParameter("productId");
+      ProdVO result = ProdDAO.selectOne(productId);
+      request.setAttribute("item", result);
+      return result;   
    }
    
    @Override
@@ -70,9 +75,7 @@ public class ProdServiceImpl implements ProdService {
 
       ProdVO vo = new ProdVO(productId, productName, category, isNew, standard,
                      price, stock, bigo, startDate, image1, image2, image3);
-      System.out.println(3);
       String result = ProdDAO.insert(vo);
-      System.out.println(4);
       request.setAttribute("result", result != null ? "등록 성공" : "등록 실패");
       return result;
    }

@@ -96,7 +96,7 @@ public class Libs {
    }
    
    // 기능: java.util.Date >> "yyyy-MM-dd HH:mm:ss"
-   public static String dateToStr(Date date){
+   public static String dateToStr(Date date) {
       return date != null ? Libs.fmAll.format(date) : "";
    }
 
@@ -143,7 +143,7 @@ public class Libs {
       return date != null ? dateToStr8(new Date(date.getTime())) : "";
    }
 
-   public static String dateTimeToStr(Date date) throws ParseException {
+   public static String dateTimeToStr(Date date) {
       return dateToStr(date);
    }
    

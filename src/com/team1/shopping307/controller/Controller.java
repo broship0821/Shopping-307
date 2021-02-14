@@ -33,7 +33,6 @@ import com.team1.shopping307.service.TelServiceImpl;
 import com.team1.shopping307.service.UsersService;
 import com.team1.shopping307.service.UsersServiceImpl;
 
-//@WebServlet("/TelController")
 @WebServlet(urlPatterns = { "*.do" })
 public class Controller extends HttpServlet {
    private static final long serialVersionUID = 1L;
@@ -55,15 +54,16 @@ public class Controller extends HttpServlet {
       String strSessionId = session.getId();
       String jspName = null;
 
-      System.out.println("Controller()");
-      System.out.println(strUri);
-      System.out.println(strPath);
-      System.out.println("요청주소: " + strMap);
-      System.out.println("session ID.: " + strSessionId);
+      System.out.println(">>>>>>>>>>>>");
+      System.out.println("> Controller()");
+      System.out.println("> Uri: " + strUri);
+      System.out.println("> Path:" + strPath);
+      System.out.println("> 요청주소: " + strMap);
+      System.out.println("> session ID.: " + strSessionId);
 
       try {
          String strRole = LoginManager.getUserRole(strSessionId);
-         System.out.println("Role: " + strRole);
+         System.out.println("> Role: " + strRole);
 
          switch (strMap) {
          // ---------------------------------------
@@ -372,7 +372,7 @@ public class Controller extends HttpServlet {
          if (!Libs.getFileExt(jspName).toLowerCase().equals(".jsp")) {
             jspName += Common.strJsp;
          }
-         System.out.println("처리 후 호출 jsp: " + jspName);
+         System.out.println("> 처리 후 호출 jsp: " + jspName);
 
          // request.getRequestDispatcher(jspName)
          // .forward(request, response);
@@ -381,7 +381,7 @@ public class Controller extends HttpServlet {
       }
       else {
          // login
-         System.out.println("처리 후 호출 jsp: null입니다.");
+         System.out.println("> 처리 후 호출 jsp: null입니다.");
       }
    }
 

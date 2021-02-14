@@ -2,6 +2,11 @@ package com.team1.shopping307.controller;
 
 public class Common {
    //----------
+   // 작성자 정보
+   //----------
+   public static final String strMaker = "307 Team1";              // Admin(Super user)
+   
+   //----------
    // 사용자 구분
    //----------
    public static final String strAdmin = "A";              // Admin(Super user)

@@ -14,7 +14,7 @@ public class ProdVO {
    long price; // 가격
    long stock; // 재고수량
    String bigo; // 설명
-   Date startDate; // 판매시작일, null 또는 이 날짜 이후 조회됨
+   String startDate; // 판매시작일, null 또는 이 날짜 이후 조회됨
 
    String image1; // 대표이미지
    String image2; // 상세이미지 1
@@ -84,11 +84,11 @@ public class ProdVO {
       this.bigo = bigo;
    }
 
-   public Date getStartDate() {
+   public String getStartDate() {
       return startDate;
    }
 
-   public void setStartDate(Date startDate) {
+   public void setStartDate(String startDate) {
       this.startDate = startDate;
    }
 
@@ -119,18 +119,17 @@ public class ProdVO {
    public ProdVO() {
    }
 
-   
    public ProdVO(String productId, String productName, String category,
          String isNew, String standard, String price, String stock, String bigo, 
-         String startDate, String image1, String image2, String image3) throws ParseException {
+         String startDate, String image1, String image2, String image3) {
       this(productId, productName, category, isNew, standard,
             Libs.strToInt(price, 0), Libs.strToInt(stock, 0),  bigo, 
-            Libs.strToDate(startDate), image1, image2, image3);
+            startDate, image1, image2, image3);
    }
 
    public ProdVO(String productId, String productName, String category,
          String isNew, String standard, long price, long stock, String bigo, 
-         Date startDate, String image1, String image2, String image3) {
+         String startDate, String image1, String image2, String image3) {
       this.productId   = productId;
       this.productName = productName;
       this.category    = category;
@@ -155,7 +154,7 @@ public class ProdVO {
          + ", price=" + price      
          + ", stock=" + stock      
          + ", bigo=" + bigo       
-         + ", startDate=" + Libs.dateToStr(startDate)  
+         + ", startDate=" + startDate  
          + ", image1=" + image1     
          + ", image2=" + image2     
          + ", image3=" + image3;           

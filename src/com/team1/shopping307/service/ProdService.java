@@ -14,6 +14,6 @@ public interface ProdService {
    public ArrayList<ProdVO> selectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   
    public ProdVO selectOne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
    public String insert(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException, IOException;  
-   public int update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException; 
+   public int update(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException, IOException;
    public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   
 }

@@ -18,6 +18,9 @@ public class Common {
    // .jsp
    //----------
    public static final String strJsp = ".jsp";
+
+   // Result
+   public static final String strResult = "Result";
    
    //----------
    // 사용자 정보
@@ -68,29 +71,35 @@ public class Common {
    
    public static final String strCateInsert        = "CateInsert";
    public static final String strCateInsertDo      = strCateInsert + strDo;
+   public static final String strCateInsertResult  = strCateInsert + strResult;
    
    public static final String strCateUpdate        = "CateUpdate";
    public static final String strCateUpdateDo      = strCateUpdate + strDo;
+   public static final String strCateUpdateResult  = strCateUpdate + strResult;
    
    public static final String strCateDelete        = "CateDelete";
    public static final String strCateDeleteDo      = strCateDelete + strDo;
+   public static final String strCateDeleteResult  = strCateDelete + strResult;
    
    
    // 상품 정보
-   public static final String strProdSelectAll   = "ProdSelectAll";
-   public static final String strProdSelectAllDo = strProdSelectAll + strDo;
+   public static final String strProdSelectAll         = "ProdSelectAll";
+   public static final String strProdSelectAllDo       = strProdSelectAll + strDo;
 
-   public static final String strProdSelectOne   = "ProdSelectOne";
-   public static final String strProdSelectOneDo = strProdSelectOne + strDo;
+   public static final String strProdSelectOne         = "ProdSelectOne";
+   public static final String strProdSelectOneDo       = strProdSelectOne + strDo;
    
-   public static final String strProdInsert      = "ProdInsert";
-   public static final String strProdInsertDo    = strProdInsert + strDo;
+   public static final String strProdInsert            = "ProdInsert";
+   public static final String strProdInsertDo          = strProdInsert + strDo;
+   public static final String strProdInsertResult      = strProdInsert + strResult;
    
-   public static final String strProdUpdate      = "ProdUpdate";
-   public static final String strProdUpdateDo    = strProdUpdate + strDo;
+   public static final String strProdUpdate            = "ProdUpdate";
+   public static final String strProdUpdateDo          = strProdUpdate + strDo;
+   public static final String strProdUpdateResult      = strProdUpdate + strResult;
    
-   public static final String strProdDelete      = "ProdDelete";
-   public static final String strProdDeleteDo    = strProdDelete + strDo;
+   public static final String strProdDelete            = "ProdDelete";
+   public static final String strProdDeleteDo          = strProdDelete + strDo;
+   public static final String strProdDeleteResult      = strProdDelete + strResult;
    
    
    // 상품 출고 히스토리(판매 History)

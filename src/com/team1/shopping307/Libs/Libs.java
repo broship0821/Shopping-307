@@ -67,29 +67,82 @@ public class Libs {
    // Date/Time 관련 
    //------------------------------------------------
    static SimpleDateFormat fmYyyyMmDd = new SimpleDateFormat("yyyy-MM-dd");
+   static SimpleDateFormat fmYyyyMmDd8 = new SimpleDateFormat("yyyyMMdd");
    static SimpleDateFormat fmAll = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+   static SimpleDateFormat fmAll15 = new SimpleDateFormat("yyyyMMdd HHmmss");
    
+   //--------------------------------------
+   // 기능: 1. "yyyy-MM-dd HH:mm:ss" >> java.util.Date
    public static Date strToDate(String date) throws ParseException {
-      return date != null && date.trim().length() != 0
-            ? (Date)Libs.fmYyyyMmDd.parse(date) : null; 
+      Date result = null;
+      
+      if(date != null) {
+         date = date.trim();
+         SimpleDateFormat fmt = null;
+         
+         switch(date.length()) {
+         case 8: fmt = fmYyyyMmDd8; break;
+         case 10: fmt = fmYyyyMmDd; break;
+         case 15: fmt = fmAll15; break;
+         case 19: fmt = fmAll; break;
+         }
+         
+         if(fmt != null) {
+            result = (Date)fmt.parse(date);
+         } 
+      }
+      
+      return result;
    }
    
+   // 기능: java.util.Date >> "yyyy-MM-dd HH:mm:ss"
    public static String dateToStr(Date date){
-      return date != null ? Libs.fmYyyyMmDd.format(date) : "";
-   }
-   
-   public static String dateTimeToStr(Date date){
       return date != null ? Libs.fmAll.format(date) : "";
    }
+
+   // 기능: java.util.Date >> "yyyy-MM-dd"
+   public static String dateToStr8(Date date){
+      return date != null ? Libs.fmYyyyMmDd.format(date) : "";
+   }
+
+   //--------------------------------------
+   // 기능: 2. "yyyy-MM-dd" >> java.sql.Date
+   public static java.sql.Date strToSqlDate(String date) throws ParseException {
+      return date != null && date.trim().length() != 0
+            ? dateToSqlDate(strToDate(date)) : null; 
+   }
    
+   // 기능: java.sql.Date >> "yyyy-MM-dd"
+   public static String sqlDateToStr(java.sql.Date date) {
+      return date != null ? dateToStr(sqlDateToDate(date)) : null;
+   }
+   
+   //--------------------------------------
+   // 기능: 3. java.util.Date >> java.sql.Date 
    public static java.sql.Date dateToSqlDate(Date date) {
       return date != null ? new java.sql.Date(date.getTime()) : null;
    }
    
+   // 기능: java.sql.Date >> java.util.Date 
    public static Date sqlDateToDate(java.sql.Date date) {
       return date != null ? new Date(date.getTime()) : null;
    }
 
+   //--------------------------------------
+   // 기능: 4. java.sql.Date >> java.util.Date 
+   public static java.sql.Timestamp strToTimestamp(String date) throws ParseException {
+      return date != null && date.trim().length() != 0
+            ? new java.sql.Timestamp(strToDate(date).getTime()) : null; 
+   }
+   
+   public static String timestampToStr(java.sql.Timestamp date){
+      return date != null ? dateToStr(new Date(date.getTime())) : "";
+   }
+   
+   public static String timestampToStr8(java.sql.Timestamp date){
+      return date != null ? dateToStr8(new Date(date.getTime())) : "";
+   }
+   
    
    //------------------------------------------------
    // 변환 관련 

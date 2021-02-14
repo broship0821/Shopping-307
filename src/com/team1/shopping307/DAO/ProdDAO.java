@@ -55,7 +55,7 @@ public class ProdDAO {
          long price = rs.getLong("price");
          long stock = rs.getLong("stock");
          String bigo = rs.getString("bigo");
-         Date startDate = Libs.sqlDateToDate(rs.getDate("start_date"));
+         String startDate = Libs.timestampToStr8(rs.getTimestamp("start_date"));
 
          String image1 = rs.getString("image_1");
          String image2 = rs.getString("image_2");
@@ -80,7 +80,7 @@ public class ProdDAO {
          PreparedStatement ps = null;
          ResultSet rs = null;
          String sql = "SELECT *"
-               + " FROM " + tableName + " WHERE productId = ?";
+               + " FROM " + tableName + " WHERE product_id = ?";
          
          try {
             ps = conn.prepareStatement(sql);
@@ -146,7 +146,7 @@ public class ProdDAO {
             ps.setLong(++idx, vo.getPrice());
             ps.setLong(++idx, vo.getStock());
             ps.setString(++idx, vo.getBigo());
-            ps.setDate(++idx, Libs.dateToSqlDate(vo.getStartDate()));
+            ps.setTimestamp(++idx, Libs.strToTimestamp(vo.getStartDate()));
             ps.setString(++idx, vo.getImage1());
             ps.setString(++idx, vo.getImage2());
             ps.setString(++idx, vo.getImage3());
@@ -227,7 +227,7 @@ public class ProdDAO {
             ps.setLong(++idx, vo.getPrice());
             ps.setLong(++idx, vo.getStock());
             ps.setString(++idx, vo.getBigo());
-            ps.setDate(++idx, Libs.dateToSqlDate(vo.getStartDate()));
+            ps.setTimestamp(++idx, Libs.strToTimestamp(vo.getStartDate()));
             ps.setString(++idx, vo.getImage1());
             ps.setString(++idx, vo.getImage2());
             ps.setString(++idx, vo.getImage3());
@@ -246,13 +246,13 @@ public class ProdDAO {
    }
 
    public static int delete(String productId) {
-      System.out.println(className + ".delete()");
+      System.out.println(className + ".delete(" + productId + ")");
       int result = 0;
       Connection conn = Libs.connect();
       
       if(conn != null) {
          PreparedStatement ps = null;
-         String sql = "DELETE " + tableName + " WHERE product_id = ?";
+         String sql = "DELETE FROM " + tableName + " WHERE product_id = ?";
 
          try {
             ps = conn.prepareStatement(sql);

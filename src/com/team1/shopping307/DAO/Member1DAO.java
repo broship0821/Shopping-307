@@ -158,7 +158,7 @@ public class Member1DAO {
       
       if(conn != null) {
          PreparedStatement ps = null;
-         String sql = "DELETE teltable4 WHERE id = ?";
+         String sql = "DELETE FROM teltable4 WHERE id = ?";
 
          try {
             ps = conn.prepareStatement(sql);

@@ -19,14 +19,12 @@ public class ProdServiceImpl implements ProdService {
       System.out.println(className + ".selectAll()");
       ArrayList<ProdVO> lstResult = ProdDAO.selectAll();
       request.setAttribute("lstAll", lstResult);
-      
       return lstResult;
    }
 
    @Override
    public ProdVO selectOne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".selectOne()");
-      
       String productId = (String) request.getParameter("productId");
       ProdVO result = ProdDAO.selectOne(productId);
       request.setAttribute("item", result);
@@ -36,7 +34,13 @@ public class ProdServiceImpl implements ProdService {
    @Override
    public String insert(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException, IOException {
       System.out.println(className + ".insert()");
-      
+      ProdVO vo = getRequesParams(request);
+      String result = ProdDAO.insert(vo);
+      request.setAttribute("result", result != null ? "상품아이디(" + result + ") 등록 성공" : "등록 실패");
+      return result;
+   }
+
+   private ProdVO getRequesParams(HttpServletRequest request) throws ParseException {
       // 상품ID
       String productId = (String) request.getParameter("productId"); 
 
@@ -73,24 +77,27 @@ public class ProdServiceImpl implements ProdService {
       // 상세이미지2
       String image3 = (String) request.getParameter("image3");
 
-      ProdVO vo = new ProdVO(productId, productName, category, isNew, standard,
+      ProdVO result = new ProdVO(productId, productName, category, isNew, standard,
                      price, stock, bigo, startDate, image1, image2, image3);
-      String result = ProdDAO.insert(vo);
-      request.setAttribute("result", result != null ? "등록 성공" : "등록 실패");
+      
       return result;
    }
 
    @Override
-   public int update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   public int update(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException, IOException {
       System.out.println(className + ".update()");
-      int result = 0; 
+      ProdVO vo = getRequesParams(request);
+      int result = ProdDAO.update(vo);
+      request.setAttribute("result", result == 1 ? "수정 성공" : "수정 실패");
       return result;
    }
 
    @Override
    public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".delete()");
-      int result = 0; 
+      String productId = (String) request.getParameter("productId"); 
+      int result = ProdDAO.delete(productId);
+      request.setAttribute("result", result == 1 ? "삭제 성공" : "삭제 실패");
       return result;
    }
 }

@@ -12,11 +12,13 @@ pageEncoding="UTF-8"%>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
 
-<script src="js/shopping307.js?ver=1"></script>
+<script src="js/shopping307.js?ver=3"></script>
 <script>
     $(function() {
-	  sp307.getCategory("<%=Common.strCateGetComboAllDo%>", "<%=Common.strCateComboName%>");
+      console.log("*** [" + $("#category").html() + "]");
+      sp307.getCategory("<%=Common.strCateGetComboAllDo%>", "<%=Common.strCateComboName%>");
     });
+
 </script>
 
 </head>
@@ -34,7 +36,7 @@ pageEncoding="UTF-8"%>
 		<table border="1">
             <tr>
                 <td align="center">상품ID</td>
-                <td><input type="text" name="productId" readonly></td>
+                <td>등록시 생성</td>
             </tr>
             <tr>
                 <td align="center">상품명</td>
@@ -42,13 +44,15 @@ pageEncoding="UTF-8"%>
             </tr>
             <tr>
                 <td align="center">카테고리</td>
-                <td><div id="<%=Common.strCateComboName%>">
+                <td>
+                <div id="<%=Common.strCateComboName%>">
                     <select name="category">
                         <option value="outer" name="outer">아우터</option>
                         <option value="top" name="top">상의</option>
                         <option value="bottom" name="bottom">상의</option>
                     </select>
-                </div></td>
+                </div>
+                </td>
             </tr>
 			<tr>
 				<td align="center">신상/이월</td>

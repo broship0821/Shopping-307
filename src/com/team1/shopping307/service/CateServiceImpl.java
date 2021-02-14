@@ -17,11 +17,9 @@ public class CateServiceImpl implements CateService{
    public ArrayList<CateVO> selectAll(HttpServletRequest request, HttpServletResponse response) 
          throws ServletException, IOException {
       System.out.println(className + ".selectAll()");
-      
       ArrayList<CateVO> lstResult = CateDAO.selectAll();
       // Component명: Common.strCateComboName
       request.setAttribute("lstAll", lstResult);
-      
       return lstResult;
    }
    
@@ -29,7 +27,6 @@ public class CateServiceImpl implements CateService{
    public CateVO selectOne(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
       System.out.println(className + ".selectOne()");
-      
       String name = (String) request.getParameter("name");
       CateVO result = CateDAO.selectOne(name);
       request.setAttribute("item", result);
@@ -39,7 +36,6 @@ public class CateServiceImpl implements CateService{
    @Override
    public int insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".insert()");
-
       String name = (String) request.getParameter("name");
       String bigo = (String) request.getParameter("bigo");
       int result = CateDAO.insert(name, bigo);
@@ -50,7 +46,6 @@ public class CateServiceImpl implements CateService{
    @Override
    public int update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".update()");
-
       String name = (String) request.getParameter("name");
       String bigo = (String) request.getParameter("bigo");
       int result = CateDAO.update(name, bigo);
@@ -61,7 +56,6 @@ public class CateServiceImpl implements CateService{
    @Override
    public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".delete()");
-
       String name = (String) request.getParameter("name");
       int result = CateDAO.delete(name);
       request.setAttribute("result", result >= 1 ? "삭제 성공" : "삭제 실패");

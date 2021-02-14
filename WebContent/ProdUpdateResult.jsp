@@ -14,14 +14,12 @@
   <%request.setCharacterEncoding("UTF-8");%>
   <%response.setCharacterEncoding("UTF-8");%>
 
-  <div id="<%=Common.strCateComboName%>">
-    <select name="<%=Common.strCateComboName%>">
-      <c:forEach var="item" items="${requestScope.lstAll}">
-        <c:set var="param1" value="TelOneInfo.do?id=${i.id}" />    
-        <option value="${item.name}">${item.name}</option>
-      </c:forEach>
-    </select>
-  </div>
+<h3>${result}</h3>
+<br /><br />
+
+<form action="<%=Common.strProdSelectAllDo %>">
+  <input type="submit" value="리스트" />
+</form>
 
 </body>
 </html>

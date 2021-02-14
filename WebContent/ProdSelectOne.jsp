@@ -1,69 +1,110 @@
+<%@page import="com.team1.shopping307.controller.Common"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>옷 상세보기</title>
-    <link rel="stylesheet" href="css/ProdSelectOne.css" />
-    <style>
-    body {
-	    text-align: center;
-	}
-	
-	img{
-	    border: 1px solid black;
-	}
-	
-	table{
-	    margin-left: auto;
-	    margin-right: auto;
-	}
-    </style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- <script src="jquery-3.1.1.js" /> <!-- import JQuery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+<script src="js/shopping307.js?ver=1"></script>
+
+<script>
+    $(function() {
+	  sp307.getCategory("<%=Common.strCateGetComboAllDo%>", 
+			  "<%=Common.strCateComboName%>", "${item.category}");
+	  sp307.setComboItemText("isNew", "${item.isNew}");
+    });
+</script>
+
 </head>
+
 <body>
-    <h1>쇼핑307 </h1>
-    <img src="image/fashion-1623085_1920.jpg" alt="상품사진" width="300">
-    <form action="BagInsert.do" method="POST">
-        <table>
+<%request.setCharacterEncoding("UTF-8");%>
+<%response.setCharacterEncoding("UTF-8");%>
+	<h1>
+		<p align="center">쇼핑 307</p>
+	</h1>
+	<h1>상품수정</h1>
+	<br>
+	<script>
+      console.log("2. [[${item.category}]]");
+      console.log("2. [[${item.productName}]]");
+    </script>
+    
+	<form name="prodUpdate" action="<%=Common.strProdUpdateDo%>">
+	    <input type="hidden" name="productId" value="${item.productId}" />
+		<table border="1">
             <tr>
-                <td colspan="2"><b>프리미엄 니트</b></td>
+                <td align="center">상품ID</td>
+                <td>${item.productId}</td>
             </tr>
             <tr>
-                <td>판매가</td>
-                <td>87,000원</td>
+                <td align="center">상품명</td>
+                <td><input type="text" name="productName" value="${item.productName}" required /></td>
             </tr>
             <tr>
-            	<td>수량</td>
-            	<td><input type="number" name="prodCnt" value="1"></td>
-            </tr>
-            <tr>
-                <td>사이즈</td>
+                <td align="center">카테고리</td>
                 <td>
-                    <select name="prodSize" id="size" size="1">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                    </select>
+                <div id="<%=Common.strCateComboName%>">
+<%--                     <select name="category" id="<%=Common.strCateComboName%>" /> --%>
+<!--                     </td> -->
+                </div>
+            </tr>
+			<tr>
+				<td align="center">신상/이월</td>
+				<td>
+					<select name="isNew" id="isNew">
+						<option value="Y" name="Y">신상</option>
+						<option value="N" name="N">이월</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">규격</td>
+				<td><input type="text" name="standard" value="${item.standard} "required></td>
+			</tr>
+			<tr>
+				<td align="center">가격</td>
+				<td><input type="number" name="price" value="${item.price}" required></td>
+			</tr>
+			<tr>
+				<td align="center">수량</td>
+				<td><input type="number" name="stock" value="${item.stock}" required></td>
+			</tr>
+			<tr>
+				<td align="center">상품설명</td>
+				<td><textarea rows="5" cols="60" name="bigo">${item.bigo}</textarea></td>
+			</tr>
+            <tr>
+                <td align="center">판매시작일</td>
+                <td><input type="date" name="startDate" value="${item.startDate}"></td>
+            </tr>
+			<tr>
+				<td align="center">대표 이미지</td>
+				<td><input type="file" name="iamge1"></td>
+			</tr>
+			<tr>
+				<td align="center">상세이미지1</td>
+				<td><input type="file" name="iamge2"></td>
+			</tr>
+			<tr>
+				<td align="center">상세이미지2</td>
+				<td><input type="file" name="iamge3"></td>
+			</tr>
+
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="수정" /> 
+                    <input type="button" value="삭제" onClick="location.href='<%=Common.strProdDeleteDo%>?productId=${item.productId}'" />
                 </td>
             </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="hidden" name="prodName" value="프리미엄 니트">
-                    <input type="hidden" name="prodPrice" value="87000">
-                    <input type="submit" value="장바구니 담기">
-                </td>
-            </tr>
-            <tr>
-            	<td colspan="2">
-            		<br><br>
-            		<a href="BagSelectAll.do"><input type="button" value="장바구니 보러가기"></a>
-            	</td>
-            </tr>
-        </table>
-    </form>
+		</table>
+
+	</form>
 </body>
 </html>

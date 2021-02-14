@@ -142,6 +142,10 @@ public class Libs {
    public static String timestampToStr8(java.sql.Timestamp date){
       return date != null ? dateToStr8(new Date(date.getTime())) : "";
    }
+
+   public static String dateTimeToStr(Date date) throws ParseException {
+      return dateToStr(date);
+   }
    
    
    //------------------------------------------------

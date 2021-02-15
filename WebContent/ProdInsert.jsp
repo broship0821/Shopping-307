@@ -48,11 +48,11 @@ pageEncoding="UTF-8"%>
                 <td align="center">카테고리</td>
                 <td>
                 <div id="<%=Common.strCateComboName%>">
-                    <select name="category">
+                    <!-- <select name="category">
                         <option value="outer" name="outer">아우터</option>
                         <option value="top" name="top">상의</option>
-                        <option value="bottom" name="bottom">상의</option>
-                    </select>
+                        <option value="bottom" name="bottom">하의</option>
+                    </select> -->
                 </div>
                 </td>
             </tr>

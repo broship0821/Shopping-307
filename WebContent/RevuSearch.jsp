@@ -58,7 +58,8 @@ div {
 	<input type="text" value="상품명" name="product_name" onclick="" />
 	<br>
 	<div>
-		<td><a href=""><font size="5px" color="blue"> 조회</a></td> <br>
+		<input type="button" value="조회" 
+				    onClick="'<%-- <%=Common.%> --%>'" />
 		</font>
 	</div>
 </body>

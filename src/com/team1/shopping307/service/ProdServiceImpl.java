@@ -82,24 +82,28 @@ public class ProdServiceImpl implements ProdService {
          String name = (String)e2.nextElement();      // 엘리먼트 값(key 값)
 
          if(name != null) {
-            String sysName = multi.getFilesystemName(name);
+            String orgFileName = Libs.toString(multi.getOriginalFileName(name));
+            String sysFileName = Libs.toString(multi.getFilesystemName(name));
+            String fileType = Libs.toString(multi.getContentType(name));
             
-            switch(name) {
-            case "image1": result.setImage1(sysName); break;
-            case "image2": result.setImage2(sysName); break;
-            case "image3": result.setImage3(sysName); break;
+            if(Libs.isNotEmpty(orgFileName)) {
+               switch(name) {
+               case "image1": result.setImage1(sysFileName); break;
+               case "image2": result.setImage2(sysFileName); break;
+               case "image3": result.setImage3(sysFileName); break;
+               }
+               
+               System.out.println(prefix + "component name: " + name);
+               System.out.println(prefix + "실제 파일명 : " + orgFileName);
+               System.out.println(prefix + "저장될 파일명 : " + sysFileName);
+               System.out.println(prefix + "파일 타입 : " + fileType); // 파일의 확장자
+            
+               // getFile()메서드가 File형식으로 받게끔 되어있다.
+               File fi = multi.getFile(name);  // 파일정보 얻기.
+               System.out.println(prefix + "파일의 크기 : " + fi.length() + "byte(s)");
+               
+               //fi.delete(); // 파일을 삭제한다.
             }
-            
-            System.out.println(prefix + "component name: " + name);
-            System.out.println(prefix + "실제 파일명 : " + multi.getOriginalFileName(name));
-            System.out.println(prefix + "저장될 파일명 : " + sysName);
-            System.out.println(prefix + "파일 타입 : " + multi.getContentType(name)); // 파일의 확장자
-         
-            // getFile()메서드가 File형식으로 받게끔 되어있다.
-            File fi = multi.getFile(name);  // 파일정보 얻기.
-            System.out.println(prefix + "파일의 크기 : " + fi.length() + "byte(s)");
-            
-            //fi.delete(); // 파일을 삭제한다.
          }
       }
       

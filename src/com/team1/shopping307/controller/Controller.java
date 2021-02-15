@@ -38,6 +38,7 @@ import com.team1.shopping307.service.UsersServiceImpl;
 @WebServlet(urlPatterns = { "*.do" })
 public class Controller extends HttpServlet {
    private static final long serialVersionUID = 1L;
+   private static final String ver = "0.10";
 
    public Controller() {
       super();

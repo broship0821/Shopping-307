@@ -4,7 +4,7 @@ public class Common {
    //----------
    // 작성자 정보
    //----------
-   public static final String strMaker = "307 Team1";              // Admin(Super user)
+   public static final String strMaker = "(c)opyleft 2021 307-Team1";
    
    //----------
    // 사용자 구분

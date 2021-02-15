@@ -87,15 +87,16 @@ pageEncoding="UTF-8"%>
             </tr>
 			<tr>
 				<td align="center">대표 이미지</td>
-				<td><input type="file" name="iamge1"></td>
+                <td><input type="file" name="image1"></td>
+                <!-- <input type="file" name="iamge1" multiple="multiple"> 복수 이미지 선택 가능 -->
 			</tr>
 			<tr>
 				<td align="center">상세이미지1</td>
-				<td><input type="file" name="iamge2"></td>
+				<td><input type="file" name="image2"></td>
 			</tr>
 			<tr>
 				<td align="center">상세이미지2</td>
-				<td><input type="file" name="iamge3"></td>
+				<td><input type="file" name="image3"></td>
 			</tr>
 
 		</table>

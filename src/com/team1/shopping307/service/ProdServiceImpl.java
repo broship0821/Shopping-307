@@ -16,6 +16,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.team1.shopping307.DAO.ProdDAO;
 import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.VO.ProdVO;
+import com.team1.shopping307.controller.Common;
 
 public class ProdServiceImpl implements ProdService {
    private final String className = "ProdServiceImpl";
@@ -53,7 +54,7 @@ public class ProdServiceImpl implements ProdService {
       ServletContext ctx = request.getServletContext(); // 현재 실행중인 프로젝트 정보 접근.
 
       // .getRealPath()에 가상경로를 넣어주면, 그것("/upload")을 "실제경로" 변경한다.
-      String realPath = ctx.getRealPath("/upload");   // 2 번째 인자: 경로설정
+      String realPath = ctx.getRealPath(Common.strUpload);   // 2 번째 인자: 경로설정
       System.out.println(prefix + realPath);    // 경로확인.
       
       int max = 5 * 1024 * 1024; //3 번째 인자: 업로드크기(바이트단위),  5 * 1024(KB) * 1024(MB) = 5MB
@@ -77,13 +78,21 @@ public class ProdServiceImpl implements ProdService {
       
       // 모든 파일 정보를 출력한다.
       Enumeration e2 = multi.getFileNames(); // 업로드파일의 이름을 얻기위한 메서드
-      
       while(e2.hasMoreElements()) {
          String name = (String)e2.nextElement();      // 엘리먼트 값(key 값)
 
          if(name != null) {
+            String sysName = multi.getFilesystemName(name);
+            
+            switch(name) {
+            case "image1": result.setImage1(sysName); break;
+            case "image2": result.setImage2(sysName); break;
+            case "image3": result.setImage3(sysName); break;
+            }
+            
+            System.out.println(prefix + "component name: " + name);
             System.out.println(prefix + "실제 파일명 : " + multi.getOriginalFileName(name));
-            System.out.println(prefix + "저장될 파일명 : " + multi.getFilesystemName(name));
+            System.out.println(prefix + "저장될 파일명 : " + sysName);
             System.out.println(prefix + "파일 타입 : " + multi.getContentType(name)); // 파일의 확장자
          
             // getFile()메서드가 File형식으로 받게끔 되어있다.
@@ -125,17 +134,8 @@ public class ProdServiceImpl implements ProdService {
       // 판매시작일
       String startDate = multi.getParameter("startDate"); 
 
-      // 대표 이미지
-      String image1 = (String) multi.getParameter("image1");
-
-      // 상세이미지1
-      String image2 = (String) multi.getParameter("image2");
-  
-      // 상세이미지2
-      String image3 = (String) multi.getParameter("image3");
-
       ProdVO result = new ProdVO(productId, productName, category, isNew, standard,
-                     price, stock, bigo, startDate, image1, image2, image3);
+                     price, stock, bigo, startDate, "", "", "");
       
       return result;
    }

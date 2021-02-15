@@ -24,6 +24,13 @@ public class Common {
    //----------
    public static final String strJsp = ".jsp";
 
+   //----------
+   // Upload
+   //----------
+   public static final String strUpload = "upload";
+   public static final String strUpload2 = "/" + strUpload;
+
+
    // Result
    public static final String strResult = "Result";
    

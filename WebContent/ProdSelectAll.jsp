@@ -51,7 +51,7 @@ pageEncoding="UTF-8"%>
   <c:forEach var="i" items="${requestScope.lstAll}">
   <c:set var="param1" value="ProdSelectOne.do?productId=${i.productId}" />
   <tr>
-    <td><img src="image/${i.image1}" width="100px" onClick="location.href='${param1}'"></td>
+    <td><img src="<%=Common.strUpload%>/${i.image1}" width="100px" onClick="location.href='${param1}'"></td>
 
     <td><a href="${param1}">${i.productId}</a></td>
     <td><a href="${param1}">${i.productName}</a></td>

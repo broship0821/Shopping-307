@@ -104,9 +104,11 @@ pageEncoding="UTF-8"%>
 
 		<table border="0">
 			<tr>
-				<td><input type="submit" value="등록" /> <input type="button"
-					value="수정" onClick="#" /> <input type="button" value="삭제"
-					onClick="#" /></td>
+				<td>
+				    <input type="submit" value="등록" /> 
+				    <input type="button" value="목록" 
+				    onClick="location.href='<%=Common.strProdSelectAllDo%>'" />
+				</td>
 			</tr>
 		</table>
 

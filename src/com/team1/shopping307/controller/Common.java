@@ -35,8 +35,10 @@ public class Common {
    public static final String strResult = "Result";
    
    //----------
-   // 사용자 정보
+   // Mapping 정보
    //----------
+   
+   // 1. 사용자 정보
    public static final String strUsersSelectAll   = "UsersSelectAll";
    public static final String strUsersSelectAllDo = strUsersSelectAll + strDo;
 
@@ -52,7 +54,7 @@ public class Common {
    public static final String strUsersDelete      = "UsersDelete";  
    public static final String strUsersDeleteDo    = strUsersDelete + strDo;  
    
-   // login 히스토리 정보
+   // 2. login 히스토리 정보
    public static final String strLogHistSelectAll   = "LogHistSelectAll";  
    public static final String strLogHistSelectAllDo = strLogHistSelectAll + strDo;  
 
@@ -69,7 +71,7 @@ public class Common {
    public static final String strLogHistDeleteDo    = strLogHistDelete + strDo;
    
    
-   // 카테고리 정보
+   // 3. 카테고리 정보
    public static final String strCateComboName     = "category"; // Component명
 
    public static final String strCateSelectAll     = "CateSelectAll";
@@ -94,7 +96,7 @@ public class Common {
    public static final String strCateDeleteResult  = strCateDelete + strResult;
    
    
-   // 상품 정보
+   // 4. 상품 정보
    public static final String strProdSelectAll         = "ProdSelectAll";
    public static final String strProdSelectAllDo       = strProdSelectAll + strDo;
 
@@ -114,7 +116,7 @@ public class Common {
    public static final String strProdDeleteResult      = strProdDelete + strResult;
    
    
-   // 상품 출고 히스토리(판매 History)
+   // 5. 상품 출고 히스토리(판매 History)
    public static final String strReleHistSelectAll   = "ReleHistSelectAll";
    public static final String strReleHistSelectAllDo = strReleHistSelectAll + strDo;
 
@@ -131,7 +133,7 @@ public class Common {
    public static final String strReleHistDeleteDo    = strReleHistDelete + strDo;
    
    
-   // 장바구니(안 만들어도 됨)
+   // 6. 장바구니(안 만들어도 됨)
    public static final String strBagSelectAll   = "BagSelectAll";
    public static final String strBagSelectAllDo = strBagSelectAll + strDo;
 
@@ -151,25 +153,27 @@ public class Common {
    public static final String strBagDeleteAllDo = strBagDeleteAll + strDo;
    
    
-   // 결제 정보
-   public static final String strPaySelectAll   = "PaySelectAll";
-   public static final String strPaySelectAllDo = strPaySelectAll + strDo;
+   // 7. 결제 정보
+   public static final String strPaySelectAll     = "PaySelectAll";
+   public static final String strPaySelectAllDo   = strPaySelectAll + strDo;
    
-   public static final String strPaySelectOne   = "PaySelectOne";
-   public static final String strPaySelectOneDo = strPaySelectOne + strDo;
+   public static final String strPaySelectOne     = "PaySelectOne";
+   public static final String strPaySelectOneDo   = strPaySelectOne + strDo;
    
-   public static final String strPayInsert      = "PayInsert";
-   public static final String strPayInsertDo    = strPayInsert + strDo;
+   public static final String strPayInsert        = "PayInsert";
+   public static final String strPayInsertDo      = strPayInsert + strDo;
+   public static final String strPayInsertResult  = strPayInsert + strResult;
    
-   public static final String strPayUpdate      = "PayUpdate";
-   public static final String strPayUpdateDo    = strPayUpdate + strDo;
+   public static final String strPayUpdate        = "PayUpdate";
+   public static final String strPayUpdateDo      = strPayUpdate + strDo;
+   public static final String strPayUpdateResult  = strPayUpdate + strResult;
    
-   public static final String strPayDelete      = "PayDelete";
-   public static final String strPayDeleteDo    = strPayDelete + strDo;
+   public static final String strPayDelete        = "PayDelete";
+   public static final String strPayDeleteDo      = strPayDelete + strDo;
+   public static final String strPayDeleteResult  = strPayDelete + strResult;
 
-   
-   
-   // 후기 정보
+
+   // 8. 후기 정보
    public static final String strRevuSelectAll   = "RevuSelectAll";
    public static final String strRevuSelectAllDo = strRevuSelectAll + strDo;
 
@@ -186,7 +190,7 @@ public class Common {
    public static final String strRevuDeleteDo    = strRevuDelete + strDo;
    
    
-   // 교환/환불 정보
+   // 9. 교환/환불 정보
    public static final String strExchSelectAll   = "ExchSelectAll";
    public static final String strExchSelectAllDo = strExchSelectAll + strDo;
    

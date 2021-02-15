@@ -22,6 +22,8 @@ import com.team1.shopping307.service.CateService;
 import com.team1.shopping307.service.CateServiceImpl;
 import com.team1.shopping307.service.LogHistService;
 import com.team1.shopping307.service.LogHistServiceImpl;
+import com.team1.shopping307.service.PayService;
+import com.team1.shopping307.service.PayServiceImpl;
 import com.team1.shopping307.service.ProdService;
 import com.team1.shopping307.service.ProdServiceImpl;
 import com.team1.shopping307.service.ReleHistService;
@@ -139,10 +141,7 @@ public class Controller extends HttpServlet {
          // ---------------------------------------
          case Common.strCateSelectAllDo: {
             CateService svc = new CateServiceImpl();
-            //ArrayList<CateVO> lstResult = 
-                  svc.selectAll(request, response); 
-            // Component명: Common.strCateComboName
-            //request.setAttribute("lstAll", lstResult);
+            svc.selectAll(request, response); 
             jspName = Common.strCateSelectAll;
             break;
          }
@@ -246,11 +245,12 @@ public class Controller extends HttpServlet {
          }
 
          // ---------------------------------------
-         // 6 장바구니(bag - table만 불필요)
+         // 6 장바구니(bag - table 불필요)
          // ---------------------------------------
          case Common.strBagSelectAllDo: {
             // BagService svc = new BagServiceImpl();
             // svc.selectAll(request, response);
+            System.out.println(Common.strBagSelectAllDo + "()");
             jspName = session.getAttribute("bagList") == null
                   ? "BagSelectAllEmpty.jsp" : Common.strBagSelectAll;   
             break;
@@ -258,7 +258,7 @@ public class Controller extends HttpServlet {
          case Common.strBagSelectOneDo: {
             BagService svc = new BagServiceImpl();
             // svc.selectOne(request, response);
-            System.out.println(Common.strBagSelectOneDo + "은 구현 안됨!");
+            System.out.println(Common.strBagSelectOneDo + "()");
             jspName = Common.strBagSelectOne;
             break;
          }
@@ -291,6 +291,36 @@ public class Controller extends HttpServlet {
          // ---------------------------------------
          // 7. 결제 정보(pay_info)
          // ---------------------------------------
+         case Common.strPaySelectAllDo: {
+            PayService svc = new PayServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strPaySelectAll;
+            break;
+         }
+         case Common.strPaySelectOneDo: {
+            PayService svc = new PayServiceImpl();
+            svc.selectOne(request, response);
+            jspName = Common.strPaySelectOne;
+            break;
+         }
+         case Common.strPayInsertDo: {
+            PayService svc = new PayServiceImpl();
+            svc.insert(request, response);
+            jspName = Common.strPayInsertResult;
+            break;
+         }
+         case Common.strPayUpdateDo: {
+            PayService svc = new PayServiceImpl();
+            svc.update(request, response);
+            jspName = Common.strPayUpdateResult;
+            break;
+         }
+         case Common.strPayDeleteDo: {
+            PayService svc = new PayServiceImpl();
+            svc.delete(request, response);
+            jspName = Common.strPayDeleteResult;
+            break;
+         }
 
          // ---------------------------------------
          // 8. 후기 정보(review)

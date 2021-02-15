@@ -97,7 +97,7 @@ public class ProdVO {
    }
 
    public void setImage1(String image1) {
-      this.image1 = image1;
+      this.image1 = Libs.toString(image1);
    }
 
    public String getImage2() {
@@ -105,7 +105,7 @@ public class ProdVO {
    }
 
    public void setImage2(String image2) {
-      this.image2 = image2;
+      this.image2 = Libs.toString(image2);
    }
 
    public String getImage3() {
@@ -113,7 +113,7 @@ public class ProdVO {
    }
 
    public void setImage3(String image3) {
-      this.image3 = image3;
+      this.image3 = Libs.toString(image3);
    }
 
    public ProdVO() {

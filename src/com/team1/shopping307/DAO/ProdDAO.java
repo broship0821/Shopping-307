@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.VO.ProdVO;
@@ -104,12 +103,11 @@ public class ProdDAO {
    
    public static String insert(ProdVO vo) {
       System.out.println(className + ".insert()");
-      String result = "";
+      String result = null;
       Connection conn = Libs.connect();
+      PreparedStatement ps = null;
       
       if(conn != null) {
-         PreparedStatement ps = null;
-
          String sql = "INSERT INTO " + tableName 
                + " ("
                + " product_id, product_name, category, is_new, standard," 
@@ -160,8 +158,9 @@ public class ProdDAO {
          catch (Exception ex) {
             ex.printStackTrace();
          }
-         
-         Libs.closeDb(conn, ps);
+         finally {
+            Libs.closeDb(conn, ps);
+         }
       }
       
       return result;

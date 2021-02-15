@@ -32,7 +32,9 @@ pageEncoding="UTF-8"%>
 	</h1>
 	<h1>상품등록</h1>
 	<br>
-	<form name="prodInsert" action="<%=Common.strProdInsertDo%>">
+	<form name="prodInsert" method="post"
+	      action="<%=Common.strProdInsertDo%>"
+   	      encType="multipart/form-data">
 		<table border="1">
             <tr>
                 <td align="center">상품ID</td>

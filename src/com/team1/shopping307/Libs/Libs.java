@@ -12,7 +12,77 @@ import java.util.Date;
 public class Libs {
    
    //------------------------------------------------
-   // File 관련 
+   // 1. DB 관련 
+   //------------------------------------------------
+   
+   public static Connection connect() {
+      System.out.println("connect()");
+      Connection conn = null;
+      String driverName = "oracle.jdbc.driver.OracleDriver";
+      String url = "jdbc:oracle:thin:@localhost:1521:xe"; // localhost대신 ip주소가 들어갈수도
+      String id = "hr";
+      String pw = "hr";
+      
+      try {
+         Class.forName(driverName);
+         conn = DriverManager.getConnection(url, id, pw);
+         System.out.println("connect OK!!!");
+      }
+      catch(Exception ex) {
+         ex.printStackTrace();
+         close(conn);
+      }
+      
+      return conn;
+   }
+   
+   public static void closeDb(Connection conn, PreparedStatement ps, ResultSet rs) {
+      close(rs);
+      close(ps);
+      close(conn);
+   }
+   
+   public static void closeDb(Connection conn, PreparedStatement ps) {
+      close(ps);
+      close(conn);
+   }
+   
+   public static void close(Connection conn) {
+      if(conn != null) {
+        try {
+            conn.close();
+            conn = null;
+         }
+         catch(Exception ex) {
+            ex.printStackTrace();
+         }
+      }   
+   }
+   
+   public static void close(ResultSet rs) {
+      if(rs != null) {
+         try {
+            rs.close();
+         }
+         catch(Exception ex) {
+            ex.printStackTrace();
+         }
+      }
+   }
+   
+   public static void close(PreparedStatement ps) {
+      if(ps != null) {
+         try {
+            ps.close();
+         }
+         catch(Exception ex) {
+            ex.printStackTrace();
+         }
+      }
+   }
+
+   //------------------------------------------------
+   // 2. File 관련 
    //------------------------------------------------
 
    // 기능: path에서 확장자를 응답한다.
@@ -64,7 +134,7 @@ public class Libs {
    
    
    //------------------------------------------------
-   // Date/Time 관련 
+   // 3. Date/Time 관련 
    //------------------------------------------------
    static SimpleDateFormat fmYyyyMmDd = new SimpleDateFormat("yyyy-MM-dd");
    static SimpleDateFormat fmYyyyMmDd8 = new SimpleDateFormat("yyyyMMdd");
@@ -149,7 +219,7 @@ public class Libs {
    
    
    //------------------------------------------------
-   // 변환 관련 
+   // 4. 변환 관련 
    //------------------------------------------------
    public static int strToInt(String str, int defValue) {
       if(str == null || str.trim().length() == 0) {
@@ -162,72 +232,17 @@ public class Libs {
    
    
    //------------------------------------------------
-   // DB 관련 
+   // 5. 문자열 관련 
    //------------------------------------------------
-   public static Connection connect() {
-      System.out.println("connect()");
-      Connection conn = null;
-      String driverName = "oracle.jdbc.driver.OracleDriver";
-      String url = "jdbc:oracle:thin:@localhost:1521:xe"; // localhost대신 ip주소가 들어갈수도
-      String id = "hr";
-      String pw = "hr";
-      
-      try {
-         Class.forName(driverName);
-         conn = DriverManager.getConnection(url, id, pw);
-         System.out.println("connect OK!!!");
-      }
-      catch(Exception ex) {
-         ex.printStackTrace();
-         close(conn);
-      }
-      
-      return conn;
+   
+   // 기능: 문자열이 null 또는 ""인 경우 true를 응답한다. 
+   public static boolean isEmpty(String str) {
+      return str == null || str.length() == 0;
    }
    
-   public static void closeDb(Connection conn, PreparedStatement ps, ResultSet rs) {
-      close(rs);
-      close(ps);
-      close(conn);
-   }
-   
-   public static void closeDb(Connection conn, PreparedStatement ps) {
-      close(ps);
-      close(conn);
-   }
-   
-   public static void close(Connection conn) {
-      if(conn != null) {
-        try {
-            conn.close();
-            conn = null;
-         }
-         catch(Exception ex) {
-            ex.printStackTrace();
-         }
-      }   
-   }
-   
-   public static void close(ResultSet rs) {
-      if(rs != null) {
-         try {
-            rs.close();
-         }
-         catch(Exception ex) {
-            ex.printStackTrace();
-         }
-      }
-   }
-   
-   public static void close(PreparedStatement ps) {
-      if(ps != null) {
-         try {
-            ps.close();
-         }
-         catch(Exception ex) {
-            ex.printStackTrace();
-         }
-      }
+   // 기능: 문자열이 null 또는 trim()후 "" 인 경우 true를 응답한다. 
+   public static boolean isEmptyExt(String str) {
+      return str == null || str.trim().length() == 0;
    }
    
 }

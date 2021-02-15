@@ -249,9 +249,10 @@ public class Controller extends HttpServlet {
          // 6 장바구니(bag - table만 불필요)
          // ---------------------------------------
          case Common.strBagSelectAllDo: {
-            BagService svc = new BagServiceImpl();
-            svc.selectAll(request, response);
-            jspName = Common.strBagSelectAll;
+            // BagService svc = new BagServiceImpl();
+            // svc.selectAll(request, response);
+            jspName = session.getAttribute("bagList") == null
+                  ? "BagSelectAllEmpty.jsp" : Common.strBagSelectAll;   
             break;
          }
          case Common.strBagSelectOneDo: {

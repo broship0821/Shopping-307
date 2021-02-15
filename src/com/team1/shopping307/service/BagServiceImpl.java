@@ -34,6 +34,7 @@ public class BagServiceImpl implements BagService {
 		}
 		
 		BagVO bagVO = new BagVO();
+		bagVO.setBagNo(bagList.size());
 		bagVO.setProdName(request.getParameter("prodName"));
 		bagVO.setProdPrice(Integer.parseInt(request.getParameter("prodPrice")));
 		bagVO.setProdCnt(Integer.parseInt(request.getParameter("prodCnt")));
@@ -45,7 +46,22 @@ public class BagServiceImpl implements BagService {
 	}
 	@Override
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//아직 구현 X
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		
+		ArrayList<BagVO> oldBag = (ArrayList<BagVO>)session.getAttribute("bagList");
+		ArrayList<BagVO> newBag = new ArrayList<>();
+		
+		String[] prodNo = request.getParameterValues("prodNo");
+		for(int i=0;i<prodNo.length;i++) {
+			oldBag.set(Integer.parseInt(prodNo[i]), null);
+		}
+		for(int i=0;i<oldBag.size();i++) {
+			if(oldBag.get(i)!=null)
+				newBag.add(oldBag.get(i));
+		}
+		session.setAttribute("bagList", newBag);
+		//하나이상 체크되어있는지 체크는 선택상품 주문이랑 같이 js로 구현하기
 	}
 	@Override
 	public void deleteAll(HttpServletRequest request, HttpServletResponse response)

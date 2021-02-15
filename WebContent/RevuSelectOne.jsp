@@ -1,130 +1,177 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¼îÇÎ307</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <style>
+* {
+margin:0;
+padding:0;
+box-sizing:0;
+}
+ul {
+list-style : none;
+}
+a {
+text-decoration:none;
+color:inherit;}
+
+
 hr {
-display:block;
-width:100%;
+width:480px;
+margin:0 auto;
+text-align:center;
 }
-
-span {
-
-}
+/*/////////////////////////////////////////////////*/
 
 .container {
 width:480px;
-text-align:center;
 margin:0 auto;
+margin-top:20px;
 }
 
-.revuSeach {
-width:200px;
-text-align:left;
+h1 {
+margin-bottom:20px;
 }
 
-.revuSearch>h2 {
-text-align:left;
-font-weight:normal;
-}
-.revuSearch img{
-width:200px;
-text-align:left;
-}
-
-.revuResult {
+section {
 width:480px;
-text-align : center;
+padding-bottom:20px;
 }
 
-.revuResult p {
+section ul {
+
+}
+
+section ul li {
+
+
+}
+
+
+.left {
+width:160px;
+height:20px;
+display:inline-block;
+float:left;
+padding-top:10px;
+padding-bottom:10px;
+}
+
+.right {
+width:320px;
+height:20px;
+display:inline-block;
+float:right;
+padding-top:10px;
+padding-bottom:10px;
+}
+
+.rightee {
+width:160px;
+height:20px;
+display:inline-block;
+float:right;
+padding-top:10px;
+padding-bottom:10px;
+
+}
+
+ a { 
+margin-top:30px;
 width:200px;
-text-align: left;
-}
-
-
-p.imgSr {
-text-align: left;
-}
-
-#star3 {
-width:480px;
-}
-
-input[type="button"] {
-width:200px;
-height:43px;
+height:28px;
 color:white;
 background-color:#14A1EE;
 border-radius:5px;
 border:none;
-}
-
-#revuTble {
-width:480px;
-padding:2px;
+float:left;
+display:inline-block;
 text-align:center;
+padding:15px;
+padding-top:15px;
 }
 
-p#imgSr, p#sangname {
-width:160px;
-display:inline-block;
-text-align:left;
-float:left;
+
+.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 100%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
 }
+.starR.on{background-position:0 0;}
 
-#revu {
-width:150px;
-display:inline-block;
-float:left;
-
+a.righta {
+float:right;
 }
-
-#revu .star {
-width:150px;
-height:100%;
-padding-bottom:20px;
-display:inline-block;
-text-align:left;
-float:left;
-}
-
 
 </style>
 </head>
 <body>
 
 <div class="container">
-	<header>
-		<h1>¼îÇÎ 307</h1>
-	</header>
-	<section>
-		<div class="revuSearch">
-			<h2>±¸¸ÅÈÄ±â</h2>
-			<hr>
-			<p id="imgSr"><img src="" alt="ÀÌ¹ÌÁö¾øÀ½"></p>
-			<p id="sangname">»óÇ°¸í</p><br>
-		</div>
-		<div class="revuResult">
-			<table id="revuTble">
-			<tr>
-				<td colspan="2"><hr><p id="star1">º°Á¡</p><hr></td>
-			</tr>
-			<tr id="revu">
-				<td><span class="star">±¸¸ÅÈÄ±â</span><br></td>
-				<td><span class="star">³ª¶ù¸»½Î¹Ì ¾îÂ¼±¸</span></td>
-			</tr>
-			<tr>
-				<td><span><input type="button" value="»èÁ¦"></span></td>
-				<td><span><input type="button" value="¼öÁ¤"></span></td>
-			</tr>
-			</table>
-		</div>
-	</section>
+   <header>
+      <h1>ì‡¼í•‘ 307</h1>
+   </header>
+   <section>
+      <ul>
+         <li>
+            <h2>êµ¬ë§¤í›„ê¸°</h2>
+            <hr>
+         </li>
+      </ul>
+      <ul>
+         <li class="left">ì œëª©</li>
+         <li class="rightee">ì‘ì„±ì ì•„ì´ë””</li>
+         <li class="rightee">ì‘ì„±ì¼</li>
+         <hr>
+      </ul>
+      <ul>
+         <li class="left"><img src="" alt="ì´ë¯¸ì§€ì—†ìŒ"></li>
+         <li class="right">ìƒí’ˆëª…</li>
+         <hr>
+      </ul>
+      <ul>
+         <li class="left">ë³„ì </li>
+         <li class="right">
+            <div class="starRev">
+                 <span class="starR on">ë³„1</span>
+                 <span class="starR">ë³„2</span>
+                 <span class="starR">ë³„3</span>
+                 <span class="starR">ë³„4</span>
+                 <span class="starR">ë³„5</span>
+            </div>
+      </li>
+         <hr>
+      </ul>
+      <ul>
+         <li class="left">êµ¬ë§¤í›„ê¸°</li>
+         <li class="right">ë‚´ìš©ì–´ì©Œêµ¬~</li>
+         <hr>
+      </ul>
+      <ul>
+         <li><a href="#">ì‚­ì œ</a></li>
+         <li><a href="#" class="righta">ìˆ˜ì •</a></li>
+      </ul>
+      
+      
+   </section>
 </div>
+
+<script src="js/jquery-1.12.3.js"></script>
+<script>
+$('.starRev span').click(function(){
+     $(this).parent().children('span').removeClass('on');
+     $(this).addClass('on').prevAll('span').addClass('on');
+     return false;
+   });
+   
+</script>
 
 
 

@@ -1,6 +1,7 @@
 package com.team1.shopping307.VO;
 
 public class BagVO {
+	private int bagNo;
 	private String prodName;//상품이름
 	private int prodPrice;//가격
 	private int prodCnt; //개수
@@ -9,12 +10,14 @@ public class BagVO {
 	public BagVO() {
 	}
 
-	public BagVO(String prodName, int prodPrice, int prodCnt, String prodSize) {
-		this.prodName = prodName;
-		this.prodPrice = prodPrice;
-		this.prodCnt = prodCnt;
-		this.prodSize = prodSize;
+	public int getBagNo() {
+		return bagNo;
 	}
+
+	public void setBagNo(int bagNo) {
+		this.bagNo = bagNo;
+	}
+
 	public String getProdName() {
 		return prodName;
 	}

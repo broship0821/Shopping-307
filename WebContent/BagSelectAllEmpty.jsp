@@ -13,7 +13,7 @@
     <div id="bagImg"><img src="image/shopping-cart.png" alt="쇼핑카트"></div>
     <h2>장바구니가 비어있습니다</h2>
     <!-- 원래는 ProdSelectAll 로 가야됨  -->
-    <a href="ProdSelectOne.jsp">쇼핑 화면으로 돌아가기</a>
+    <a href="BagInsertTestpage.jsp">쇼핑 화면으로 돌아가기</a>
 </body>
 <script src="js/selectAllBox.js"></script>
 </html>

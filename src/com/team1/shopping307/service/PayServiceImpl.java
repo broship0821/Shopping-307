@@ -27,7 +27,7 @@ public class PayServiceImpl implements PayService {
    public PayVO selectOne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".selectOne()");
       String payId = (String) request.getParameter("payId");
-      PayVO result = PayDAO.selectOne(payId);
+      PayVO result = PayDAO.selectOne(Integer.valueOf(payId));
       request.setAttribute("item", result);
       return result;   
    }
@@ -106,7 +106,7 @@ public class PayServiceImpl implements PayService {
    public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".delete()");
       String payId = (String) request.getParameter("payId"); 
-      int result = PayDAO.delete(payId);
+      int result = PayDAO.delete(Integer.valueOf(payId));
       request.setAttribute("result", result == 1 ? "삭제 성공" : "삭제 실패");
       return result;
    }
@@ -121,4 +121,13 @@ public class PayServiceImpl implements PayService {
    }
 
    @Override
+   public int setNextStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      System.out.println(className + ".setStatus()");
+      String payId = (String) request.getParameter("payId"); 
+      String status = (String) request.getParameter("payId"); 
+      int result = PayDAO.setNextStatus(Integer.valueOf(payId), status);
+      request.setAttribute("result", result == 1 ? "상태 변경 성공" : "상태 변경 실패");
+      return result;
+   }
+
 }

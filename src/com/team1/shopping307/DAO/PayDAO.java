@@ -74,7 +74,7 @@ public class PayDAO {
       return result;
    }
 
-   public static PayVO selectOne(String payId) {
+   public static PayVO selectOne(long payId) {
       System.out.println(className + ".selectOne(" + payId + ")");
       PayVO result = new PayVO();
       Connection conn = Libs.connect();
@@ -87,7 +87,7 @@ public class PayDAO {
          
          try {
             ps = conn.prepareStatement(sql);
-            ps.setString(1, payId);
+            ps.setLong(1, payId);
             rs = ps.executeQuery();
             
             if(rs.next()) {
@@ -248,7 +248,7 @@ public class PayDAO {
       return result;
    }
 
-   public static int delete(String payId) {
+   public static int delete(long payId) {
       System.out.println(className + ".delete(" + payId + ")");
       int result = 0;
       Connection conn = Libs.connect();
@@ -259,7 +259,7 @@ public class PayDAO {
 
          try {
             ps = conn.prepareStatement(sql);
-            ps.setString(1, payId);
+            ps.setLong(1, payId);
             result = ps.executeUpdate();
          }
          catch (Exception ex) {
@@ -303,7 +303,7 @@ public class PayDAO {
       return lstResult;
    }
 
-   public static int setStatus(long payId, String status) {
+   public static int setNextStatus(long payId, String status) {
       System.out.println(className + ".setStatus(" + payId + ", " + status + ")");
       int result = 0;
       Connection conn = Libs.connect();

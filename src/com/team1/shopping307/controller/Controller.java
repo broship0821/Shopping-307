@@ -328,16 +328,16 @@ public class Controller extends HttpServlet {
             jspName = Common.strPayGetStatus;
             break;
          }
-         case Common.strPaySetStatusDo: {
+         case Common.strPaySetNextStatusDo: {
             PayService svc = new PayServiceImpl();
-            svc.setStatus(request, response);
-            jspName = Common.strPaySetStatusResult;
+            svc.setNextStatus(request, response);
+            jspName = Common.strPaySetNextStatus;
             break;
          }
 
          // ---------------------------------------
          // 8. 후기 정보(review)
-         // ---------------------------------------
+         // --------------------------------------
          case Common.strRevuSelectAllDo: {
             RevuService svc = new RevuServiceImpl();
             svc.selectAll(request, response);

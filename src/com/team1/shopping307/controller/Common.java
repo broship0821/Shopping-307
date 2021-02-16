@@ -117,6 +117,12 @@ public class Common {
    public static final String strProdDeleteDo          = strProdDelete + strDo;
    public static final String strProdDeleteResult      = strProdDelete + strResult;
    
+   // 유저 쇼핑 화면
+   public static final String strProdUserSelectAll = "ProdUserSelectAll";
+   public static final String strProdUserSelectAllDo = strProdUserSelectAll + strDo; 
+   
+   public static final String strProdUserSelectOne = "ProdUserSelectOne";
+   public static final String strProdUserSelectOneDo = strProdUserSelectOne + strDo;
    
    // 5. 상품 출고 히스토리(판매 History)
    public static final String strReleHistSelectAll   = "ReleHistSelectAll";

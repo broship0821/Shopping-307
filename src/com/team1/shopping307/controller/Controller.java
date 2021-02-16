@@ -214,18 +214,19 @@ public class Controller extends HttpServlet {
          }
 
          // ---------------------------------------
-         //유저 쇼핑 화면
+         // 유저 쇼핑 화면
          // ---------------------------------------
-         case "ProdUserSelectAll.do": {
+         case Common.strProdUserSelectAllDo: {
             ProdUserService svc = new ProdUserServiceImpl();
             svc.selectAll(request, response);
-            jspName = "ProdUserSelectAll";
+            jspName = Common.strProdUserSelectAll;
             break;
          }
-         case "ProdUserSelectOne.do": {
+         
+         case Common.strProdUserSelectOneDo: {
             ProdUserService svc = new ProdUserServiceImpl();
             svc.selectOne(request, response);
-            jspName = "ProdUserSelectOne";
+            jspName = Common.strProdUserSelectOne;
             break;
          }
                  

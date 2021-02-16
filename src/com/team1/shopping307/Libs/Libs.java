@@ -13,9 +13,9 @@ import com.team1.shopping307.controller.Common;
 
 public class Libs {
    
-   //------------------------------------------------
+   //================================================
    // 1. DB 관련 
-   //------------------------------------------------
+   //================================================
    
    public static Connection connect() {
       System.out.println("connect()");
@@ -83,15 +83,27 @@ public class Libs {
       }
    }
 
+   
+   private static final String[] arrPayStatus = {
+         // 0       1         2      3      4     5
+         "입금완료", "결제승인", "출고", "교환", "환불", "구매완료"
+   };
+   
+   public static String getPayStatusText(int idx) {
+      String result = "";
+      
+      if(0 <= idx && idx < arrPayStatus.length) {
+         result = arrPayStatus[idx];
+      }
+      
+      return result;
+   }
+
    // 기능: status(결제 상태)의 다음 상태를 응답한다. 
    //      단, status가 마지막 상태인 경우 Common.strEnd를 응답하며,
    //      status가 존재하지 않는 상태인 경우 ""를 응답한한다.
    public static String getNextPayStatus(String status) {
-      final String[] arrStatus = {
-            "입금완료", "결제승인", "출고", "교환", "환불", "구매완료"
-      };
-      
-      return getNextStatus(status, arrStatus);
+      return getNextStatus(status, arrPayStatus);
    }      
    
    public static String getNextStatus(String status, String[] arrStatus) {
@@ -114,9 +126,9 @@ public class Libs {
    }
    
    
-   //------------------------------------------------
+   //================================================
    // 2. File 관련 
-   //------------------------------------------------
+   //================================================
 
    // 기능: path에서 확장자를 응답한다.
    // 테스트코드 및 결과
@@ -166,9 +178,9 @@ public class Libs {
    }
    
    
-   //------------------------------------------------
+   //================================================
    // 3. Date/Time 관련 
-   //------------------------------------------------
+   //================================================
    static SimpleDateFormat fmYyyyMmDd = new SimpleDateFormat("yyyy-MM-dd");
    static SimpleDateFormat fmYyyyMmDd8 = new SimpleDateFormat("yyyyMMdd");
    static SimpleDateFormat fmAll = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -251,9 +263,10 @@ public class Libs {
    }
    
    
-   //------------------------------------------------
+   //================================================
    // 4. 변환 관련 
-   //------------------------------------------------
+   //================================================
+
    public static int strToInt(String str, int defValue) {
       if(str == null || str.trim().length() == 0) {
          return defValue;
@@ -263,10 +276,19 @@ public class Libs {
       }
    }
    
+   public static long strToLong(String str, long defValue) {
+      if(str == null || str.trim().length() == 0) {
+         return defValue;
+      }
+      else {
+         return Long.valueOf(str.trim());
+      }
+   }
    
-   //------------------------------------------------
+   
+   //================================================
    // 5. 문자열 관련 
-   //------------------------------------------------
+   //================================================
    
    // 기능: 문자열이 null 또는 ""인 경우 true를 응답한다. 
    public static boolean isEmpty(String str) {

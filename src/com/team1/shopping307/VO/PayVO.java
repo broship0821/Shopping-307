@@ -2,6 +2,8 @@ package com.team1.shopping307.VO;
 
 import java.text.ParseException;
 
+import com.team1.shopping307.Libs.Libs;
+
 public class PayVO {
    long payId;             // 구분번호   YYYYMMDDNNNNN  (= 구매번호 = 결재번호)
 
@@ -10,7 +12,7 @@ public class PayVO {
    String sellerZip;       // 판매자 우편번호(우편번호 검색 기능은 생략)
    String sellerAddress;   // 판매자 주소
           
-   long buyerId;           // 구매자 아이디
+   String buyerId;         // 구매자 아이디
    String buyerName;       // 구매자 이름
    String buyerPhone;      // 구매자 전화번호
    String buyerZip;        // 구매자 우편번호
@@ -66,11 +68,11 @@ public class PayVO {
       this.sellerAddress = sellerAddress;
    }
 
-   public long getBuyerId() {
+   public String getBuyerId() {
       return buyerId;
    }
 
-   public void setBuyerId(long buyerId) {
+   public void setBuyerId(String buyerId) {
       this.buyerId = buyerId;
    }
 
@@ -154,14 +156,14 @@ public class PayVO {
          String buyerZip, String buyerAddress, String itemsInfo, String amount,
          String cashOrCard, String cardNo, String status
          ) throws ParseException {
-      this(Long.valueOf(payId), sellerName, sellerPhone, sellerZip,
-            sellerAddress, Long.valueOf(buyerId), buyerName, buyerPhone,
-            buyerZip, buyerAddress, itemsInfo, Integer.valueOf(amount),
+      this(Libs.strToLong(payId, -1), sellerName, sellerPhone, sellerZip,
+            sellerAddress, buyerId, buyerName, buyerPhone,
+            buyerZip, buyerAddress, itemsInfo, Libs.strToInt(amount, 0),
             cashOrCard, cardNo, status);
    }
 
    public PayVO(long payId, String sellerName, String sellerPhone, String sellerZip,
-         String sellerAddress, long buyerId, String buyerName, String buyerPhone,
+         String sellerAddress, String buyerId, String buyerName, String buyerPhone,
          String buyerZip, String buyerAddress, String itemsInfo, int amount,
          String cashOrCard, String cardNo, String status) {
       this.payId         = payId;

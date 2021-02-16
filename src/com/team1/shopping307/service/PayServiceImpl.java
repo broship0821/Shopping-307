@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.team1.shopping307.DAO.PayDAO;
+import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.VO.PayVO;
 
 public class PayServiceImpl implements PayService {
@@ -36,6 +37,7 @@ public class PayServiceImpl implements PayService {
    public long insert(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException, IOException {
       System.out.println(className + ".insert()");
       PayVO vo = getRequestParams(request);
+      vo.setStatus(Libs.getPayStatusText(0)); // "입금완료"
       long result = PayDAO.insert(vo);
       request.setAttribute("result", result == 0 ? "등록 실패" : "상품아이디(" + result + ") 등록 성공");
       return result;

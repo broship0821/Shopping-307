@@ -51,7 +51,7 @@ public class PayDAO {
          String sellerPhone = rs.getString("seller_phone");
          String sellerZip = rs.getString("seller_zip");
          String sellerAddress = rs.getString("seller_address");
-         long buyerId = rs.getLong("buyer_id");
+         String buyerId = rs.getString("buyer_id");
          String buyerName = rs.getString("buyer_name");
          String buyerPhone = rs.getString("buyer_phone");
          String buyerZip = rs.getString("buyer_zip");
@@ -121,7 +121,7 @@ public class PayDAO {
                + " ("
                + " ?, ?, ?, ?, ?,"
                + " ?, ?, ?, ?, ?,"
-               + " ?, ?, ?, ?, ?,"
+               + " ?, ?, ?, ?, ?"
                + ")";
 
          try {
@@ -135,7 +135,7 @@ public class PayDAO {
             ps.setString(++idx, vo.getSellerPhone());
             ps.setString(++idx, vo.getSellerZip());
             ps.setString(++idx, vo.getSellerAddress());
-            ps.setLong(++idx, vo.getBuyerId() );
+            ps.setString(++idx, vo.getBuyerId() );
             ps.setString(++idx, vo.getBuyerName());
             ps.setString(++idx, vo.getBuyerPhone());
             ps.setString(++idx, vo.getBuyerZip());
@@ -224,7 +224,7 @@ public class PayDAO {
             ps.setString(++idx, vo.getSellerPhone());
             ps.setString(++idx, vo.getSellerZip());
             ps.setString(++idx, vo.getSellerAddress());
-            ps.setLong  (++idx, vo.getBuyerId() );
+            ps.setString(++idx, vo.getBuyerId() );
             ps.setString(++idx, vo.getBuyerName());
             ps.setString(++idx, vo.getBuyerPhone());
             ps.setString(++idx, vo.getBuyerZip());

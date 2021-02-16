@@ -26,6 +26,8 @@ import com.team1.shopping307.service.PayService;
 import com.team1.shopping307.service.PayServiceImpl;
 import com.team1.shopping307.service.ProdService;
 import com.team1.shopping307.service.ProdServiceImpl;
+import com.team1.shopping307.service.ProdUserService;
+import com.team1.shopping307.service.ProdUserServiceImpl;
 import com.team1.shopping307.service.ReleHistService;
 import com.team1.shopping307.service.ReleHistServiceImpl;
 import com.team1.shopping307.service.RevuService;
@@ -211,6 +213,22 @@ public class Controller extends HttpServlet {
             break;
          }
 
+         // ---------------------------------------
+         //유저 쇼핑 화면
+         // ---------------------------------------
+         case "ProdUserSelectAll.do": {
+            ProdUserService svc = new ProdUserServiceImpl();
+            svc.selectAll(request, response);
+            jspName = "ProdUserSelectAll";
+            break;
+         }
+         case "ProdUserSelectOne.do": {
+            ProdUserService svc = new ProdUserServiceImpl();
+            svc.selectOne(request, response);
+            jspName = "ProdUserSelectOne";
+            break;
+         }
+                 
          // ---------------------------------------
          // 5. 상품 출고 히스토리(release_history)
          // ---------------------------------------

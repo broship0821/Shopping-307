@@ -10,6 +10,6 @@
 장바구니 담기 성공 <br>
 <a href="BagSelectAll.do"><input type="button" value="장바구니 보러가기"></a>
 <br><br><br>
-<a href="BagInsertTestpage.jsp"><input type="button" value="다시 상품페이지로"></a>
+<a href="ProdUserSelectAll.do"><input type="button" value="다시 상품페이지로"></a>
 </body>
 </html>

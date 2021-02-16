@@ -1,3 +1,4 @@
+<%@page import="com.team1.shopping307.controller.Common"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -64,8 +65,8 @@
 	        <c:forEach var="bagVO" items="${bagList}">
 	        	<tr>
 		            <td><input type="checkbox" name="prodNo" class="box" value="${bagVO.getBagNo()}"></td>
-		            <td><img src="" alt="상품사진들어갈곳"></td>
-		            <td>${bagVO.getProdName()}, 사이즈:${bagVO.getProdSize()}</td>
+		            <td><img src="<%=Common.strUpload%>/${bagVO.getImage1()}" alt="상품사진들어갈곳" height="100"></td>
+		            <td>${bagVO.getProdName()}</td>
 		            <td>${bagVO.getProdCnt()}</td>
 		            <td>
 		            	<span class="price">
@@ -77,7 +78,7 @@
 	        </c:forEach>
 	    </table>
 	    <div id="btns">
-	        <a href="BagInsertTestpage.jsp"><input type="button" value="계속 쇼핑하기" class="btn"></a>
+	        <a href="ProdUserSelectAll.do"><input type="button" value="계속 쇼핑하기" class="btn"></a>
 	        <input type="submit" value="선택상품삭제" class="btn" formaction="BagDelete.do">
 	        <a href="BagDeleteAll.do"><input type="button" value="장바구니비우기" class="btn"></a>
 	    </div>
@@ -86,6 +87,7 @@
 	    </div>
 	    
 	    <div id="btns">
+	    	<input type="hidden" name="productId" value="${bagVO.getProductID()}"><!-- 상품아이디는 적어놓진 않지만 구매때 보내야됨 -->
 	        <input type="submit" value="선택상품주문" class="btn" formaction="">
 	        <input type="submit" value="전체상품주문" class="btn" formaction="">
 	    </div>

@@ -5,7 +5,9 @@ public class BagVO {
 	private String prodName;//상품이름
 	private int prodPrice;//가격
 	private int prodCnt; //개수
-	private String prodSize;//S,M,L,XL
+	private String image1;
+	private String productID;
+	
 	
 	public BagVO() {
 	}
@@ -42,12 +44,22 @@ public class BagVO {
 		this.prodCnt = prodCnt;
 	}
 
-	public String getProdSize() {
-		return prodSize;
+	public String getImage1() {
+		return image1;
 	}
 
-	public void setProdSize(String prodSize) {
-		this.prodSize = prodSize;
+	public void setImage1(String image1) {
+		this.image1 = image1;
 	}
+
+	public String getProductID() {
+		return productID;
+	}
+
+	public void setProductID(String productID) {
+		this.productID = productID;
+	}
+
+	
 
 }

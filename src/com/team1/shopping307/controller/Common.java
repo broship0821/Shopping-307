@@ -15,15 +15,17 @@ public class Common {
    public static final String strAnynimous = "Y";          // 익명(anonymous) 사용자(로긴하지 않은 사용자)
 
    //----------
-   // .do
+   // 기타 상수
    //----------
+   // 끝임을 의미
+   public static final String strEnd = "[<-끝->]";
+   
+   // .do
    public static final String strDo = ".do";
    
-   //----------
    // .jsp
-   //----------
    public static final String strJsp = ".jsp";
-
+   
    //----------
    // Upload
    //----------
@@ -154,23 +156,31 @@ public class Common {
    
    
    // 7. 결제 정보
-   public static final String strPaySelectAll     = "PaySelectAll";
-   public static final String strPaySelectAllDo   = strPaySelectAll + strDo;
+   public static final String strPaySelectAll          = "PaySelectAll";
+   public static final String strPaySelectAllDo        = strPaySelectAll + strDo;
    
-   public static final String strPaySelectOne     = "PaySelectOne";
-   public static final String strPaySelectOneDo   = strPaySelectOne + strDo;
+   public static final String strPaySelectOne          = "PaySelectOne";
+   public static final String strPaySelectOneDo        = strPaySelectOne + strDo;
    
-   public static final String strPayInsert        = "PayInsert";
-   public static final String strPayInsertDo      = strPayInsert + strDo;
-   public static final String strPayInsertResult  = strPayInsert + strResult;
+   public static final String strPayInsert             = "PayInsert";
+   public static final String strPayInsertDo           = strPayInsert + strDo;
+   public static final String strPayInsertResult       = strPayInsert + strResult;
    
-   public static final String strPayUpdate        = "PayUpdate";
-   public static final String strPayUpdateDo      = strPayUpdate + strDo;
-   public static final String strPayUpdateResult  = strPayUpdate + strResult;
+   public static final String strPayUpdate             = "PayUpdate";
+   public static final String strPayUpdateDo           = strPayUpdate + strDo;
+   public static final String strPayUpdateResult       = strPayUpdate + strResult;
    
-   public static final String strPayDelete        = "PayDelete";
-   public static final String strPayDeleteDo      = strPayDelete + strDo;
-   public static final String strPayDeleteResult  = strPayDelete + strResult;
+   public static final String strPayDelete             = "PayDelete";
+   public static final String strPayDeleteDo           = strPayDelete + strDo;
+   public static final String strPayDeleteResult       = strPayDelete + strResult;
+
+   public static final String strPayGetStatus       = "PayGetStatus";
+   public static final String strPayGetStatusDo     = strPayGetStatus + strDo;
+   public static final String strPayGetStatusResult = strPayGetStatus + strResult;
+
+   public static final String strPaySetStatus       = "PaySetStatus";
+   public static final String strPaySetStatusDo     = strPaySetStatus + strDo;
+   public static final String strPaySetStatusResult = strPaySetStatus + strResult;
 
 
    // 8. 후기 정보

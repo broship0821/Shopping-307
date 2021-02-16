@@ -197,7 +197,7 @@ public class PayVO {
             + ", amount: " + amount
             + ", cashOrCard: " + cashOrCard
             + ", cardNo: " + cardNo
-            + ", status: " + status);
+            + ", status: " + status;
    }
 
 }

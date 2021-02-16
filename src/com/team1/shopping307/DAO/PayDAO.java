@@ -272,4 +272,66 @@ public class PayDAO {
       return result;
    }
 
+   public static ArrayList<PayVO> getStatus(String status) {
+      System.out.println(className + ".getStatus(" + status + ")");
+      ArrayList<PayVO> lstResult = new ArrayList<>();
+      Connection conn = Libs.connect();
+      
+      if(conn != null) {
+         PreparedStatement ps = null;
+         ResultSet rs = null;
+         String sql = "SELECT *"
+               + " FROM " + tableName 
+               + " WHERE status = ? ORDER BY status, pay_id";
+         
+         try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, status);
+            rs = ps.executeQuery();
+            
+            while(rs.next()) {
+               lstResult.add(readPay(rs));
+            }      
+         }
+         catch (Exception ex) {
+            ex.printStackTrace();
+         }
+         
+         Libs.closeDb(conn, ps, rs);
+      }
+      
+      return lstResult;
+   }
+
+   public static int setStatus(long payId, String status) {
+      System.out.println(className + ".setStatus(" + payId + ", " + status + ")");
+      int result = 0;
+      Connection conn = Libs.connect();
+      
+      if(conn != null) {
+         PreparedStatement ps = null;
+
+         String sql = "UPDATE " + tableName
+               + "   SET status = ?"         
+               + " WHERE pay_id = ? AND status = ?";
+
+         try {
+            ps = conn.prepareStatement(sql);
+            int idx = 0;
+            ps.setString(++idx, status);
+            ps.setLong(++idx, payId);
+            ps.setString(++idx, Libs.getNextPayStatus(status));
+
+            result = ps.executeUpdate();
+         }
+         catch (Exception ex) {
+            ex.printStackTrace();
+         }
+         
+         Libs.closeDb(conn, ps);
+      }
+
+      return result;
+   }
+
 }

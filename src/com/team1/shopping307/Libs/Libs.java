@@ -9,6 +9,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.team1.shopping307.controller.Common;
+
 public class Libs {
    
    //------------------------------------------------
@@ -81,6 +83,37 @@ public class Libs {
       }
    }
 
+   // 기능: status(결제 상태)의 다음 상태를 응답한다. 
+   //      단, status가 마지막 상태인 경우 Common.strEnd를 응답하며,
+   //      status가 존재하지 않는 상태인 경우 ""를 응답한한다.
+   public static String getNextPayStatus(String status) {
+      final String[] arrStatus = {
+            "입금완료", "결제승인", "출고", "교환", "환불", "구매완료"
+      };
+      
+      return getNextStatus(status, arrStatus);
+   }      
+   
+   public static String getNextStatus(String status, String[] arrStatus) {
+      String result = "";
+      int len = arrStatus.length;
+      int len2 = len - 1;
+      
+      for(int i = 0; i < len; i++) {
+         if(arrStatus[i].compareToIgnoreCase(status) == 0) {
+            if(i == len2) {
+               result = Common.strEnd;
+            }
+            else {
+               result = arrStatus[i + 1];
+            }
+         }
+      }
+
+      return result;
+   }
+   
+   
    //------------------------------------------------
    // 2. File 관련 
    //------------------------------------------------
@@ -257,5 +290,5 @@ public class Libs {
    public static String toString(String str) {
       return str == null ? "" : str;
    }
-   
+
 }

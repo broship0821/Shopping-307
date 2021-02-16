@@ -322,6 +322,18 @@ public class Controller extends HttpServlet {
             jspName = Common.strPayDeleteResult;
             break;
          }
+         case Common.strPayGetStatusDo: {  // pay_info.status = status 정보들 읽기 
+            PayService svc = new PayServiceImpl();
+            svc.getStatus(request, response);
+            jspName = Common.strPayGetStatus;
+            break;
+         }
+         case Common.strPaySetStatusDo: {
+            PayService svc = new PayServiceImpl();
+            svc.setStatus(request, response);
+            jspName = Common.strPaySetStatusResult;
+            break;
+         }
 
          // ---------------------------------------
          // 8. 후기 정보(review)

@@ -144,7 +144,7 @@ public class ProdServiceImpl implements ProdService {
       return result;
    }
 
-   private ProdVO getRequesParams(HttpServletRequest request) throws ParseException {
+   private ProdVO getRequestParams(HttpServletRequest request) throws ParseException {
       // 상품ID
       String productId = (String) request.getParameter("productId"); 
 
@@ -190,7 +190,7 @@ public class ProdServiceImpl implements ProdService {
    @Override
    public int update(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException, IOException {
       System.out.println(className + ".update()");
-      ProdVO vo = getRequesParams(request);
+      ProdVO vo = getRequestParams(request);
       int result = ProdDAO.update(vo);
       request.setAttribute("result", result == 1 ? "수정 성공" : "수정 실패");
       return result;

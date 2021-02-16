@@ -110,4 +110,15 @@ public class PayServiceImpl implements PayService {
       request.setAttribute("result", result == 1 ? "삭제 성공" : "삭제 실패");
       return result;
    }
+
+   @Override
+   public ArrayList<PayVO> getStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      System.out.println(className + ".getStatus()");
+      String status = (String) request.getParameter("status"); 
+      ArrayList<PayVO> lstResult = PayDAO.getStatus(status);
+      request.setAttribute("lstAll", lstResult);
+      return lstResult;
+   }
+
+   @Override
 }

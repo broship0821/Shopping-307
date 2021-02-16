@@ -16,5 +16,7 @@ public interface PayService {
    public PayVO selectOne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
    public long insert(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException, IOException;  
    public int update(HttpServletRequest request, HttpServletResponse response) throws ParseException, ServletException, IOException;
-   public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   
+   public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+   public ArrayList<PayVO> getStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+   public int setStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

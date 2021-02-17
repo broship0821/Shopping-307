@@ -67,7 +67,7 @@ public class Controller extends HttpServlet {
       System.out.println("> session ID.: " + strSessionId);
 
       try {
-         System.out.println("> 사용자 정보: " + LoginManager.getUserInfo(strSessionId));
+         System.out.println("> 사용자 정보: " + LoginManager.getUserInfo(request));
 
          switch (strMap) {
          // ---------------------------------------

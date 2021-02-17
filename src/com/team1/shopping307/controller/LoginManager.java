@@ -2,6 +2,9 @@ package com.team1.shopping307.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.team1.shopping307.VO.UserManaVO;
 
 public class LoginManager {
@@ -20,6 +23,22 @@ public class LoginManager {
       lstUsers.add(new UserManaVO(userId, name, phonenumber, role, address, zip, secession));
    }
 
+   public static UserManaVO getUserInfo(HttpServletRequest request) {
+      HttpSession session = request.getSession();
+      return getUserInfo(session.getId());
+   }
+
+   // 기능: sessionId에 대한 사용자 정보를 응답한다.
+   public static UserManaVO getUserInfo(String sessionId) {
+      UserManaVO result = null;
+      
+      if(lstUsers.size() >= 1) {
+         result = lstUsers.get(0); 
+      }
+      
+      return result;
+   }
+   
    // 기능: sessionId에 대한 Login 여부를 검색하여 login한 user이면 그의 role를 응답
    public static String getUserRole(String sessionId) {
       String result = Common.strAnynimous;
@@ -35,14 +54,4 @@ public class LoginManager {
       return result;
    }
 
-   public static UserManaVO getUserInfo(String sessionId) {
-      UserManaVO result = null;
-      
-      if(lstUsers.size() >= 1) {
-         result = lstUsers.get(0); 
-      }
-      
-      return result;
-   }
-   
 }

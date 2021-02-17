@@ -67,8 +67,7 @@ public class Controller extends HttpServlet {
       System.out.println("> session ID.: " + strSessionId);
 
       try {
-         String strRole = LoginManager.getUserRole(strSessionId);
-         System.out.println("> Role: " + strRole);
+         System.out.println("> 사용자 정보: " + LoginManager.getUserInfo(strSessionId));
 
          switch (strMap) {
          // ---------------------------------------
@@ -263,6 +262,12 @@ public class Controller extends HttpServlet {
             jspName = Common.strReleHistDelete;
             break;
          }
+         case Common.strRelePayInsertDo: {
+            ReleHistService svc = new ReleHistServiceImpl();
+            svc.relePayInsert(request, response);
+            jspName = Common.strRelePayInsertResult;
+            break;
+         } 
 
          // ---------------------------------------
          // 6 장바구니(bag - table 불필요)

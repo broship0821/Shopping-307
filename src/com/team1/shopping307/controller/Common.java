@@ -69,6 +69,7 @@ public class Common {
    public static final String strUsersDelete      = "UsersDelete";  
    public static final String strUsersDeleteDo    = strUsersDelete + strDo;  
    
+   
    // 2. login 히스토리 정보
    public static final String strLogHistSelectAll   = "LogHistSelectAll";  
    public static final String strLogHistSelectAllDo = strLogHistSelectAll + strDo;  
@@ -137,23 +138,29 @@ public class Common {
    public static final String strProdUserSelectOne = "ProdUserSelectOne";
    public static final String strProdUserSelectOneDo = strProdUserSelectOne + strDo;
    
+   
    // 5. 상품 출고 히스토리(판매 History)
-   public static final String strReleHistSelectAll   = "ReleHistSelectAll";
-   public static final String strReleHistSelectAllDo = strReleHistSelectAll + strDo;
+   public static final String strReleHistSelectAll    = "ReleHistSelectAll";
+   public static final String strReleHistSelectAllDo  = strReleHistSelectAll + strDo;
 
-   public static final String strReleHistSelectOne   = "ReleHistSelectOne";
-   public static final String strReleHistSelectOneDo = strReleHistSelectOne + strDo;
+   public static final String strReleHistSelectOne    = "ReleHistSelectOne";
+   public static final String strReleHistSelectOneDo  = strReleHistSelectOne + strDo;
    
-   public static final String strReleHistInsert      = "ReleHistInsert";
-   public static final String strReleHistInsertDo    = strReleHistInsert + strDo;
+   public static final String strReleHistInsert       = "ReleHistInsert";
+   public static final String strReleHistInsertDo     = strReleHistInsert + strDo;
    
-   public static final String strReleHistUpdate      = "ReleHistUpdate";
-   public static final String strReleHistUpdateDo    = strReleHistUpdate + strDo;
+   public static final String strReleHistUpdate       = "ReleHistUpdate";
+   public static final String strReleHistUpdateDo     = strReleHistUpdate + strDo;
+
+   public static final String strReleHistDelete       = "ReleHistDelete";
+   public static final String strReleHistDeleteDo     = strReleHistDelete + strDo;
    
-   public static final String strReleHistDelete      = "ReleHistDelete";
-   public static final String strReleHistDeleteDo    = strReleHistDelete + strDo;
+   public static final String strRelePayInsert        = "RelePayInsert";
+   public static final String strRelePayInsertDo      = strRelePayInsert + strDo;
+   public static final String strRelePayInsertResult  = strRelePayInsert + strResult;
    
-   
+
+
    // 6. 장바구니(안 만들어도 됨)
    public static final String strBagSelectAll   = "BagSelectAll";
    public static final String strBagSelectAllDo = strBagSelectAll + strDo;

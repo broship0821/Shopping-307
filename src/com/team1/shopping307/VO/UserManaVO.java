@@ -5,9 +5,8 @@ import java.util.Date;
 
 import com.team1.shopping307.Libs.Libs;
 
-public class UsersVO {
+public class UserManaVO {
    String userId;          // 아이디     
-   String pw;              // 비밀번호
    String name;            // 이름
    String phonenumber;     // 전화번호
    String role;            // 'U':일반유저, 'M':매니저, 'A':Admin
@@ -21,14 +20,6 @@ public class UsersVO {
 
    public void setUserId(String userId) {
       this.userId = userId;
-   }
-
-   public String getPw() {
-      return pw;
-   }
-
-   public void setPw(String pw) {
-      this.pw = pw;
    }
 
    public String getName() {
@@ -79,13 +70,12 @@ public class UsersVO {
       this.secession = secession;
    }
 
-   public UsersVO() {
+   public UserManaVO() {
    }
 
-   public UsersVO(String userId, String pw, String name,
+   public UserManaVO(String userId, String name,
          String phonenumber, String role, String address, String zip, String secession) {
       this.userId      = userId;     
-      this.pw          = pw;
       this.name        = name;
       this.phonenumber = phonenumber;
       this.role        = role;
@@ -97,13 +87,26 @@ public class UsersVO {
    @Override
    public String toString() {
       return "userId : " + userId     
-         + ", pw: " + pw
          + ", name: " + name
          + ", phonenumber: " + phonenumber
          + ", role: " + role
          + ", address: " + address
          + ", zip: " + zip
          + ", secession: " + secession;
+   }
+   
+   public UserManaVO loadFrom(UsersVO voSrc) {
+      return voSrc != null
+            ? new UserManaVO(
+                  voSrc.getUserId(),
+                  voSrc.getName(),
+                  voSrc.getPhonenumber(),
+                  voSrc.getRole(),
+                  voSrc.getAddress(),
+                  voSrc.getZip(),
+                  voSrc.getSecession()
+              )
+            : null;
    }
 
 }

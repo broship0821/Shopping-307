@@ -119,6 +119,7 @@ public class PayServiceImpl implements PayService {
       String status = (String) request.getParameter("status"); 
       ArrayList<PayVO> lstResult = PayDAO.getStatus(status);
       request.setAttribute("lstAll", lstResult);
+      request.setAttribute("curStatus", status);
       return lstResult;
    }
 
@@ -126,10 +127,11 @@ public class PayServiceImpl implements PayService {
    public int updateStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".updateStatus()");
       String payId = (String) request.getParameter("payId"); 
-      String curStatus = (String) request.getParameter("curStatus"); 
-      String newStatus = (String) request.getParameter("newStatus"); 
+      String curStatus = Libs.toString(request.getParameter("curStatus")); 
+      String newStatus = Libs.toString(request.getParameter("newStatus")); 
 
-      int result = PayDAO.updateStatus(Integer.valueOf(payId), curStatus, newStatus);
+      int result = curStatus.equals(newStatus) 
+            ? 1 : PayDAO.updateStatus(Integer.valueOf(payId), curStatus, newStatus);
       request.setAttribute("result", result == 1 ? "상태 변경 성공" : "상태 변경 실패");
       return result;
    }

@@ -15,17 +15,27 @@
 <script src="js/shopping307.js?ver=1"></script>
 
 <script>
-  
-  var payUpdateStatus = function(payId) {
-	  console.log(payId);
+
+  var changeCurStatus = function() {
     var curStatus = $("#status option:selected").val();
-    var newStatus = $("#newStatus option:selected").val();
-    var loc = "<%=Common.strPayUpdateStatusDo%>?payId="
-        + payId + "&curStatus=" + curStatus + "&newStatus=" + newStatus;
+    var loc = "<%=Common.strPayGetStatusDo%>?status=" + curStatus;
 
     console.log("loc=" + loc);
     location.replace(loc);
-  }
+  };
+  
+  var doPayUpdateStatus = function(payId) {
+    var curStatus = $("#status option:selected").val();
+    var newStatus = $("#newStatus option:selected").val();
+
+    if(curStatus != newStatus) {
+      var loc = "<%=Common.strPayUpdateStatusDo%>?payId="
+              + payId + "&curStatus=" + curStatus + "&newStatus=" + newStatus;
+
+      console.log("loc=" + loc);
+      location.replace(loc);
+    }
+  };
 
 </script>
 
@@ -39,16 +49,20 @@
 
   <script>
       $(function() { // = $(document).ready(function() {
-	    var status = "${requestScope.status}";
-	    console.log("status=" + status); // 외 ''일까? 갸우뚱
-	    sp307.setComboItemText("status", status);
+	    var curStatus = "${curStatus}";
+	    console.log("curStatus=" + curStatus); 
+	    sp307.setComboItemText("status", curStatus);
 	  });
   
   </script>  
 
-  <form action="<%=Common.strPayGetStatusDo %>" method="get">
+<%--  status = ${curStatus}<br /> --%>
+<%--  status = ${requestScope.curStatus}<br /> --%>
+<%--  status = <%=request.getAttribute("curStatus") %><br /> --%>
+ 
+  <div>
        현재 상태: 
-    <select name="status" id="status">
+    <select name="status" id="status" onchange="changeCurStatus();">
       <option value="입금완료" name="입금완료">입금완료</option>
       <option value="결제승인" name="결제승인">결제승인</option>
       <option value="출고"    name="출고"   >출고</option>
@@ -56,8 +70,7 @@
       <option value="환불"    name="환불"   >환불</option>
       <option value="구매완료" name="구매완료">구매완료</option>
     </select>
-    <input type="submit" value="조회 " />
-  </form> 
+  </div> 
     새 상태: 
     <select name="newStatus" id="newStatus">
       <option value="입금완료" name="입금완료">입금완료</option>
@@ -79,7 +92,7 @@
         <th align="center">구매합계</td>
         <th align="center">결제장법</td>
         <th align="center">상태</td>
-        <th align="center">다음상태</td>
+        <th align="center">상태 변경</td>
       </tr>
       
       <c:set var="items" value="${requestScope.lstAll}" />
@@ -94,7 +107,7 @@
         <td>${i.amount}</td>
         <td>${i.cashOrCard}</td>
         <td>${i.status}</td>
-        <td><input type="button" value="새 상태 적용" onClick="payUpdateStatus('${i.payId}');"></td>
+        <td><input type="button" value="상태 변경" onClick="doPayUpdateStatus('${i.payId}');"></td>
       </tr>
       </c:forEach>
       </c:if>

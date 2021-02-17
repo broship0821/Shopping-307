@@ -108,6 +108,21 @@ public class PayDAO {
       System.out.println(className + ".insert()");
       long result = 0;
       Connection conn = Libs.connect();
+      
+      if(conn != null) {
+         result = insert(conn, vo, false);
+         Libs.close(conn);
+      }
+      
+      return result;
+   }
+
+   public static long insert(Connection conn, PayVO vo, boolean showMsg) {
+      if(showMsg) {
+         System.out.println(className + ".insert()");
+      }
+      
+      long result = 0;
       PreparedStatement ps = null;
       
       if(conn != null) {
@@ -156,7 +171,7 @@ public class PayDAO {
             ex.printStackTrace();
          }
          finally {
-            Libs.closeDb(conn, ps);
+            Libs.close(ps);
          }
       }
       

@@ -126,7 +126,7 @@ public class PayServiceImpl implements PayService {
    public int setNextStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".setStatus()");
       String payId = (String) request.getParameter("payId"); 
-      String status = (String) request.getParameter("payId"); 
+      String status = (String) request.getParameter("status"); 
       int result = PayDAO.setNextStatus(Integer.valueOf(payId), status);
       request.setAttribute("result", result == 1 ? "상태 변경 성공" : "상태 변경 실패");
       return result;

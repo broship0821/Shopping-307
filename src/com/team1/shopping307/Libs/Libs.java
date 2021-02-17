@@ -85,8 +85,12 @@ public class Libs {
 
    
    private static final String[] arrPayStatus = {
-         // 0       1         2      3      4     5
-         "입금완료", "결제승인", "출고", "교환", "환불", "구매완료"
+         Common.strPayStatusPayed,      // "입금완료" 
+         Common.strPayStatusApproval,   // "결제승인"
+         Common.strPayStatusRelease,    // "출고", 
+         Common.strPayStatusExcange,    // "교환"
+         Common.strPayStatusRefund,     // "환불"
+         Common.strPayStatusDone        // "구매완료"
    };
    
    public static String getPayStatusText(int idx) {
@@ -111,13 +115,15 @@ public class Libs {
       int len = arrStatus.length;
       int len2 = len - 1;
       
-      for(int i = 0; i < len; i++) {
-         if(arrStatus[i].compareToIgnoreCase(status) == 0) {
-            if(i == len2) {
-               result = Common.strEnd;
-            }
-            else {
-               result = arrStatus[i + 1];
+      if(status != null) {
+         for(int i = 0; i < len; i++) {
+            if(Libs.compareToIgnoreCase(status, arrStatus[i]) == 0) {
+               if(i == len2) {
+                  result = Common.strEnd;
+               }
+               else {
+                  result = arrStatus[i + 1];
+               }
             }
          }
       }
@@ -129,6 +135,11 @@ public class Libs {
    //================================================
    // 2. File 관련 
    //================================================
+   
+   private static int compareToIgnoreCase(String comp1, String comp2) {
+      return comp1 != null && comp2 != null
+         ? comp1.compareToIgnoreCase(comp2) : 0; 
+   }
 
    // 기능: path에서 확장자를 응답한다.
    // 테스트코드 및 결과

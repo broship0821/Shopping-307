@@ -9,11 +9,24 @@ public class Common {
    //----------
    // 사용자 구분
    //----------
-   public static final String strAdmin = "A";              // Admin(Super user)
-   public static final String strManager = "M";            // Manager(쇼핑몰 관리자)
-   public static final String strUser = "U";               // User: 일반 사용자(client)
+   public static final String strAdmin     = "A";              // Admin(Super user)
+   public static final String strManager   = "M";            // Manager(쇼핑몰 관리자)
+   public static final String strUser      = "U";               // User: 일반 사용자(client)
    public static final String strAnynimous = "Y";          // 익명(anonymous) 사용자(로긴하지 않은 사용자)
 
+   
+   //----------
+   // 상태 상수
+   //----------
+   
+   public static final String strPayStatusPayed     = "입금완료";
+   public static final String strPayStatusApproval  = "결제승인";
+   public static final String strPayStatusRelease   = "출고";
+   public static final String strPayStatusExcange   = "교환";
+   public static final String strPayStatusRefund    = "환불";
+   public static final String strPayStatusDone      = "구매완료";
+
+   
    //----------
    // 기타 상수
    //----------

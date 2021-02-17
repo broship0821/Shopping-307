@@ -50,11 +50,14 @@ var getPayStatus = function() {
         <th align="center">상태</td>
         <th align="center">다음상태</td>
       </tr>
-      <c:set var="cmd=" value="<%=Common.strPaySetNextStatusDo%>" />
+
+      <% pageContext.setAttribute("cmd", Common.strPaySetNextStatusDo); %>
+      <% pageContext.setAttribute("status1", Common.strPayStatusPayed); %>
+      
       <c:set var="items" value="${requestScope.lstAll}" />
       <c:if test="${not empty items}">
       <c:forEach var="i" items="${items}">
-      <c:set var="param1" value="${cmd}?payId=${i.payId}" />
+      <c:set var="param1" value="${cmd}?payId=${i.payId}&status=${status1}" />
       <tr>
         <td>${i.payId}</td>
         <td>${i.buyerId}</td>

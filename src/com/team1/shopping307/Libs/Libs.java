@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Libs {
    // 1. DB 관련 
    //================================================
    
+   // 기능: Oracle DBMS에 hr 계정으로 연결하기.
    public static Connection connect() {
       System.out.println("connect()");
       Connection conn = null;
@@ -33,6 +35,24 @@ public class Libs {
       catch(Exception ex) {
          ex.printStackTrace();
          close(conn);
+      }
+      
+      return conn;
+   }
+   
+   // 기능: Oracle DBMS에 hr 계정으로 Manual Commit 상태로 연결하기. 
+   public static Connection connectWithManualCommit() {
+      Connection conn = connect();
+
+      if(conn != null) {
+         try {
+            conn.setAutoCommit(false);
+         } 
+         catch (SQLException e) {
+            e.printStackTrace();
+            close(conn);
+            conn = null;
+         }
       }
       
       return conn;

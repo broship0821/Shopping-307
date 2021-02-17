@@ -319,7 +319,7 @@ public class PayDAO {
    }
 
    public static int setNextStatus(long payId, String status) {
-      System.out.println(className + ".setStatus(" + payId + ", " + status + ")");
+      System.out.println(className + ".setNextStatus(" + payId + ", " + status + ")");
       int result = 0;
       Connection conn = Libs.connect();
       
@@ -327,17 +327,21 @@ public class PayDAO {
          PreparedStatement ps = null;
 
          String sql = "UPDATE " + tableName
-               + "   SET status = ?"         
+               + " SET status = ?"         
+               + "   , u_date = SYSDATE"         
                + " WHERE pay_id = ? AND status = ?";
+         String nextStatus = Libs.getNextPayStatus(status);
+         System.out.println("next stats is '" + nextStatus + "'");
 
          try {
             ps = conn.prepareStatement(sql);
             int idx = 0;
-            ps.setString(++idx, status);
+            ps.setString(++idx, nextStatus);
             ps.setLong(++idx, payId);
-            ps.setString(++idx, Libs.getNextPayStatus(status));
+            ps.setString(++idx, status);
 
             result = ps.executeUpdate();
+            //System.out.println("result=" + result);
          }
          catch (Exception ex) {
             ex.printStackTrace();

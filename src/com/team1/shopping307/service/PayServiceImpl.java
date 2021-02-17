@@ -124,7 +124,7 @@ public class PayServiceImpl implements PayService {
 
    @Override
    public int setNextStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      System.out.println(className + ".setStatus()");
+      System.out.println(className + ".setNextStatus()");
       String payId = (String) request.getParameter("payId"); 
       String status = (String) request.getParameter("status"); 
       int result = PayDAO.setNextStatus(Integer.valueOf(payId), status);

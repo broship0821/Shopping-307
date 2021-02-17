@@ -123,11 +123,13 @@ public class PayServiceImpl implements PayService {
    }
 
    @Override
-   public int setNextStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      System.out.println(className + ".setNextStatus()");
+   public int updateStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      System.out.println(className + ".updateStatus()");
       String payId = (String) request.getParameter("payId"); 
-      String status = (String) request.getParameter("status"); 
-      int result = PayDAO.setNextStatus(Integer.valueOf(payId), status);
+      String curStatus = (String) request.getParameter("curStatus"); 
+      String newStatus = (String) request.getParameter("newStatus"); 
+
+      int result = PayDAO.updateStatus(Integer.valueOf(payId), curStatus, newStatus);
       request.setAttribute("result", result == 1 ? "상태 변경 성공" : "상태 변경 실패");
       return result;
    }

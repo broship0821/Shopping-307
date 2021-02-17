@@ -15,18 +15,40 @@
 <script src="js/shopping307.js?ver=1"></script>
 
 <script>
-var getPayStatus = function() {
-	"location.href='<%=Common.strPayGetStatusDo %>'"
-}
+  
+  var payUpdateStatus = function(payId) {
+	  console.log(payId);
+    var curStatus = $("#status option:selected").val();
+    var newStatus = $("#newStatus option:selected").val();
+    var loc = "<%=Common.strPayUpdateStatusDo%>?payId="
+        + payId + "&curStatus=" + curStatus + "&newStatus=" + newStatus;
+
+    console.log("loc=" + loc);
+    location.replace(loc);
+  }
+
 </script>
 
 </head>
 <body>
   <%request.setCharacterEncoding("UTF-8");%>
   <%response.setCharacterEncoding("UTF-8");%>
+
+<%-- <% pageContext.setAttribute("cmd", Common.strPayUpdateStatusDo); %> --%>
+<%-- <% pageContext.setAttribute("curStatus", Common.strPayStatusPayed); %> --%>
+
+  <script>
+      $(function() { // = $(document).ready(function() {
+	    var status = "${requestScope.status}";
+	    console.log("status=" + status); // 외 ''일까? 갸우뚱
+	    sp307.setComboItemText("status", status);
+	  });
   
+  </script>  
+
   <form action="<%=Common.strPayGetStatusDo %>" method="get">
-    <select name="status">
+       현재 상태: 
+    <select name="status" id="status">
       <option value="입금완료" name="입금완료">입금완료</option>
       <option value="결제승인" name="결제승인">결제승인</option>
       <option value="출고"    name="출고"   >출고</option>
@@ -34,8 +56,17 @@ var getPayStatus = function() {
       <option value="환불"    name="환불"   >환불</option>
       <option value="구매완료" name="구매완료">구매완료</option>
     </select>
-    <input type="submit" value="조회" />
-  </form>
+    <input type="submit" value="조회 " />
+  </form> 
+    새 상태: 
+    <select name="newStatus" id="newStatus">
+      <option value="입금완료" name="입금완료">입금완료</option>
+      <option value="결제승인" name="결제승인">결제승인</option>
+      <option value="출고"    name="출고"   >출고</option>
+      <option value="교환"    name="교환"   >교환</option>
+      <option value="환불"    name="환불"   >환불</option>
+      <option value="구매완료" name="구매완료">구매완료</option>
+    </select>
     
   <div>
     <table border="1">
@@ -50,14 +81,10 @@ var getPayStatus = function() {
         <th align="center">상태</td>
         <th align="center">다음상태</td>
       </tr>
-
-      <% pageContext.setAttribute("cmd", Common.strPaySetNextStatusDo); %>
-      <% pageContext.setAttribute("status1", Common.strPayStatusPayed); %>
       
       <c:set var="items" value="${requestScope.lstAll}" />
       <c:if test="${not empty items}">
       <c:forEach var="i" items="${items}">
-      <c:set var="param1" value="${cmd}?payId=${i.payId}&status=${status1}" />
       <tr>
         <td>${i.payId}</td>
         <td>${i.buyerId}</td>
@@ -67,7 +94,7 @@ var getPayStatus = function() {
         <td>${i.amount}</td>
         <td>${i.cashOrCard}</td>
         <td>${i.status}</td>
-        <td><input type="button" value="다음상태로 변경" onClick="location='${param1}'"></td>
+        <td><input type="button" value="새 상태 적용" onClick="payUpdateStatus('${i.payId}');"></td>
       </tr>
       </c:forEach>
       </c:if>

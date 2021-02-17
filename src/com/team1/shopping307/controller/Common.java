@@ -197,9 +197,9 @@ public class Common {
    public static final String strPayGetStatusDo         = strPayGetStatus + strDo;
    public static final String strPayGetStatusResult     = strPayGetStatus + strResult;
 
-   public static final String strPaySetNextStatus       = "PaySetNextStatus";
-   public static final String strPaySetNextStatusDo     = strPaySetNextStatus + strDo;
-   public static final String strPaySetNextStatusResult = strPaySetNextStatus + strResult;
+   public static final String strPayUpdateStatus       = "PayUpdateStatus";
+   public static final String strPayUpdateStatusDo     = strPayUpdateStatus + strDo;
+   public static final String strPayUpdateStatusResult = strPayUpdateStatus + strResult;
 
 
    // 8. 후기 정보

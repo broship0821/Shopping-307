@@ -347,10 +347,10 @@ public class Controller extends HttpServlet {
             jspName = Common.strPayGetStatus;
             break;
          }
-         case Common.strPaySetNextStatusDo: {
+         case Common.strPayUpdateStatusDo: {
             PayService svc = new PayServiceImpl();
-            svc.setNextStatus(request, response);
-            jspName = Common.strPaySetNextStatusResult;
+            svc.updateStatus(request, response);
+            jspName = Common.strPayUpdateStatusResult;
             break;
          }
 

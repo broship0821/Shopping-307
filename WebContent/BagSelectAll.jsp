@@ -87,9 +87,8 @@
 	    </div>
 	    
 	    <div id="btns">
-	    	<input type="hidden" name="productId" value="${bagVO.getProductID()}"><!-- 상품아이디는 적어놓진 않지만 구매때 보내야됨 -->
-	        <input type="submit" value="선택상품주문" class="btn" formaction="">
-	        <input type="submit" value="전체상품주문" class="btn" formaction="">
+	        <!-- 시간이 되면 구현 <input type="submit" value="선택상품주문" class="btn" formaction="ReleHistInsert.do"> -->
+	        <input type="submit" value="전체상품주문" class="btn" formaction="ReleHistInsert.do">
 	    </div>
     </form>
 </body>

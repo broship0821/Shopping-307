@@ -1,5 +1,7 @@
+<%@page import="com.team1.shopping307.controller.Common"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +13,7 @@
 <body>
     <h1 id="title">쇼핑 307 주문하기</h1>
     
-    <!-- 나중에 jstl forEach로 구현하기 -->
+    
     <table id="payTable">
         <tr>
             <td><input type="checkbox" name="" id="selectAllBox"></td>

@@ -39,7 +39,7 @@ public class BagServiceImpl implements BagService {
 		bagVO.setProdPrice(Integer.parseInt(request.getParameter("prodPrice")));
 		bagVO.setProdCnt(Integer.parseInt(request.getParameter("prodCnt")));
 		bagVO.setImage1(request.getParameter("image1"));
-		bagVO.setProductID(request.getParameter("productID"));
+		bagVO.setProductID(request.getParameter("productId"));
 		bagList.add(bagVO);
 		
 		session.setAttribute("bagList", bagList);

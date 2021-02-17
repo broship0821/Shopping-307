@@ -34,10 +34,10 @@ pageEncoding="UTF-8"%>
 	<script>
       console.log("2. [[${item.category}]]");
       console.log("2. [[${item.productName}]]");
+      console.log("2. [[${item.productId}]]");
     </script>
     
 	<form name="prodUpdate" method="post" >
-	    <input type="hidden" name="productId" value="${item.productId}" />
 		<table border="1">
 			<tr>
                 <td align="center">상품사진</td>
@@ -66,7 +66,7 @@ pageEncoding="UTF-8"%>
                 	<input type="hidden" name="prodName" value="${item.productName}">
                     <input type="hidden" name="prodPrice" value="${item.price}">
                     <input type="submit" value="장바구니에 담기" formaction="BagInsert.do" /> 
-                    <input type="submit" value="결제하기" formaction="#" /><!-- 아직 구현 X --> 
+                    <!-- <input type="submit" value="결제하기" formaction="#" />아직 구현 X  -->
                 </td>
             </tr>
 		</table>

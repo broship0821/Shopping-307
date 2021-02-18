@@ -1,7 +1,6 @@
 package com.team1.shopping307.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,15 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.team1.shopping307.DAO.CateDAO;
-import com.team1.shopping307.DAO.ProdDAO;
 import com.team1.shopping307.Libs.Libs;
-import com.team1.shopping307.VO.CateVO;
-import com.team1.shopping307.VO.ProdVO;
 import com.team1.shopping307.service.BagService;
 import com.team1.shopping307.service.BagServiceImpl;
 import com.team1.shopping307.service.CateService;
 import com.team1.shopping307.service.CateServiceImpl;
+import com.team1.shopping307.service.ExchService;
+import com.team1.shopping307.service.ExchServiceImpl;
 import com.team1.shopping307.service.LogHistService;
 import com.team1.shopping307.service.LogHistServiceImpl;
 import com.team1.shopping307.service.PayService;
@@ -56,6 +53,7 @@ public class Controller extends HttpServlet {
       String strUri = request.getRequestURI(); // project명/*.do
       String strPath = request.getContextPath(); // project명
       String strMap = strUri.substring(strPath.length() + 1);
+      String contentType = request.getContentType();
       String strSessionId = session.getId();
       String jspName = null;
 
@@ -64,6 +62,7 @@ public class Controller extends HttpServlet {
       System.out.println("> Uri: " + strUri);
       System.out.println("> Path:" + strPath);
       System.out.println("> 요청주소: " + strMap);
+      System.out.println("> ContentType: " + contentType);
       System.out.println("> session ID.: " + strSessionId);
 
       try {
@@ -396,7 +395,38 @@ public class Controller extends HttpServlet {
          // ---------------------------------------
          // 9. 교환/환불 정보(exchange)
          // ---------------------------------------
+         case Common.strExchSelectAllDo: {
+            ExchService svc = new ExchServiceImpl();
+            svc.selectAll(request, response);
+            jspName = Common.strExchSelectAll;
+            break;
+         }
+         case Common.strExchSelectOneDo: {
+            ExchService svc = new ExchServiceImpl();
+            svc.selectOne(request, response);
+            jspName = Common.strExchSelectOne;
+            break;
+         }
+         case Common.strExchInsertDo: {
+            ExchService svc = new ExchServiceImpl();
+            svc.insert(request, response);
+            jspName = Common.strExchInsertResult;
+            break;
+         }
+         case Common.strExchUpdateDo: {
+            ExchService svc = new ExchServiceImpl();
+            svc.update(request, response);
+            jspName = Common.strExchUpdateResult;
+            break;
+         }
+         case Common.strExchDeleteDo: {
+            ExchService svc = new ExchServiceImpl();
+            svc.delete(request, response);
+            jspName = Common.strExchDeleteResult;
+            break;
+         }
 
+         
          // ---------------------------------------
          // 예제. TelInfo
          // ---------------------------------------

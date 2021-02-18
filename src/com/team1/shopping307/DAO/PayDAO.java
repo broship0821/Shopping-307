@@ -142,7 +142,7 @@ public class PayDAO {
          try {
             ps = conn.prepareStatement(sql);
             int idx = 0;
-            vo.setPayId(getNewPayId(conn));
+            vo.setPayId(Long.valueOf(Libs.getNewId(conn, "", "seq_pay", "pay_id")));
             System.out.println(vo);
 
             ps.setLong(++idx, vo.getPayId());
@@ -173,34 +173,6 @@ public class PayDAO {
          finally {
             Libs.close(ps);
          }
-      }
-      
-      return result;
-   }
-
-   private static long getNewPayId(Connection conn) {
-      // System.out.println(className + ".getNewPayId()");
-      long result = 0;
-
-      if(conn != null) {
-         PreparedStatement ps = null;
-         ResultSet rs = null;
-         String sql = "SELECT seq_pay.NEXTVAL as pay_id FROM DUAL";
-         
-         try {
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            
-            if(rs.next()) {
-               result = rs.getLong("pay_id");
-            }      
-         }
-         catch (Exception ex) {
-            ex.printStackTrace();
-         }
-         
-         Libs.close(rs);
-         Libs.close(ps);
       }
       
       return result;

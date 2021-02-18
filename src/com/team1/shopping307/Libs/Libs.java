@@ -103,6 +103,36 @@ public class Libs {
       }
    }
 
+   // 기능: Sequence로 부터 다음 값을 읽어온다.
+   // 사용법: String exchaneId = Libs.getNewId(conn, "seq_Exch", "exchange_id");
+   public static String getNewId(Connection conn, String prefix, String seqName, String colName) {
+      // System.out.println(className + ".getNewexchangeId()");
+      String result = null;
+
+      if(conn != null) {
+         PreparedStatement ps = null;
+         ResultSet rs = null;
+         String sql = "SELECT " + seqName + ".NEXTVAL as " + colName + " FROM DUAL";
+         
+         try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            if(rs.next()) {
+               result = prefix + rs.getString(colName);
+            }      
+         }
+         catch (Exception ex) {
+            ex.printStackTrace();
+         }
+         
+         Libs.close(rs);
+         Libs.close(ps);
+      }
+      
+      return result;
+   }
+
    
    private static final String[] arrPayStatus = {
          Common.strPayStatusPayed,      // "입금완료" 

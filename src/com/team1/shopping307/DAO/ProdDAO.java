@@ -133,7 +133,7 @@ public class ProdDAO {
          try {
             ps = conn.prepareStatement(sql);
             int idx = 0;
-            vo.setProductId(getNewProductId(conn));
+            vo.setProductId(Libs.getNewId(conn, "PROD_", "seq_prod", "product_id"));
             System.out.println(vo);
 
             ps.setString(++idx, vo.getProductId());
@@ -161,34 +161,6 @@ public class ProdDAO {
          finally {
             Libs.closeDb(conn, ps);
          }
-      }
-      
-      return result;
-   }
-
-   private static String getNewProductId(Connection conn) {
-      // System.out.println(className + ".getNewProductId()");
-      String result = null;
-
-      if(conn != null) {
-         PreparedStatement ps = null;
-         ResultSet rs = null;
-         String sql = "SELECT 'PROD_' || seq_prod.NEXTVAL as product_id FROM DUAL";
-         
-         try {
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            
-            if(rs.next()) {
-               result = rs.getString("product_id");
-            }      
-         }
-         catch (Exception ex) {
-            ex.printStackTrace();
-         }
-         
-         Libs.close(rs);
-         Libs.close(ps);
       }
       
       return result;

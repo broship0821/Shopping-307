@@ -233,12 +233,15 @@ public class Common {
    public static final String strExchSelectOne   = "ExchSelectOne";
    public static final String strExchSelectOneDo = strExchSelectOne + strDo;
 
-   public static final String strExchInsert      = "ExchInsert";
-   public static final String strExchInsertDo    = strExchInsert + strDo;
+   public static final String strExchInsert       = "ExchInsert";
+   public static final String strExchInsertDo     = strExchInsert + strDo;
+   public static final String strExchInsertResult = strExchInsert + strResult;
    
-   public static final String strExchUpdate      = "ExchUpdate";
-   public static final String strExchUpdateDo    = strExchUpdate + strDo;
+   public static final String strExchUpdate       = "ExchUpdate";
+   public static final String strExchUpdateDo     = strExchUpdate + strDo;
+   public static final String strExchUpdateResult = strExchUpdate + strResult;
 
-   public static final String strExchDelete      = "ExchDelete";
-   public static final String strExchDeleteDo    = strExchDelete + strDo;
+   public static final String strExchDelete       = "ExchDelete";
+   public static final String strExchDeleteDo     = strExchDelete + strDo;
+   public static final String strExchDeleteResult = strExchDelete + strResult;
 }

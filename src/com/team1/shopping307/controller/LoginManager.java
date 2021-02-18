@@ -12,15 +12,8 @@ public class LoginManager {
 
    // static 초기화 블럭
    static {
-      String userId = "yskim";
-      String name = "ys김";
-      String phonenumber = "01011111111";
-      String role = "A";
-      String address = "서울시 서울특별시 강남구 반포동 123-4";
-      String zip = "11111";
-      String secession = "N";
-            
-      lstUsers.add(new UserManaVO(userId, name, phonenumber, role, address, zip, secession));
+      // 임시로 Manager를 만들어 등록함
+      lstUsers.add(LoginManagerTemp.createTempUser());
    }
 
    public static UserManaVO getUserInfo(HttpServletRequest request) {

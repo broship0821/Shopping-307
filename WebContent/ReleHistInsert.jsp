@@ -59,32 +59,32 @@
 	    <table id="orderInfoTable">
 	        <tr>
 	            <td style="width: 10%;">받으시는 분</td>
-	            <td><input type="text" name="name" id=""></td>
+	            <td><input type="text" name="name" id="" value="${u.getName() }"></td>
 	        </tr>
 	        <tr>
 	            <td style="width: 10%;">우편번호</td>
-	            <td><input type="text" name="zip" id=""></td>
+	            <td><input type="text" name="zip" id="" value="${u.getZip() }"></td>
 	        </tr>
 	        <tr>
 	            <td style="width: 10%;">주소</td>
 	            <td>
-	                <input type="text" name="address" id="">
+	                <input type="text" name="address" id="" value="${u.getAddress() }">
 	            </td>
 	        </tr>
 	        <tr>
 	            <td style="width: 10%;">휴대전화</td>
-	            <td><input type="tel" name="tel" id=""></td>
+	            <td><input type="tel" name="tel" id="" value="${u.getPhonenumber() }"></td>
 	        </tr>
 	        <tr>
 	            <td style="width: 10%;">결제수단</td>
 	            <td>
-	                <input type="radio" name="cashOrCard" id="" value="C" >카드&nbsp;&nbsp;&nbsp;
+	                <input type="radio" name="cashOrCard" id="" value="C" checked="checked" >카드&nbsp;&nbsp;&nbsp;
 	                <input type="radio" name="cashOrCard" id="" value="S" >현금
 	            </td>
 	        </tr>
 	        <tr>
 	        	<td style="width: 10%;">카드번호</td>
-	        	<td><input type="text" name="cardNO" id=""></td>
+	        	<td><input type="text" name="cardNO" id="" value="44444"></td><!-- 임시로 해둠, 나중에 지우기 -->
 	        </tr>
 	    </table>
 	    

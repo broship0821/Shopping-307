@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-연습삼아 받아보기<br>
-상품정보: ${param.ProductID }<br>
-${param.name }<br>
-${param.zip }<br>
-${param.address }<br>
-${param.tel }<br>
-${param.cashOrCard }<br>
-${param.cardNO }<br>
+	<h1>
+		<p align="center">쇼핑 307</p>
+	</h1>
+${param.name }님, 결제가 완료되었습니다. 감사합니다.<br>
+<br><br><br>
+<a href="ProdUserSelectAll.do"><input type="button" value="다시 상품페이지로"></a>
 </body>
 </html>

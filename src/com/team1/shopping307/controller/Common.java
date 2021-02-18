@@ -18,7 +18,8 @@ public class Common {
    //----------
    // 상태 상수
    //----------
-   
+
+   // 결제 상태
    public static final String strPayStatusPayed     = "입금완료";
    public static final String strPayStatusApproval  = "결제승인";
    public static final String strPayStatusRelease   = "출고";
@@ -26,7 +27,21 @@ public class Common {
    public static final String strPayStatusRefund    = "환불";
    public static final String strPayStatusDone      = "구매완료";
 
+   // 상품 출고 상태
+   public static final String strReleStatusPayed    = "입금완료";
+   public static final String strReleStatusApproval = "결제승인";
+   public static final String strReleStatusRelease  = "출고";
+   public static final String strReleStatusExcange  = "교환";
+   public static final String strReleStatusRefund   = "환불";
+   public static final String strReleStatusDone     = "구매완료";
    
+   // 교환/환불 상태
+   public static final String strExchStatusExchangeRequest = "교환신청";
+   public static final String strExchStatusRefundRequest   = "환불신청";
+   public static final String strExchStatusExchangeDone    = "교환완료";
+   public static final String strExchStatusRefundDone      = "환불완료";
+
+
    //----------
    // 기타 상수
    //----------

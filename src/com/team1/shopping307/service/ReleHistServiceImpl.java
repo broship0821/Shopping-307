@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.team1.shopping307.DAO.RelePayDAO;
-import com.team1.shopping307.VO.PayVO;
 import com.team1.shopping307.VO.ReleHistVO;
 import com.team1.shopping307.VO.UserManaVO;
 import com.team1.shopping307.controller.LoginManager;
@@ -57,6 +56,8 @@ public class ReleHistServiceImpl implements ReleHistService {
 		HttpSession session = request.getSession();
 		if (result==1)//db처리가 모두 성공일 경우 장바구니 세션 삭제
 			session.setAttribute("bagList", null);
+		String pay = (result==1)?"성공":"실패";
+		request.setAttribute("p", pay);
 
 		return result;
 	}

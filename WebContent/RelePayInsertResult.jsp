@@ -10,7 +10,7 @@
 	<h1>
 		<p align="center">쇼핑 307</p>
 	</h1>
-${param.name }님, 결제가 완료되었습니다. 감사합니다.<br>
+결제 ${p}<br>
 <br><br><br>
 <a href="ProdUserSelectAll.do"><input type="button" value="다시 상품페이지로"></a>
 </body>

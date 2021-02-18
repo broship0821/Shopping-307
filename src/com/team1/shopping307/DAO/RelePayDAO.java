@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.VO.PayVO;
-import com.team1.shopping307.VO.ProdVO;
 import com.team1.shopping307.VO.ReleHistVO;
 import com.team1.shopping307.controller.LoginManager;
 
@@ -83,6 +81,9 @@ public class RelePayDAO {
 			payVO.setStatus(STATUS);
 
 			result2 = new PayDAO().insert(conn, payVO, true);
+			//에러시 롤백
+			if(result2==0) conn.rollback();
+			
 			//마지막에 커밋
 			conn.commit();
 			conn.setAutoCommit(true);
@@ -100,7 +101,7 @@ public class RelePayDAO {
 	}
 
 	// product 테이블에서 select로 필요한 정보 추출
-	public static ReleHistVO getProdInfo(Connection conn, String prodID) throws SQLException {
+	public static ReleHistVO getProdInfo(Connection conn, String prodID) {
 		System.out.println(className + ".getProdInfo()");
 		ReleHistVO vo = new ReleHistVO();
 
@@ -110,17 +111,22 @@ public class RelePayDAO {
 			String sql = "SELECT product_id,product_name,category,is_new,standard,price FROM product "
 					+ "WHERE product_id=?";
 
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, prodID);
-			rs = ps.executeQuery();
-
-			if (rs.next()) {
-				vo.setProdId(rs.getString("product_id"));
-				vo.setProdName(rs.getString("product_name"));
-				vo.setCaregory(rs.getString("category"));
-				vo.setIsNew(rs.getString("is_new"));
-				vo.setStandard(rs.getString("standard"));
-				vo.setPrice(rs.getLong("price"));
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, prodID);
+				rs = ps.executeQuery();
+				
+				if (rs.next()) {
+					vo.setProdId(rs.getString("product_id"));
+					vo.setProdName(rs.getString("product_name"));
+					vo.setCaregory(rs.getString("category"));
+					vo.setIsNew(rs.getString("is_new"));
+					vo.setStandard(rs.getString("standard"));
+					vo.setPrice(rs.getLong("price"));
+				}
+			} catch (Exception e) {
+				System.out.println(className + ".getProdInfo() 에러!");
+				e.printStackTrace();
 			}
 			Libs.close(rs);
 			Libs.close(ps);
@@ -129,7 +135,7 @@ public class RelePayDAO {
 	}
 
 	// release_history에 값 저장하기
-	public static long insert(Connection conn, ReleHistVO vo) throws SQLException {
+	public static long insert(Connection conn, ReleHistVO vo) {
 		System.out.println(className + ".insert()");
 		long result = 0;
 		PreparedStatement ps = null;
@@ -143,25 +149,30 @@ public class RelePayDAO {
 			 */
 			String sql = "INSERT INTO release_history(release_id, user_id, product_id, product_name, category, is_new, standard, price, status)"
 					+ " VALUES(?,?,?,?,?,?,?,?,?)";
-			// seq_rele.NEXTVAL,'입금완료' 바꿔야됨
-			ps = conn.prepareStatement(sql);
-			int idx = 0;
-			vo.setReleId(Long.valueOf(Libs.getNewId(conn, "", "seq_rele", "release_id")));
-
-			ps.setLong(++idx, vo.getReleId());
-			ps.setString(++idx, vo.getUserId());
-			ps.setString(++idx, vo.getProdId());
-			ps.setString(++idx, vo.getProdName());
-			ps.setString(++idx, vo.getCaregory());
-			ps.setString(++idx, vo.getIsNew());
-			ps.setString(++idx, vo.getStandard());
-			ps.setLong(++idx, vo.getPrice());
-			ps.setString(++idx, STATUS);
-
-			int rtv = ps.executeUpdate();
-
-			if (rtv == 1) {// 성공시
-				result = vo.getReleId();
+			try {
+				ps = conn.prepareStatement(sql);
+				int idx = 0;
+				vo.setReleId(Long.valueOf(Libs.getNewId(conn, "", "seq_rele", "release_id")));
+				
+				ps.setLong(++idx, vo.getReleId());
+				ps.setString(++idx, vo.getUserId());
+				ps.setString(++idx, vo.getProdId());
+				ps.setString(++idx, vo.getProdName());
+				ps.setString(++idx, vo.getCaregory());
+				ps.setString(++idx, vo.getIsNew());
+				ps.setString(++idx, vo.getStandard());
+				ps.setLong(++idx, vo.getPrice());
+				ps.setString(++idx, STATUS);
+				
+				int rtv = ps.executeUpdate();
+				
+				if (rtv == 1) {// 성공시
+					result = vo.getReleId();
+				}
+				
+			} catch (Exception e) {
+				System.out.println(className + ".insert() 에러!");
+				e.printStackTrace();
 			}
 			Libs.close(ps);
 		}

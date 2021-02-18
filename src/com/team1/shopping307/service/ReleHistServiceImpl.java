@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.team1.shopping307.DAO.RelePayDAO;
 import com.team1.shopping307.VO.PayVO;
 import com.team1.shopping307.VO.ReleHistVO;
+import com.team1.shopping307.controller.LoginManager;
 
 public class ReleHistServiceImpl implements ReleHistService {
 
@@ -59,17 +60,17 @@ public class ReleHistServiceImpl implements ReleHistService {
 	   String cardNo = request.getParameter("cardNO");					//카드번호
 	   
 	   /* 하나의 트렌젝션으로 처리해야됨
-		 1. 장바구니 세션 null로 바꾸기
+		 1. 장바구니 세션 null로 바꾸기 -> db 처리가 모두 성공일 경우에만
 		 2. 먼저 select로 필요한 Product 정보 추출(product_name,category,is_new,standard,price)
 		 3. select로 꺼내온 Product 정보 + 사용자 입력 정보로 상품별로 각각 release_history에 insert
 		 4. select로 꺼내온 Product 정보 + 사용자 입력 정보로 pay_info에 insert
 		 5. 맨 마지막에 커밋
 		 */
 	   
-	   // 1. 장바구니 세션 null로 바꾸기
-	   HttpSession session = request.getSession();
-		session.setAttribute("bagList", null);
-		
+	   //현재 로그인 사용자 정보 가져오기
+	   String userID = LoginManager.getUserInfo(request).getUserId();
+	   
+	   
 		//2~4 같은 for문 안에서 처리
 		RelePayDAO dao = new RelePayDAO();
 		//pay_info에 필요한 items_info, amount
@@ -80,20 +81,18 @@ public class ReleHistServiceImpl implements ReleHistService {
 		for(int i=0;i<ProdIDs.length;i++) {
 			//2. 먼저 select로 필요한 Product 정보 추출
 			ReleHistVO vo = dao.getProdInfo(ProdIDs[i]);
-			//일단 구매한 유저는 "peter"로 통일 -> 로그인 기능 구현하면 로그인된 유저로 사용
-			vo.setUserId("peter");
+			//구매한 유저는 로그인된 유저
+			vo.setUserId(userID);
 			//3. 상품별로 각각 release_history에 insert(갯수마다 하나씩 insert)
 			int size = Integer.parseInt(cnt[i]);//갯수
 			for(int j=0;j<size;j++) {
 				result1 = dao.insert(vo);
+				if(result1!=1) break;
 			}
 			//4번에 필요한 items_info, amount 값 넣기
 			itemsInfo.append(vo.getProdId()+"-");
 			itemsInfo.append(vo.getProdName()+"X");
 			itemsInfo.append(size+", ");
-			System.out.println("****************************************");
-			System.out.println(itemsInfo.toString());
-			System.out.println("****************************************");
 			amount += vo.getPrice()*size;//물품금액*갯수
 		}
 		//4. pay_info에 insert
@@ -103,8 +102,8 @@ public class ReleHistServiceImpl implements ReleHistService {
 		payVO.setSellerPhone("0");
 		payVO.setSellerZip("00000");
 		payVO.setSellerAddress("undefined");
-		//일단 구매한 유저는 "peter"로 통일 -> 로그인 기능 구현하면 로그인된 유저로 사용
-		payVO.setBuyerId("peter");
+		//구매한 유저는 로그인된 유저
+		payVO.setBuyerId(userID);
 		payVO.setBuyerName(name);
 		payVO.setBuyerPhone(tel);
 		payVO.setBuyerZip(zip);
@@ -114,10 +113,14 @@ public class ReleHistServiceImpl implements ReleHistService {
 		payVO.setCashOrCard(cashOrCard);
 		payVO.setCardNo(cardNo);
 		payVO.setStatus("입금완료");
-		System.out.println("****************************************");
-		System.out.println(payVO);
-		System.out.println("****************************************");
-		int result2 = dao.insertPay(payVO);
+		int result2 = 0;
+		if(result1==1) //우선 release_history가 insert 됐는지 체크
+			result2 = dao.insertPay(payVO);
+		
+		// 1. 장바구니 세션 null로 바꾸기
+	    HttpSession session = request.getSession();
+	    if(result1==1 && result2==1)
+	    	session.setAttribute("bagList", null);
 	   
 		return 0;
 	}

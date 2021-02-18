@@ -15,17 +15,7 @@ import com.team1.shopping307.VO.ReleHistVO;
 public class RelePayDAO {
 	private static String className = "RelePayDAO";
 	// 하나의 커넥션을 사용
-	private static Connection conn = Libs.connect();
-
-	public RelePayDAO() {
-		try {
-			conn.setAutoCommit(false);
-
-		} catch (Exception e) {
-			System.out.println("RelePayDAO 커넥션 오류!");
-			e.printStackTrace();
-		}
-	}
+	private static Connection conn = Libs.connectWithManualCommit();
 
 	// product 테이블에서 select로 필요한 정보 추출
 	public static ReleHistVO getProdInfo(String prodID) {
@@ -74,8 +64,6 @@ public class RelePayDAO {
 			try {
 				ps = conn.prepareStatement(sql);
 				int idx = 0;
-				System.out.println("-------release_history 에 입력할 값----------");
-				System.out.println(vo);
 
 				ps.setString(++idx, vo.getUserId());
 				ps.setString(++idx, vo.getProdId());
@@ -104,25 +92,28 @@ public class RelePayDAO {
 	// PayDAO의 insert 구현
 	public static int insertPay(PayVO vo) {
 		PayDAO payDAO = new PayDAO();
-		payDAO.insert(conn, vo, true);
-
-		// 제일 마지막으로 사용되는 메소드에 커밋 실행
-		try {
-			conn.commit();
-
-		} catch (Exception e) {
-			System.out.println("RelePayDAO 커밋 실패!");
-			e.printStackTrace();
-		} finally {// 마지막엔 오토커밋을 다시 true로
+		long result = payDAO.insert(conn, vo, true);
+		
+		if(result!=0) {//pay_info에 insert 성공
+			// 제일 마지막으로 사용되는 메소드에 커밋 실행
 			try {
-				conn.setAutoCommit(true);
-			} catch (Exception e2) {
-				System.out.println("RelePayDAO 오토커밋 실패!");
-				e2.printStackTrace();
+				conn.commit();
+				
+			} catch (Exception e) {
+				System.out.println("RelePayDAO 커밋 실패!");
+				e.printStackTrace();
+				return -1;
+			} finally {// 마지막엔 오토커밋을 다시 true로
+				try {
+					conn.setAutoCommit(true);
+				} catch (Exception e2) {
+					System.out.println("RelePayDAO 오토커밋 실패!");
+					e2.printStackTrace();
+				}
 			}
-		}
-
-		return 1;
+			return 1;
+		} else
+			return -1;
 	}
 
 }

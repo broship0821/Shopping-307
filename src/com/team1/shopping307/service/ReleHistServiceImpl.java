@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.team1.shopping307.DAO.ReleHistDAO;
 import com.team1.shopping307.DAO.RelePayDAO;
 import com.team1.shopping307.VO.ReleHistVO;
 import com.team1.shopping307.VO.UserManaVO;
@@ -19,13 +20,16 @@ public class ReleHistServiceImpl implements ReleHistService {
 	public ArrayList<ReleHistVO> selectAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 모든 release_history 한눈에 보기
-		return null;
+		ReleHistDAO dao = new ReleHistDAO();
+		ArrayList<ReleHistVO> list = dao.selectAll();
+		request.setAttribute("releHistList", list);
+		return list;
 	}
 
 	@Override
 	public ReleHistVO selectOne(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 하나의 release_history 수정 or 삭제 버튼 있음
+		
 		return null;
 	}
 
@@ -39,13 +43,17 @@ public class ReleHistServiceImpl implements ReleHistService {
 
 	@Override
 	public int update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 수정한거 db에 반영시키기
+		
 		return 0;
 	}
 
 	@Override
 	public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 하나의 release_history 삭제
+		ReleHistDAO dao = new ReleHistDAO();
+		String releHistId = request.getParameter("releId");
+		int tmp = dao.delete(releHistId);
+		request.setAttribute("result", (tmp==1)?"성공":"실패");
 		return 0;
 	}
 

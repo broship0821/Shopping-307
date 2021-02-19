@@ -12,144 +12,71 @@ import com.team1.shopping307.VO.ProdVO;
 import com.team1.shopping307.VO.ReleHistVO;
 
 public class ReleHistDAO {
-   private static String className = "ReleHistDAO";
-   private static String tableName = "release_history";
-   private static String ver = "0.1"; // for Commit
-   
-   //구현 X
-   public static ArrayList<ProdVO> selectAll() {
-      System.out.println(className + ".selectAll()");
-      ArrayList<ProdVO> lstResult = new ArrayList<>();
-      Connection conn = Libs.connect();
-      
-      if(conn != null) {
-         PreparedStatement ps = null;
-         ResultSet rs = null;
-         String sql = "SELECT *"
-               + " FROM " + tableName + " ORDER BY product_id";
+	private static String className = "ReleHistDAO";
+	private static String tableName = "release_history";
+	private static String ver = "0.1"; // for Commit
 
-         try {
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            
-            while(rs.next()) {
-               //lstResult.add(readProd(rs));
-            }      
-         }
-         catch (Exception ex) {
-            ex.printStackTrace();
-         }
-         
-         Libs.closeDb(conn, ps, rs);
-      }
-      
-      return lstResult;
-   }
-   //구현 X
-   public static ProdVO selectOne(String productId) {
-      System.out.println(className + ".selectOne(" + productId + ")");
-      ProdVO result = new ProdVO();
-      Connection conn = Libs.connect();
-      
-      if(conn != null) {
-         PreparedStatement ps = null;
-         ResultSet rs = null;
-         String sql = "SELECT *"
-               + " FROM " + tableName + " WHERE product_id = ?";
-         
-         try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, productId);
-            rs = ps.executeQuery();
-            
-            if(rs.next()) {
-               //result = readProd(rs);
-            }      
-         }
-         catch (Exception ex) {
-            ex.printStackTrace();
-         }
-         
-         Libs.closeDb(conn, ps, rs);
-      }
-      
-      return result;
-   }
- 
+	// 구현 X
+	public static ArrayList<ReleHistVO> selectAll() {
+		System.out.println(className + ".selectAll()");
+		ArrayList<ReleHistVO> lstResult = new ArrayList<>();
+		Connection conn = Libs.connect();
 
- //구현 X
-   public static int update(ProdVO vo) {
-      System.out.println(className + ".update()");
-      int result = 0;
-      Connection conn = Libs.connect();
-      
-      if(conn != null) {
-         PreparedStatement ps = null;
+		if (conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			String sql = "SELECT *" + " FROM " + tableName + " ORDER BY release_id";
 
-         String sql = "UPDATE " + tableName
-               + " SET product_name = ?"
-               + "   , category     = ?"
-               + "   , is_new       = ?"
-               + "   , standard     = ?"
-               + "   , price        = ?"
-               + "   , stock        = ?"
-               + "   , bigo         = ?"
-               + "   , start_date   = ?"
-               + "   , image_1      = ?"
-               + "   , image_2      = ?"
-               + "   , image_3      = ?"
-               + " WHERE product_id = ?";
+			try {
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
 
-         try {
-            ps = conn.prepareStatement(sql);
-            int idx = 0;
-            ps.setString(++idx, vo.getProductName());
-            ps.setString(++idx, vo.getCategory());
-            ps.setString(++idx, vo.getIsNew());
-            ps.setString(++idx, vo.getStandard());
-            ps.setLong(++idx, vo.getPrice());
-            ps.setLong(++idx, vo.getStock());
-            ps.setString(++idx, vo.getBigo());
-            ps.setTimestamp(++idx, Libs.strToTimestamp(vo.getStartDate()));
-            ps.setString(++idx, vo.getImage1());
-            ps.setString(++idx, vo.getImage2());
-            ps.setString(++idx, vo.getImage3());
-            ps.setString(++idx, vo.getProductId());
+				while (rs.next()) {
+					ReleHistVO vo = new ReleHistVO();
+					vo.setReleId(rs.getString("release_id"));
+					vo.setUserId(rs.getString("user_id"));
+					vo.setProdId(rs.getString("product_id"));
+					vo.setProdName(rs.getString("product_name"));
+					vo.setCaregory(rs.getString("category"));
+					vo.setIsNew(rs.getString("is_new"));
+					vo.setStandard(rs.getString("standard"));
+					vo.setPrice(rs.getLong("price"));
+					vo.setStatus(rs.getString("status"));
+					vo.setcDate(rs.getDate("c_date"));
+					vo.setuDate(rs.getDate("u_date"));
+					lstResult.add(vo);
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 
-            result = ps.executeUpdate();
-         }
-         catch (Exception ex) {
-            ex.printStackTrace();
-         }
-         
-         Libs.closeDb(conn, ps);
-      }
+			Libs.closeDb(conn, ps, rs);
+		}
 
-      return result;
-   }
- //구현 X
-   public static int delete(String productId) {
-      System.out.println(className + ".delete(" + productId + ")");
-      int result = 0;
-      Connection conn = Libs.connect();
-      
-      if(conn != null) {
-         PreparedStatement ps = null;
-         String sql = "DELETE FROM " + tableName + " WHERE product_id = ?";
+		return lstResult;
+	}
 
-         try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, productId);
-            result = ps.executeUpdate();
-         }
-         catch (Exception ex) {
-            ex.printStackTrace();
-         }
-         
-         Libs.closeDb(conn, ps);
-      }
-      
-      return result;
-   }
+	public static int delete(String releHistId) {
+		System.out.println(className + ".delete(" + releHistId + ")");
+		int result = 0;
+		Connection conn = Libs.connect();
+
+		if (conn != null) {
+			PreparedStatement ps = null;
+			String sql = "DELETE FROM " + tableName + " WHERE release_id = ?";
+
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, releHistId);
+				result = ps.executeUpdate();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+			Libs.closeDb(conn, ps);
+		}
+
+		return result;
+	}
 
 }

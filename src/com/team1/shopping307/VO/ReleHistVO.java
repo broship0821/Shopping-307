@@ -9,13 +9,14 @@ public class ReleHistVO {
 	String releId; // 상품 출고 Id
 	String userId; // buyer(구매자)
 	String prodId; // 판매 상품 ID.
-	String ProdName; // 상품 이름
+	String prodName; // 상품 이름
 	String caregory; // 상품 카테고리
 	String isNew; // 'Y':신상, 'N':이월
 	String standard; // 규격
 	long price; // 판매가
 	String status; // 상태('입금완료', '결제승인', '출고', '교환', '환불', '구매완료')
 	Date cDate; // 판매일
+	Date uDate; // 수정일
 
 	public ReleHistVO() {
 	}
@@ -45,11 +46,11 @@ public class ReleHistVO {
 	}
 
 	public String getProdName() {
-		return ProdName;
+		return prodName;
 	}
 
 	public void setProdName(String prodName) {
-		ProdName = prodName;
+		this.prodName = prodName;
 	}
 
 	public String getCaregory() {
@@ -99,10 +100,18 @@ public class ReleHistVO {
 	public void setcDate(Date cDate) {
 		this.cDate = cDate;
 	}
+	
+	public Date getuDate() {
+		return uDate;
+	}
+
+	public void setuDate(Date uDate) {
+		this.uDate = uDate;
+	}
 
 	@Override
 	public String toString() {
-		return "ReleHistVO [releId=" + releId + ", userId=" + userId + ", prodId=" + prodId + ", ProdName=" + ProdName
+		return "ReleHistVO [releId=" + releId + ", userId=" + userId + ", prodId=" + prodId + ", ProdName=" + prodName
 				+ ", caregory=" + caregory + ", isNew=" + isNew + ", standard=" + standard + ", price=" + price
 				+ ", status=" + status + ", cDate=" + cDate + "]";
 	}

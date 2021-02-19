@@ -66,6 +66,10 @@ public class RelePayDAO {
 				int size = Integer.parseInt(cnt[i]);// 갯수
 				for (int j = 0; j < size; j++) {
 					result1 = insert(conn, vo);
+					if("".equals(result1)) {
+						Libs.rollback(conn);
+						return 0;
+					}
 				}
 				// pay_info에 필요한 items_info, amount 값 넣기
 				itemsInfo.append(vo.getProdId() + "-");
@@ -78,7 +82,10 @@ public class RelePayDAO {
 			
 			result2 = new PayDAO().insert(conn, payVO, true);
 			//에러시 롤백
-			if(result2==0) Libs.rollback(conn);
+			if(result2==0) {
+				Libs.rollback(conn);
+				return 0;
+			}
 			
 			//마지막에 커밋
 			Libs.commit(conn);

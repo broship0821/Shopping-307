@@ -59,21 +59,21 @@
 	    <table id="orderInfoTable">
 	        <tr>
 	            <td style="width: 10%;">받으시는 분</td>
-	            <td><input type="text" name="name" id="" value="${u.getName() }"></td>
+	            <td><input type="text" name="name" id="" value="${u.getName() }" required></td>
 	        </tr>
 	        <tr>
 	            <td style="width: 10%;">우편번호</td>
-	            <td><input type="text" name="zip" id="" value="${u.getZip() }"></td>
+	            <td><input type="text" name="zip" id="" value="${u.getZip() }" required></td>
 	        </tr>
 	        <tr>
 	            <td style="width: 10%;">주소</td>
 	            <td>
-	                <input type="text" name="address" id="" value="${u.getAddress() }">
+	                <input type="text" name="address" id="" value="${u.getAddress() }" required>
 	            </td>
 	        </tr>
 	        <tr>
 	            <td style="width: 10%;">휴대전화</td>
-	            <td><input type="tel" name="tel" id="" value="${u.getPhonenumber() }"></td>
+	            <td><input type="tel" name="tel" id="" value="${u.getPhonenumber() }" required></td>
 	        </tr>
 	        <tr>
 	            <td style="width: 10%;">결제수단</td>

@@ -1,7 +1,8 @@
 package com.team1.shopping307.VO;
 
-public class UserManaVO {
+public class UserVO {
    String userId;          // 아이디     
+   String pw;              // 비밀번호
    String name;            // 이름
    String phonenumber;     // 전화번호
    String role;            // 'U':일반유저, 'M':매니저, 'A':Admin
@@ -15,6 +16,14 @@ public class UserManaVO {
 
    public void setUserId(String userId) {
       this.userId = userId;
+   }
+
+   public String getPw() {
+      return pw;
+   }
+
+   public void setPw(String pw) {
+      this.pw = pw;
    }
 
    public String getName() {
@@ -65,18 +74,19 @@ public class UserManaVO {
       this.secession = secession;
    }
 
-   public UserManaVO() {
+   public UserVO() {
    }
 
-   public UserManaVO(String userId, String name,
+   public UserVO(String userId, String pw, String name,
          String phonenumber, String role, String address, String zip, String secession) {
-      this(userId, name, phonenumber, role, address, 
+      this(userId, pw, name, phonenumber, role, address, 
             Integer.valueOf(zip), secession);
    }
 
-   public UserManaVO(String userId, String name,
+   public UserVO(String userId, String pw, String name,
          String phonenumber, String role, String address, int zip, String secession) {
       this.userId      = userId;     
+      this.pw          = pw;
       this.name        = name;
       this.phonenumber = phonenumber;
       this.role        = role;
@@ -88,26 +98,13 @@ public class UserManaVO {
    @Override
    public String toString() {
       return "userId : " + userId     
+         + ", pw: " + pw
          + ", name: " + name
          + ", phonenumber: " + phonenumber
          + ", role: " + role
          + ", address: " + address
          + ", zip: " + zip
          + ", secession: " + secession;
-   }
-   
-   public UserManaVO loadFrom(UserVO voSrc) {
-      return voSrc != null
-            ? new UserManaVO(
-                  voSrc.getUserId(),
-                  voSrc.getName(),
-                  voSrc.getPhonenumber(),
-                  voSrc.getRole(),
-                  voSrc.getAddress(),
-                  voSrc.getZip(),
-                  voSrc.getSecession()
-              )
-            : null;
    }
 
 }

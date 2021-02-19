@@ -103,6 +103,54 @@ public class Libs {
       }
    }
 
+   // 기능: dbms의 setAutoCommit()
+   public static boolean setAutoCommit(Connection conn, boolean value) {
+      boolean result = false;
+      
+      if(conn != null) {
+         try {
+            conn.setAutoCommit(value);
+            result = true;
+         } catch (SQLException e) {
+            e.printStackTrace();
+         }
+      }
+
+      return result;
+   }
+
+   // 기능: db 작업을 commit함.
+   public static boolean commit(Connection conn) {
+      boolean result = false;
+      
+      if(conn != null) {
+         try {
+            conn.commit();
+            result = true;
+         } catch (SQLException e) {
+            e.printStackTrace();
+         }
+      }
+      
+      return result;
+   }
+   
+   // 기능: db 작업을 rollback함.
+   public static boolean rollback(Connection conn) {
+      boolean result = false;
+      
+      if(conn != null) {
+         try {
+            conn.rollback();
+            result = true;
+         } catch (SQLException e) {
+            e.printStackTrace();
+         }
+      }
+      
+      return result;
+   }
+   
    // 기능: Sequence로 부터 다음 값을 읽어온다.
    // 사용법: String exchaneId = Libs.getNewId(conn, "seq_Exch", "exchange_id");
    public static String getNewId(Connection conn, String prefix, String seqName, String colName) {

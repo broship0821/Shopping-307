@@ -7,14 +7,17 @@ public class Common {
    public static final String strMaker = "(c)opyleft 2021 307-Team1";
    
    //----------
-   // 사용자 구분
+   // admin, 쇼핑몰 관리자 ID 정의 / 사용자 Role구분 
    //----------
+   public static final String strAdminId   = "su"; // Super User
+   public static final String strManagerId = "manager";
+   
    public static final String strAdmin     = "A";              // Admin(Super user)
    public static final String strManager   = "M";            // Manager(쇼핑몰 관리자)
    public static final String strUser      = "U";               // User: 일반 사용자(client)
    public static final String strAnynimous = "Y";          // 익명(anonymous) 사용자(로긴하지 않은 사용자)
 
-   
+
    //----------
    // 상태 상수
    //----------

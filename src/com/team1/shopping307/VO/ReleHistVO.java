@@ -6,7 +6,7 @@ import java.util.Date;
 import com.team1.shopping307.Libs.Libs;
 
 public class ReleHistVO {
-	Long releId; // 상품 출고 Id
+	String releId; // 상품 출고 Id
 	String userId; // buyer(구매자)
 	String prodId; // 판매 상품 ID.
 	String ProdName; // 상품 이름
@@ -20,11 +20,11 @@ public class ReleHistVO {
 	public ReleHistVO() {
 	}
 
-	public Long getReleId() {
+	public String getReleId() {
 		return releId;
 	}
 
-	public void setReleId(Long releId) {
+	public void setReleId(String releId) {
 		this.releId = releId;
 	}
 

@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <%
-String id = request.getParameter("Id");
+   String id = request.getParameter("Id");
 UserDAO dao = new UserDAO();
-boolean idcheck = dao.idcheck(id);
+boolean idcheck = dao.checkId(id);
 %>
 <title>Insert title here</title>
 <style>

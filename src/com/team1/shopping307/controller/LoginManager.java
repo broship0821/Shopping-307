@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.VO.UserManaVO;
 
 public class LoginManager {
@@ -15,18 +16,17 @@ public class LoginManager {
    static {
       if(isTestMode) {
          // 임시로 Manager를 만들어 등록함
-         hmUsers.put(testSessionId, LoginManagerTemp.createTempUser());
+         synchronized (hmUsers) {
+            hmUsers.put(testSessionId, LoginManagerTemp.createTempUser());
+         }
       }
    }
 
    public static UserManaVO getUserInfo(HttpServletRequest request) {
-      String sessionId = LoginManager.isTestMode 
-            ? LoginManager.testSessionId
-            : request.getSession().getId();
-      return getUserInfo(sessionId);
+      return getUserInfo(request.getSession().getId());
    }
 
-   // 기능: sessionId에 대한 사용자 정보를 응답한다.
+   // 기능: sessionId에 대한 사용자 정보를 응답한다. 단, 등록안 된 sessionId일 경우 bull를 앙답한다. 
    public static UserManaVO getUserInfo(String sessionId) {
       UserManaVO result = null;
       
@@ -35,15 +35,29 @@ public class LoginManager {
             sessionId = LoginManager.testSessionId;
          }
          
-         result = hmUsers.get(sessionId); 
+         synchronized (hmUsers) {
+            result = hmUsers.get(sessionId); // 없으면 null 응답
+         }
       }
       
       return result;
    }
    
-   public static boolean setUserInfo(String sessionId, UserManaVO vo) {
+   public static boolean setUserInfo(String sessionId, UserManaVO newVo) {
       boolean result = false;
 
+      if (Libs.isNotEmptyExt(sessionId) && newVo != null) {
+         synchronized (hmUsers) {
+            UserManaVO userVo = hmUsers.get(sessionId);
+
+            if (userVo != null) {
+               hmUsers.remove(sessionId);
+            }
+
+            hmUsers.put(sessionId, newVo);
+         }
+      }
+      
       return result;
    }
 
@@ -52,8 +66,8 @@ public class LoginManager {
       UserManaVO result = new UserManaVO(
             Common.strManagerId, "몰쥔", "01099999999", "M", "서울특별시 영등포구", "99999", "N"      
       );
-      return result;
       
+      return result;
    }
 
    // 기능: sessionId에 대한 Login 여부를 검색하여 login한 user이면 그의 role를 응답

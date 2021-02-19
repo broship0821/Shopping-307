@@ -4,10 +4,11 @@ import java.util.Date;
 
 public class RevuVO {
 	private int reviewId; //후기번호
-	private int patId; //구매번호
+	private long payId; //구매번호
 	private String userId; //작성자 아이디
 	private String userName; //작성자 이름
-	private String product; //구매한 상품 아이디
+	private String productID; //구매한 상품 아이디
+	private String productName; //구매한 상품 명
 	private int star; //별(1~5)
 	private String title; //후기 제목
 	private String content; //후기 내용
@@ -15,20 +16,6 @@ public class RevuVO {
 	private Date uDate; //후기 수정일
 	
 	public RevuVO() {
-	}
-
-	public RevuVO(int reviewId, int patId, String userId, String userName, String product, int star, String title,
-			String content, Date cDate, Date uDate) {
-		this.reviewId = reviewId;
-		this.patId = patId;
-		this.userId = userId;
-		this.userName = userName;
-		this.product = product;
-		this.star = star;
-		this.title = title;
-		this.content = content;
-		this.cDate = cDate;
-		this.uDate = uDate;
 	}
 
 	public int getReviewId() {
@@ -39,12 +26,12 @@ public class RevuVO {
 		this.reviewId = reviewId;
 	}
 
-	public int getPatId() {
-		return patId;
+	public long getPayId() {
+		return payId;
 	}
 
-	public void setPatId(int patId) {
-		this.patId = patId;
+	public void setPayId(long payId) {
+		this.payId = payId;
 	}
 
 	public String getUserId() {
@@ -63,12 +50,20 @@ public class RevuVO {
 		this.userName = userName;
 	}
 
-	public String getProduct() {
-		return product;
+	public String getProductID() {
+		return productID;
 	}
 
-	public void setProduct(String product) {
-		this.product = product;
+	public void setProductID(String productID) {
+		this.productID = productID;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public int getStar() {
@@ -110,7 +105,13 @@ public class RevuVO {
 	public void setuDate(Date uDate) {
 		this.uDate = uDate;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "RevuVO [reviewId=" + reviewId + ", payId=" + payId + ", userId=" + userId + ", userName=" + userName
+				+ ", productID=" + productID + ", productName=" + productName + ", star=" + star + ", title=" + title
+				+ ", content=" + content + ", cDate=" + cDate + ", uDate=" + uDate + "]";
+	}
+
 	
 }

@@ -16,7 +16,6 @@ public class ReleHistDAO {
 	private static String tableName = "release_history";
 	private static String ver = "0.1"; // for Commit
 
-	// 구현 X
 	public static ArrayList<ReleHistVO> selectAll() {
 		System.out.println(className + ".selectAll()");
 		ArrayList<ReleHistVO> lstResult = new ArrayList<>();

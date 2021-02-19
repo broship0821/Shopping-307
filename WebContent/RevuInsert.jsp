@@ -15,23 +15,23 @@
 
 <h1>쇼핑 307</h1>
 <p>리뷰 등록</p>
-<form action="<%=Common.strRevuInsertDo %>" encType="multipart/form-data" method="post">
+<form action="RevuInsertResult.do" method="post">
    <table border="2">
-      <tr>
+      <!-- <tr>
          <td>구매번호</td>
          <td><input type="text" name="pay_id" size="20" length="20" required /></td>
+      </tr> -->
+      <tr>
+      	<td>상품명</td>
+      	<td>${param.prodName}</td>
       </tr>
       <tr>
          <td>작성자 아이디</td>
-         <td><input type="text" name="user_id" size="20" length="20" required /></td>
+         <td>${userID}</td>
       </tr>
       <tr>
          <td>작성자 이름</td>
-         <td><input type="text" name="user_name" size="20" length="20" required /></td>
-      </tr>
-      <tr>
-         <td>상품 아이디</td>
-         <td><input type="text" name="product_id" size="20" length="20" required /></td>
+         <td><input type="text" name="userName" size="20" length="20" required /></td>
       </tr>
       <tr>
          <td>별점 수</td>
@@ -43,23 +43,20 @@
       </tr>
       <tr>
          <td>후기 내용</td>
-         <td><textarea rows="4" cols="50" name="bigo" required></textarea></td>
-      </tr>
-      <tr>
-         <td>생성일</td>
-         <td><input type="date" name="c_date" size="20" length="20" required /></td>
-      </tr>
-      <tr>
-         <td>갱신일</td>
-         <td><input type="date" name="u_date" size="20" length="20" required /></td>
+         <td><textarea rows="4" cols="50" name="content" required></textarea></td>
       </tr>
       
    </table>
    
    <table border=0>
       <tr>
-         <td><a href="RevuInsert.jsp">[입력]</a></td>
-         <td><a href="RevuSelectAll.jsp">[모두보기]</a></td>
+         <td>
+         	<input type="hidden" name="prodID" value="${param.productId}">
+         	<input type="hidden" name="prodName" value="${param.prodName}">
+         	<input type="hidden" name="userID" value="${userID}">
+         	<input type="submit" value="입력">
+         </td>
+         <td><a href="RevuSelectAll.do">[모두보기]</a></td>
       </tr>
    </table>
    

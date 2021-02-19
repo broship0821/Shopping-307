@@ -15,4 +15,5 @@ public interface RevuService {
     public int insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;  
     public int update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException; 
     public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   
+    public int insertResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;  
 }

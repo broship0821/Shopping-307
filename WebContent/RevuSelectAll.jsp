@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,10 @@ margin-top:20px;
    margin-top:20px;
    border-collapse:collapse;
 }
+.tbl td{
+    border-bottom: 1px solid gray;
+    height: 30px;
+}
 
 input[type=text ]{
 border : 0px solid #ededed;
@@ -40,21 +45,21 @@ padding:5px;
       <div class="header"><h1>쇼핑 307</h1></div>
       <table class="tbl" style="text-align:center; border:1px solid #ededed; ">
          <tr style="background-color:#ededed;">
-            <th style=" text-align:center;">번호</th>
-            <th style="text-align:center; ">제목</th>
             <th style=" text-align:center;">상품명</th>
+            <th style="text-align:center; ">제목</th>
             <th style=" text-align:center;">작성자</th>
+            <th style=" text-align:center;">별점</th>
             <th style=" text-align:center;">작성날짜</th>
          </tr>
+         <c:forEach var="i" items="${list}">
          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>${i.productName }</td>
+            <td><a href="RevuSelectOne.do?id=${i.reviewId }">${i.title }</a></td>
+            <td>${i.userId }</td>
+            <td>${i.star }/5</td>
+            <td>${i.cDate }</td>
          </tr>
-
-         
+         </c:forEach>
       </table>
    </div>
    </form>

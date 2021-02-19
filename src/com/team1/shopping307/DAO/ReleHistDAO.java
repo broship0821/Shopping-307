@@ -14,7 +14,7 @@ import com.team1.shopping307.VO.ReleHistVO;
 public class ReleHistDAO {
    private static String className = "ReleHistDAO";
    private static String tableName = "release_history";
-
+   private static String ver = "0.1"; // for Commit
    
    //구현 X
    public static ArrayList<ProdVO> selectAll() {

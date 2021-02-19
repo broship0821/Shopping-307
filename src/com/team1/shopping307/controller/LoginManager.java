@@ -15,7 +15,7 @@ public class LoginManager {
    // static 초기화 블럭
    static {
       if(isTestMode) {
-         // 임시로 Manager를 만들어 등록함
+         // 임시로 Manager를 만들어 등록함.
          synchronized (hmUsers) {
             hmUsers.put(testSessionId, LoginManagerTemp.createTempUser());
          }

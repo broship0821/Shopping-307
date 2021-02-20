@@ -391,6 +391,12 @@ public class Controller extends HttpServlet {
             jspName = Common.strRevuDelete;
             break;
          }
+         case "RevuInsertResult.do": {
+            RevuService svc = new RevuServiceImpl();
+            svc.insertResult(request, response);
+            jspName = "RevuInsertResult";
+            break;
+         }         
 
          // ---------------------------------------
          // 9. 교환/환불 정보(exchange)

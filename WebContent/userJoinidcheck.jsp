@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%
+<%//가입시 아이디 중복jsp
+
    String id = request.getParameter("Id");
 UserDAO dao = new UserDAO();
 boolean idcheck = dao.checkId(id);

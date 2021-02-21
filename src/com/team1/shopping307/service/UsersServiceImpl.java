@@ -3,12 +3,17 @@ package com.team1.shopping307.service;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.Session;
+
 import com.team1.shopping307.DAO.UserDAO;
 import com.team1.shopping307.VO.UserVO;
+import com.team1.shopping307.controller.Common;
 
 public class UsersServiceImpl implements UsersService {
    private final String className = "UserServiceImpl";
@@ -27,7 +32,7 @@ public class UsersServiceImpl implements UsersService {
          throws ServletException, IOException {
       System.out.println(className + ".selectOne()");
       UserVO result = new UserVO(); 
-      
+     
       return result;   
    }
 
@@ -47,6 +52,7 @@ public class UsersServiceImpl implements UsersService {
       
       UserVO vo = new UserVO(id, pw, name, phone, role, address, zip, secession); 
       result = UserDAO.insert(vo);
+      System.out.println(result);
       request.setAttribute("result", result);
       
       /*
@@ -92,36 +98,81 @@ public class UsersServiceImpl implements UsersService {
    public String checkLogin(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
       System.out.println(className + ".checkLogin()");
-      System.out.println("여긴오니");
       request.setCharacterEncoding("utf-8");
       response.setCharacterEncoding("utf-8");
 
       String id = request.getParameter("userId");
       String pw = request.getParameter("userPw");
       String name = UserDAO.checkLogin(id, pw);
-
-      /*
-      if (name != null) {
+      String ok = null;
+      
+      if (name != null) { 
          System.out.println(name);
-         ServletContext app = request.getServletContext();
-         app.setAttribute("name", name);
-         response.sendRedirect("UserloginTopmenu.jsp");
+         request.setAttribute("name", name);
+         ok = Common.strProdSelectAll;
       } else {
          System.out.println("여기 왔니?");
          String error = "아이디 없거나 비밀번호가 맞지 않습니다.";
          request.setAttribute("error", error);
-         RequestDispatcher dis = request.getRequestDispatcher("UserLogin.jsp");
-         dis.forward(request, response);
+         ok = Common.strUserLogin;
       }
-      */
+      	
       
-      return name;
+      return ok;
    }
 
    @Override
    public String checkLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       System.out.println(className + ".chkLogout()");
       String result = "";
+      ServletContext app = request.getServletContext();
+      app.removeAttribute("name");
+      app.removeAttribute("Id");
+      result = Common.strProdSelectAll;
       return result;
+   }
+   @Override
+   public String findId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   System.out.println(className + ".findId()");
+	   String result = "";
+	   request.setCharacterEncoding("utf-8");
+	   response.setCharacterEncoding("utf-8");
+	   
+	   String name = request.getParameter("name");
+	   String phone = request.getParameter("phone");
+	   String id    = UserDAO.findId(name, phone);
+	   String ok    = null;
+	   if(id != null) {
+		request.setAttribute("id", id);
+		ok= Common.strUserFindid;
+	   }else {
+		   System.out.println("이거 출력이지?");
+		   String error1 = "연관된 아이디가 없습니다.";
+		   request.setAttribute("error", error1);
+		   System.out.println(error1);
+		   ok = "UserId_Pwfind.jsp";
+	   }
+	   return ok;
+   }
+   @Override
+   public String findPw(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   System.out.println(className + ".findPw()");
+	   String result = "";
+	   request.setCharacterEncoding("utf-8");
+	   response.setCharacterEncoding("utf-8");
+	   
+	   String name = request.getParameter("name1");
+	   String id = request.getParameter("userID");
+	   String pw = UserDAO.findPw(name, id);
+	   String ok = null;
+	   if(pw != null) {
+		   request.setAttribute("pw", pw);
+		   ok=Common.strUserFindid;
+	   }else {
+		   String error1 = "연관된 정보가 없습니다.";
+		   request.setAttribute("error1", error1);
+		   ok = "UserId_Pwfind.jsp";
+	   }
+	   return ok;
    }
 }

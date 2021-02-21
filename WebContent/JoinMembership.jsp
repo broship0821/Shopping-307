@@ -8,6 +8,7 @@
  <script type="text/javascript">
     
         // 필수 입력정보인 아이디, 비밀번호가 입력되었는지 확인하는 함수
+        // 회원가입 jsp
         function checkValue()
         {
             if(!document.form1.Id.value){
@@ -49,7 +50,7 @@
              	return false;
              }
             else{
-            	document.form1.action = "Join.do";
+            	document.form1.action = "UsersInsert.do";
             	document.form1.submit();
             }
         }

@@ -7,7 +7,7 @@ String error = (String) request.getAttribute("error");
 pageContext.setAttribute("error", error);
 
 %>
-
+<!-- 로그인 화면을 구성 한 jsp파일입니다. -->
 
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ function loginClick() {
 };
 
 function Search() {
-	document.form1.action = "Search.do";
+	location.href= "UserId_Pwfind.jsp";
 	
 };
 

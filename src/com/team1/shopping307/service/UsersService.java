@@ -17,4 +17,6 @@ public interface UsersService {
    public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   
    public String checkLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
    public String checkLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+   public String findId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+   public String findPw(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

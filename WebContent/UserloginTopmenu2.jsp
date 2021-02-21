@@ -7,13 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
- <%
-    request.setCharacterEncoding("utf-8");
-    response.setCharacterEncoding("utf-8");
-	request.getAttribute("name");
-    %>
 <!-- <script  src="http://code.jquery.com/jquery-latest.min.js">
-로그인시 메인 화면 상단에 나올 jsp
+회원가입시 메인 화면상단에 나올 jsp
 </script> -->
 
 <style>
@@ -29,9 +24,9 @@ function logout(){
 </head>
 <body>
 <div>
- ${name}님이 로그인중입니다.
-환영 합니다.
-<button type="button" id="button" name="btnlogout"  onclick="location.href='UserLogout.do' ">로그아웃</button>
+가입에 성공 하셨습니다 환영 합니다. 하지만 로그인이 필요합니다 로그인 해주세요
+<button type="button" onclick="location.href='UserLogin.jsp'">로그인</button>
+<button type="button" onclick="location.href='UserLogout.do' ">로그아웃</button>
 </div>
 
 <hr>

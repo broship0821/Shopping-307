@@ -151,7 +151,7 @@ public class UserDAO {
 		if (conn != null) {
 			PreparedStatement ps = null;
 			String sql = "UPDATE USERS"
-					     + "SET NAME = ?, PHONE=?, ADDRESS =?, ZIP=?"
+					     + "SET NAME = ?, PHONENUMBER=?, ADDRESS =?, ZIP=?"
 					     + "WHERE USER_ID = ?";
 
 			try {
@@ -209,7 +209,7 @@ public class UserDAO {
       ResultSet rs = null;
       boolean idcheck = false;
       if (conn != null) {
-         String sql = "SELECT USERS_ID FROM USERS WHERE user_id = ?";
+         String sql = "SELECT USER_ID FROM USERS WHERE user_id = ?";
 
          try {
             ps = conn.prepareStatement(sql);
@@ -222,5 +222,61 @@ public class UserDAO {
          Libs.closeDb(conn, ps);
       }
       return idcheck;
+	}
+	//아이디 찾기
+    public static String findId(String name, String phone) {
+		// TODO Auto-generated method stub
+    	System.out.println("findId");
+    	Connection conn = Libs.connect();
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	String id = null;
+    	if(conn != null) {
+    		String sql = "SELECT USER_ID FROM USERS WHERE NAME =? AND PHONENUMBER =?";
+    	try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, phone);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				id = rs.getString("USER_ID");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Libs.closeDb(conn, ps, rs);
+		}
+    	}
+    	return id;
+	}
+    //비밀번호 찾기
+    public static String findPw(String name, String id) {
+		// TODO Auto-generated method stub
+    	System.out.println("findPw()");
+    	Connection conn = Libs.connect();
+    	PreparedStatement ps = null;
+    	ResultSet rs = null;
+    	
+    	String pw = null;
+    	
+    	if(conn != null) {
+    		String sql = "SELECT PW FROM USERS WHERE NAME =? AND USER_ID =?";
+    	try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				pw = rs.getString("PW");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Libs.closeDb(conn, ps, rs);
+		}
+    	}
+    	return pw;
 	}
 }

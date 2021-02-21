@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="/css/mainMenu.css" />
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script src="/js/shopping307.js?ver=2"></script> -->
+<script src="/js/mainMenu.js?ver=1"></script>
+
+<script>
+var surroundQuote1 = function(str) {
+    // return String.fromCharCode(39) + str + String.fromCharCode(39);
+    return "\'" + str + "\'";
+};
+    
+var surroundQuote2 = function(str) {
+    // return String.fromCharCode(34) + str + String.fromCharCode(34);
+    return "\"" + str + "\"";
+};
+
+// ----------------------------------------------------- 
+var ajaxGet = function(loc, componentName) {
+    // window.open(loc);
+    // window.location.href =
+    loc; console.log(loc);
+     
+    $.ajax({ 
+        type : "GET", 
+        dataType : "html", 
+        url : loc, 
+        success : function(msg) {
+            console.log(msg); 
+            $("#" + componentName).html(msg); 
+        } 
+    }); 
+};
+    
+var arrMenu = [
+   {
+      key: "로그인/아웃", 
+      value: [
+         {key: "로그인",   value: "#"}
+       , {key: "로그아웃", value: "#"}
+       , {key: "암호찾기", value: "#"}         
+       , {key: "회원등록", value: "#"}
+       , {key: "탈퇴",    value: "#"}       
+      ]
+   },
+   {
+      key: "관리자", 
+      value: [
+         {key: "상품목록", value: "http://localhost:8081/ProdSelectAll.do"}
+       , {key: "상품등록", value: "http://localhost:8081/ProdInsert.jsp"}
+       , {key: "결제승인", value: "http://localhost:8081/PayGetStatus.do"}
+       , {key: "상품출고", value: "http://localhost:8081/PayGetStarus.do"}
+      ]
+   },
+   {
+      key: "클라이언트", 
+      value: [
+         {key: "상품보기",     value: "http://localhost:8081/ProdUserSelectAll.do"}
+       , {key: "장바구니",     value: "http://localhost:8081/BagSelectAll.do"}
+       , {key: "리뷰",        value: "http://localhost:8081/RevuSelectAll.do"}
+       , {key: "상품 출고 기록", value: "http://localhost:8081/ReleHistSelectAll.do"}
+      ]
+   }
+];
+
+$(function() {
+    var strTitleId1 = "hTitle1"; 
+    var strSubId1 = "divSub1";
+    var strHtml = "";
+    console.log(arrMenu[0].key + arrMenu[0].value);
+    
+    $.each(arrMenu, function(index1, value1) {
+        var strSub = value1.value; 
+        var strTitleId2 = strTitleId1 + index1; 
+        var strSubId2 = strSubId1 + index1; 
+        strHtml += "<h3 id='" + strTitleId2 + "'>" 
+            + value1.key + "</h3>";
+        var strDiv = "<div id='" + strSubId2
+            + "' style='display: none;'>";
+            //+ "' style='visibility: hidden;'>";
+        strHtml += strDiv;
+
+        $.each(strSub, function(index2, value2) {       
+            //var strLink = "<A href='" + value2.value 
+            //     + "'><h4> - " + value2.key + "</h4></A>";
+            var strOnClick = "menuClick('" + value2.value + "');";
+            var strLink = "<h4><input type='button'" 
+                 + " onClick=" + surroundQuote2(strOnClick) + "" 
+                 + " value='" + value2.key + "'></h4>";
+                strHtml +=  strLink;
+        });
+
+        strHtml += "</div>";
+    });
+    
+    strHtml += "<br /><br /><br /><br /><br />"
+    //document.body.innerHTML += strHtml;
+    $("#divMenu5").html(strHtml);
+    console.log("Menu HTML: " + strHtml);
+    
+    // click event 추가. 
+    // 주의: 위 each()에 추가시 마지막 하나만 Event 처리됨. why???
+    $.each(arrMenu, function(index1, value1) {
+        var strTitleId2 = "#" + strTitleId1 + index1; 
+        var strSubId2 = "#" + strSubId1 + index1; 
+
+        $(strTitleId2).click(function() {
+            var visible1 = ":visible";  // ":hidden"; // 
+            console.log(">>> " + visible1 + " = " + $(strSubId2).is(visible1));
+            
+            // if($(strSubId2).is(visible1)) {
+            if($(strSubId2).css("display") == "none") {
+                $(strSubId2).show();                    
+            }
+            else {
+                $(strSubId2).hide();                    
+            }
+        });
+    });
+});
+
+var surroundQuote2 = function(str) {
+    //return String.fromCharCode(34) + str + String.fromCharCode(34);     
+    return "\"" + str + "\"";     
+};
+
+var menuClick = function(loc) {
+  ajaxGet(loc, "contentMain");
+};
+
+</script>
+
+</head>
+
+<body>
+<input type="button" onclick="sp308alert('하하하하하하');" value="클릭"> <br />
+
+  <header>Header</header>
+  
+  <nav>
+<!--      nav-menu -->
+    <div id="divMenu5">
+
+<!--       <ul> -->
+<!--         <li><a href="#">메뉴 #1</a></li> -->
+<!--         <li><a href="#">메뉴 #2</a></li> -->
+<!--         <li><a href="#">메뉴 #3</a></li> -->
+<!--         <li><a href="#">메뉴 #4</a></li> -->
+<!--       </ul> -->
+    </div>
+  </nav>
+ 
+  <section>
+    <div id="contentMain">
+      <h1>Section</h1>
+      <article>
+        <h1>contents</h1>
+      </article>
+      <article>
+        <h1>contents</h1>
+      </article>
+    </div>
+  </section>
+  
+  <footer>
+    <h1>Footer</h1>
+    <address>주소</address>
+  </footer> 
+
+</body>
+</html>

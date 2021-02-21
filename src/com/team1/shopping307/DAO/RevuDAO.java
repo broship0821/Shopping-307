@@ -118,6 +118,35 @@ public class RevuDAO {
 		
 		return result;
 	}
+	
+	public int userCheck(int reviewId, String userID) {
+		System.out.println(className + ".userCheck");
+		int result = 0;
+		Connection conn = Libs.connect();
+		if (conn != null) {
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			String sql = "SELECT user_id" + " FROM " + tableName + " WHERE review_id = ?";
+
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, reviewId);
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					String dbUserID = rs.getString("user_id");
+					if(dbUserID.equals(userID))
+						result = 1;
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+			Libs.closeDb(conn, ps, rs);
+		}
+
+		return result;
+	}
 
 	public int delete(int reviewId) {
 		System.out.println(className + ".delete(" + reviewId + ")");
@@ -140,4 +169,39 @@ public class RevuDAO {
 
 		return result;
 	}
+	
+	public int update(RevuVO vo) {
+		System.out.println(className + ".update()");
+	      int result = 0;
+	      Connection conn = Libs.connect();
+	      
+	      if(conn != null) {
+	         PreparedStatement ps = null;
+
+	         String sql = "UPDATE " + tableName
+	               + " SET star = ?" 
+	               + "   , title = ?" 
+	               + "   , content = ?"         
+	               + " WHERE review_id  = ? ";
+
+	         try {
+	            ps = conn.prepareStatement(sql);
+	            int idx = 0;
+	            ps.setInt   (++idx, vo.getStar());
+	            ps.setString(++idx, vo.getTitle());
+	            ps.setString(++idx, vo.getContent());
+	            ps.setInt(++idx, vo.getReviewId());
+
+	            result = ps.executeUpdate();
+	         }
+	         catch (Exception ex) {
+	            ex.printStackTrace();
+	         }
+	         
+	         Libs.closeDb(conn, ps);
+	      }
+
+	      return result;
+	}
+	
 }

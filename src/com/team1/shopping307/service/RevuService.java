@@ -13,7 +13,8 @@ public interface RevuService {
 	public ArrayList<RevuVO> selectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	public RevuVO selectOne(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     public int insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;  
-    public int update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException; 
-    public int delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   
     public int insertResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;  
+    public String update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException; 
+    public int updateResult(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException; 
+    public String delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;   
 }

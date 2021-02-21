@@ -37,7 +37,15 @@
 			</tr>
 			<tr>
 				<td><a href="RevuSelectAll.do"><input type="button" value="후기 페이지로"></a></td>
-				<td><input type="submit" value="삭제" formaction="RevuDelete.do?id=${r.reviewId}"></td>
+				<td>
+					<input type="hidden" name="userID" value="${r.userId}">
+					<input type="hidden" name="prodName" value="${r.productName}">
+					<input type="hidden" name="star" value="${r.star}">
+					<input type="hidden" name="title" value="${r.title}">
+					<input type="hidden" name="content" value="${r.content}">
+					<input type="submit" value="수정" formaction="RevuUpdate.do?id=${r.reviewId}">
+					<input type="submit" value="삭제" formaction="RevuDelete.do?id=${r.reviewId}">
+				</td>
 			</tr>
 		</table>
 	</form>

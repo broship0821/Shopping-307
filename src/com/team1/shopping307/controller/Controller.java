@@ -381,14 +381,12 @@ public class Controller extends HttpServlet {
          }
          case Common.strRevuUpdateDo: {
             RevuService svc = new RevuServiceImpl();
-            svc.update(request, response);
-            jspName = Common.strRevuUpdate;
+            jspName = svc.update(request, response);
             break;
          }
          case Common.strRevuDeleteDo: {
             RevuService svc = new RevuServiceImpl();
-            svc.delete(request, response);
-            jspName = Common.strRevuDelete;
+            jspName = svc.delete(request, response);
             break;
          }
          case "RevuInsertResult.do": {
@@ -396,7 +394,13 @@ public class Controller extends HttpServlet {
             svc.insertResult(request, response);
             jspName = "RevuInsertResult";
             break;
-         }         
+         }   
+         case "RevuUpdateResult.do": {
+             RevuService svc = new RevuServiceImpl();
+             svc.updateResult(request, response);
+             jspName = "RevuUpdateResult";
+             break;
+         }  
 
          // ---------------------------------------
          // 9. 교환/환불 정보(exchange)

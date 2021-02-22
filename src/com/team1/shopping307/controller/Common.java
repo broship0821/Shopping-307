@@ -71,6 +71,19 @@ public class Common {
    // Mapping 정보
    //----------
    
+   // 로그인 관련
+   public static final String strUserLogin        = "UserLogin";
+   public static final String strUserLoginDo     = strUserLogin + strDo;
+   
+   public static final String strUserLogout       = "UserLogout";
+   public static final String strUserLogoutDo     = strUserLogout + strDo; 
+   
+   public static final String strUserFindid       = "UserfindId";
+   public static final String strUserFindidDo     = strUserFindid + strDo;
+   
+   public static final String strUserfindPw       = "UserfindPw";
+   public static final String strUserfindPwDo     = strUserfindPw + strDo;
+   
    // 1. 사용자 정보
    public static final String strUsersSelectAll   = "UsersSelectAll";
    public static final String strUsersSelectAllDo = strUsersSelectAll + strDo;

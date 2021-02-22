@@ -8,7 +8,7 @@ import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.VO.UserManaVO;
 
 public class LoginManager {
-   private static final boolean isTestMode = true; 
+   private static final boolean isTestMode = false; 
    private static final String testSessionId = "_test_session_id_";
    public static HashMap<String, UserManaVO> hmUsers = new HashMap<>();
 

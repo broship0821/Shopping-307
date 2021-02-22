@@ -84,10 +84,11 @@ public class Controller extends HttpServlet {
             jspName = Common.strUsersSelectOne;
             break;
          }
+         //회원가입
          case Common.strUsersInsertDo: {
-            UsersService svc = new UsersServiceImpl();
+            UsersServiceImpl svc = new UsersServiceImpl();
             svc.insert(request, response);
-            jspName = Common.strUsersInsert;
+            jspName = Common.strProdSelectAll;
             break;
          }
          case Common.strUsersUpdateDo: {
@@ -100,6 +101,32 @@ public class Controller extends HttpServlet {
             UsersService svc = new UsersServiceImpl();
             svc.delete(request, response);
             jspName = Common.strUsersDelete;
+            break;
+         }
+         // 로그인 관련
+         case Common.strUserLoginDo:{
+            UsersServiceImpl uvc = new UsersServiceImpl();
+            jspName = uvc.checkLogin(request, response);
+            break;
+         }
+         //로그 아웃 관련
+         case Common.strUserLogoutDo:{
+            UsersServiceImpl uvc = new UsersServiceImpl();
+            jspName = uvc.checkLogout(request, response);
+            System.out.println(jspName);
+            break;
+            
+         }
+         //회원 아이디 찾기
+         case Common.strUserFindidDo:{
+            UsersServiceImpl uvc = new UsersServiceImpl();
+            jspName = uvc.findId(request, response);
+            break;
+         }
+         //비번 찾기 
+         case Common.strUserfindPwDo:{
+            UsersServiceImpl uvc = new UsersServiceImpl();
+            jspName = uvc.findPw(request, response);
             break;
          }
 

@@ -108,8 +108,10 @@ public class UsersServiceImpl implements UsersService {
       
       if (name != null) { 
          System.out.println(name);
+         ServletContext app = request.getServletContext();
+         app.setAttribute("name", name);
          request.setAttribute("name", name);
-         ok = Common.strProdSelectAll;
+         ok = "UserLoginCheck";
       } else {
          System.out.println("여기 왔니?");
          String error = "아이디 없거나 비밀번호가 맞지 않습니다.";

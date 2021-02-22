@@ -84,7 +84,7 @@
 	        </tr>
 	        <tr>
 	        	<td style="width: 10%;">카드번호</td>
-	        	<td><input type="text" name="cardNO" id="" value="44444"></td><!-- 임시로 해둠, 나중에 지우기 -->
+	        	<td><input type="text" name="cardNO" id=""></td>
 	        </tr>
 	    </table>
 	    

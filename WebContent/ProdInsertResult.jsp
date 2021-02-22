@@ -13,7 +13,7 @@
 <body>
   <%request.setCharacterEncoding("UTF-8");%>
   <%response.setCharacterEncoding("UTF-8");%>
-
+<a href="mainMenu.html">[메인페이지로]</a>
 <h3>${result}</h3>
 <br /><br />
 

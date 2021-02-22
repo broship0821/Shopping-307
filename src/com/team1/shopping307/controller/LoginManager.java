@@ -8,17 +8,23 @@ import com.team1.shopping307.Libs.Libs;
 import com.team1.shopping307.VO.UserManaVO;
 
 public class LoginManager {
-   private static final boolean isTestMode = false; 
+   private static final boolean isTestMode = true; 
    private static final String testSessionId = "_test_session_id_";
    public static HashMap<String, UserManaVO> hmUsers = new HashMap<>();
 
    // static 초기화 블럭
    static {
       if(isTestMode) {
-         // 임시로 Manager를 만들어 등록함.
-         synchronized (hmUsers) {
-            hmUsers.put(testSessionId, LoginManagerTemp.createTempUser());
-         }
+         // 임시로 Manager를 만들어 등록함
+         //hmUsers.put(testSessionId, LoginManagerTemp.createTempUser());
+   	   UserManaVO user = new UserManaVO();
+   	   user.setUserId("peter");
+   	   user.setName("손흥민");
+   	   user.setZip(12345);
+   	   user.setAddress("seoul");
+   	   user.setPhonenumber("01012345678");
+   	   user.setRole("A");
+   	   hmUsers.put(testSessionId, user);
       }
    }
 

@@ -26,6 +26,7 @@ pageEncoding="UTF-8"%>
 <body>
 <%request.setCharacterEncoding("UTF-8");%>
 <%response.setCharacterEncoding("UTF-8");%>
+	<a href="mainMenu.html">[메인페이지로]</a>
 	<h1>
 		<p align="center">쇼핑 307</p>
 	</h1>

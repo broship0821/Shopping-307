@@ -88,7 +88,7 @@ public class Controller extends HttpServlet {
          case Common.strUsersInsertDo: {
             UsersServiceImpl svc = new UsersServiceImpl();
             svc.insert(request, response);
-            jspName = Common.strProdSelectAll;
+            jspName = "UserJoinCheck";
             break;
          }
          case Common.strUsersUpdateDo: {

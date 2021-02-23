@@ -56,6 +56,7 @@ padding-top:  20px;
 </style>
 </head>
 <body>
+<a href="mainMenu.html">[메인페이지로]</a>
 	<h1 align="center">쇼핑 307</h1>
 	<form name="form1" method="get">
 		<table border="0" width="400px" align="center">

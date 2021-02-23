@@ -38,7 +38,7 @@ padding:5px;
 </head>
 <body>
 
-
+<a href="mainMenu.html">[메인페이지로]</a>
 <div class="container">
    <form action="" method="get">
    <div class="row">

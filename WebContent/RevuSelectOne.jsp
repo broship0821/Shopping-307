@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="mainMenu.html">[메인페이지로]</a>
 	<h1>쇼핑307</h1>
 	<form method="post">
 		<table border="1">
